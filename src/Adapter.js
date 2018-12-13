@@ -15,7 +15,7 @@ export const postUsers = object => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(object)
+        body: JSON.stringify({ user: object })
     }).then(resp => resp.json());
 }
 
@@ -26,6 +26,6 @@ export const patchUser = object => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(object)
+        body: JSON.stringify({ user: object })
     }).then(resp => resp.json());
 };

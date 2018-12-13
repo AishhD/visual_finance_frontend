@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import * as adapter from "./Adapter.js";
+import { Button, Form } from 'semantic-ui-react';
 
 class App extends Component {
 
@@ -12,7 +12,7 @@ class App extends Component {
 
 
   postRequest() {
-    adapter.postUsers({ username: "aisha", password: "pineapple", age: "less than 30", location: "london", children: "false" })
+    adapter.postUsers({ username: "sassssm", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
       .then(user => console.log(user))
   }
 
@@ -30,24 +30,21 @@ class App extends Component {
 
 
   render() {
-    this.patchRequest()
+    this.postRequest()
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Form>
+          <Form.Field>
+            <label>Username</label>
+            <input placeholder='Username' />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input placeholder='Password' />
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+        </Form>
       </div>
     );
   }
