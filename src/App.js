@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import * as adapter from "./Adapter.js";
-import { Button, Form } from 'semantic-ui-react';
+import HomePage from "./components/HomePage";
 
 class App extends Component {
 
@@ -12,7 +12,7 @@ class App extends Component {
 
 
   postRequest() {
-    adapter.postUsers({ username: "sassssm", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
+    adapter.postUsers({ username: "sam", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
       .then(user => console.log(user))
   }
 
@@ -30,24 +30,18 @@ class App extends Component {
 
 
   render() {
-    this.postRequest()
-
     return (
       <div className="App">
-        <Form>
-          <Form.Field>
-            <label>Username</label>
-            <input placeholder='Username' />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder='Password' />
-          </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
+
+        <header className="App-header">
+          <HomePage />
+        </header>
       </div>
     );
   }
 }
 
 export default App;
+
+
+// for error message. if (resp.error) rerender page with error message else redirect to next page
