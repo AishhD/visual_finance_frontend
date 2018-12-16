@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import updateUserLocation from '../actions/updateUserLocation';
 
 
-export default class LocationGroup extends React.Component {
-
+class LocationGroup extends React.Component {
 
     render() {
         return (
             <div className="ui stackable center aligned page grid">
                 <h1>Selct your location group</h1>
-                <select onChange={this.props.onLocationChange} name='location'>
+                <select value={this.props.location} onChange={(event) => { this.props.updateUserLocation(event.target.value) }} name='location'>
                     {/* <option selected disabled>Location</option> */}
                     <option value="London">London</option>
                     <option value="North East">North East</option>
@@ -24,3 +25,11 @@ export default class LocationGroup extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    location: state.userLocation
+})
+
+const mapdipatchToProps = (dispatch) => ({ updateUserLocation: (newLocation) => { dispatch(updateUserLocation(newLocation)) } })
+
+export default connect(mapStateToProps, mapdipatchToProps)(LocationGroup);

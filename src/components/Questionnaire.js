@@ -6,7 +6,7 @@ import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
 
-class AgeQuestionnaire extends React.Component {
+class Questionnaire extends React.Component {
 
     selectHandler = (event) => {
         let value = event.target.value;
@@ -23,7 +23,7 @@ class AgeQuestionnaire extends React.Component {
     }
 
     onSubmit = () => {
-        console.log(this.props)
+        // console.log(this.props)
         // this.props.saveFilters(this.state.filters)
 
         // fetch(url)
@@ -50,7 +50,7 @@ class AgeQuestionnaire extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    // console.log(state)
     return {
         filterData: state.filterData,
         age: state.userAge
@@ -66,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AgeQuestionnaire)
+export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire)

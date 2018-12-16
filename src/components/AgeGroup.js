@@ -1,12 +1,22 @@
 import React from 'react';
-import { connect } from "react-redux"
-import updateUserAge from "../actions/updateUserAge"
+import { connect } from "react-redux";
+import updateUserAge from "../actions/updateUserAge";
+import * as adapter from "../Adapter.js";
 
 
 class AgeGroup extends React.Component {
 
+    allAgeGroups = []
+
+    componentDidMount() {
+        adapter.getAgeGroups()
+            .then(users => this.allAgeGroups = users)
+            .then(users => console.log(this.allAgeGroups))
+            .then(users => console.log(this.allAgeGroups[0]["age_group"]))
+    }
 
     render() {
+        console.log(this.props.age)
         return (
             <div className="ui stackable center aligned page grid">
                 <h1>Selct your age group</h1>
@@ -21,9 +31,6 @@ class AgeGroup extends React.Component {
             </div>
         )
     }
-
-
-
 }
 
 const mapStateToProps = (state) => ({ age: state.userAge })

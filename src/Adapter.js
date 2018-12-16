@@ -1,7 +1,9 @@
 
 
 const usersURL = "http://localhost:3000/api/v1/users"
-
+const ageURL = "http://localhost:3000/api/v1/age_options"
+const cityURL = "http://localhost:3000/api/v1/city_options"
+const childrenURL = "http://localhost:3000/api/v1/"
 
 // -----users-----
 
@@ -29,3 +31,21 @@ export const patchUser = object => {
         body: JSON.stringify({ user: object })
     }).then(resp => resp.json());
 };
+
+// -----Age-----
+
+export const getAgeGroups = () => {
+    return fetch(`${ageURL}`).then(resp => resp.json());
+}
+
+// -----City-----
+
+export const getCityGroups = () => {
+    return fetch(`${cityURL}`).then(resp => resp.json());
+}
+
+// -----Children-----
+
+export const getChildrenData = () => {
+    return fetch(`${childrenURL}`).then(resp => resp.json());
+}

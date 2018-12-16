@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import updateUserChildren from "../actions/updateUserChildren";
 
 
-export default class ChildrenGroup extends React.Component {
-
+class ChildrenGroup extends React.Component {
 
     render() {
         return (
             <div className="ui stackable center aligned page grid">
                 <h1>Selct your children group</h1>
-                <select onChange={this.props.onChildrenChange} defaultValue="Children" name='children'>
+                <select onChange={(event) => { this.props.updateUserChildren(event.target.value) }} value={this.props.children}>
                     {/* <option selected disabled>Children</option> */}
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -17,3 +18,11 @@ export default class ChildrenGroup extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    children: state.userChildren
+})
+
+const mapDispatchToProps = (dispatch) => ({ updateUserChildren: (children) => { dispatch(updateUserChildren(children)) } })
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChildrenGroup)

@@ -2,14 +2,6 @@ import React from 'react';
 import LinkButton from './link-button'
 
 export default class HomePage extends React.Component {
-    state = {
-        clicked: false
-    }
-    handleClick = () => {
-        this.setState({
-            clicked: !this.state.clicked
-        })
-    }
 
     pageView = () => {
         return (
@@ -21,7 +13,7 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <LinkButton to="/AgeQuestionnaire">Submit</LinkButton>
+                <LinkButton to="/Questionnaire">Enter</LinkButton>
             </div >
         )
     }

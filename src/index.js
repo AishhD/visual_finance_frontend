@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import rootReducer from './reducers/index'
-import AgeQuestionnaire from './components/AgeQuestionnaire'
+import Questionnaire from './components/Questionnaire'
 import NationalCharts from './components/NationalCharts'
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
@@ -17,7 +17,7 @@ ReactDOM.render(
   <Provider store={store} >
     <BrowserRouter>
       <Switch>
-        <Route path="/AgeQuestionnaire" component={AgeQuestionnaire} />
+        <Route path="/Questionnaire" component={Questionnaire} />
         <Route path="/NationalCharts" component={NationalCharts} />
         <Route path="/" component={App} />
       </Switch>
