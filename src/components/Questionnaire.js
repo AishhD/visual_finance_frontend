@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react'
 import AgeGroup from './AgeGroup';
 import ChildrenGroup from './ChildrenGroup';
 import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
+import LinkButton from './link-button'
+
 
 class Questionnaire extends React.Component {
 
@@ -42,8 +43,8 @@ class Questionnaire extends React.Component {
                 <AgeGroup />
                 <LocationGroup onLocationChange={this.selectHandler} />
                 <ChildrenGroup onChildrenChange={this.selectHandler} />
-                <Button onClick={this.onSubmit}>Submit</Button>
-                {/* <LinkButton to="/NationalCharts">Submit</LinkButton> */}
+                {/* <Button onClick={this.onSubmit}>Submit</Button> */}
+                <LinkButton to="/NationalCharts">Submit</LinkButton>
             </div>
         )
     }

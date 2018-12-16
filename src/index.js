@@ -9,6 +9,8 @@ import { createStore } from "redux"
 import rootReducer from './reducers/index'
 import Questionnaire from './components/Questionnaire'
 import NationalCharts from './components/NationalCharts'
+import Login from './components/Login'
+// import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
@@ -19,10 +21,12 @@ ReactDOM.render(
       <Switch>
         <Route path="/Questionnaire" component={Questionnaire} />
         <Route path="/NationalCharts" component={NationalCharts} />
+        <Route path="/Login" component={Login} />
         <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>
   </Provider>,
+  // document.getElementById('container')
   document.getElementById("root")
 );
 
