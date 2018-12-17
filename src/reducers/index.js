@@ -4,10 +4,11 @@ import { userAge } from './userAge'
 import { userLocation } from './userLocation'
 import { userChildren } from './userChildren'
 import { username } from './username'
-import { password } from './password'
-import { passwordConf } from './passwordConf'
+
 import { allAgeGroups } from './allAgeGroups'
 import { authorised } from './authorised'
+import { childrenData } from './childrenData'
+import { allCities } from './allCities'
 
 export default combineReducers({
     filterData,
@@ -15,8 +16,9 @@ export default combineReducers({
     userLocation,
     userChildren,
     username,
-    password,
-    passwordConf,
+
     allAgeGroups,
-    authorised
+    authorised,
+    childrenData,
+    allCities
 })

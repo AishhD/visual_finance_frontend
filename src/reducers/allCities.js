@@ -1,8 +1,12 @@
-export const passwordConf = (state = "", action) => {
+export const allCities = (state = "", action) => {
     switch (action.type) {
-        case "UPDATE_PASSWORD_CONF":
+        case "UPDATE_ALL_CITIES":
             return action.payload
         default:
             return state
     }
 }
+
+
+
+

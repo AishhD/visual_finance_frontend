@@ -4,8 +4,8 @@ import ChildrenGroup from './ChildrenGroup';
 import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
-// import LinkButton from './link-button'
-import { Segment, Button, Container, Grid } from 'semantic-ui-react'
+import LinkButton from './link-button'
+import { Segment, Container, Grid } from 'semantic-ui-react'
 
 
 
@@ -46,7 +46,7 @@ class Questionnaire extends React.Component {
                         <Grid>
                             <Grid.Row centered>
                                 <Grid.Column >
-                                    <h1 class="ui centered header">Fill in your details</h1>
+                                    <h1 className="ui centered header">Fill in your details</h1>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row centered>
@@ -56,19 +56,19 @@ class Questionnaire extends React.Component {
                             </Grid.Row>
                             <Grid.Row centered>
                                 <Grid.Column >
-                                    <LocationGroup onLocationChange={this.selectHandler} />
+                                    <LocationGroup />
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row centered>
                                 <Grid.Column >
-                                    <ChildrenGroup onChildrenChange={this.selectHandler} />
+                                    <ChildrenGroup />
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row centered>
                                 <Grid.Column >
                                     {/* <Button onClick={this.onSubmit}>Submit</Button> */}
-                                    {/* <LinkButton  to="/NationalCharts">Submit</LinkButton> */}
-                                    <Button >Submit</Button>
+                                    <LinkButton to="/NationalCharts">Submit</LinkButton>
+                                    {/* <Button to="/NationalCharts">Submit</Button> */}
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>

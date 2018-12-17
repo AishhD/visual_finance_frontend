@@ -8,21 +8,14 @@ import { Form } from 'semantic-ui-react'
 
 class AgeGroup extends React.Component {
 
-    state = {
-        allAgeGroups: []
-    }
-
     componentDidMount() {
         adapter.getAgeGroups()
             .then(allAges => this.props.updateAllAgeGroups(allAges))
     }
 
     selectedAge = (event) => {
-        console.log("in")
-        console.log("age groups", this.props.allAgeGroups)
-        let age = this.props.allAgeGroups.find(age => age["age_group"] === event.target.value)
-        // return JSON.stringify(age[0])
-        return age
+        const age = this.props.allAgeGroups.find(age => age["age_group"] === event.target.value)
+        return age["age_group"]
     }
 
     render() {

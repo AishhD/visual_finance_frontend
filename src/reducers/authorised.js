@@ -1,4 +1,4 @@
-export const authorised = (state = "", action) => {
+export const authorised = (state = "Sign up", action) => {
     switch (action.type) {
         case "UPDATE_AUTHORISED":
             return action.payload

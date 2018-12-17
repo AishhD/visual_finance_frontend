@@ -2,20 +2,58 @@ import React from 'react'
 import { Menu, Segment, Form, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import updateUsername from "../actions/updateUsername";
-import updatePassword from "../actions/updatePassword";
-import updatePasswordConf from "../actions/updatePasswordConf";
-import updateAuthorised from "../actions/updateAuthorised"
+
+import updateAuthorised from "../actions/updateAuthorised";
+import * as adapter from "../Adapter.js";
 
 class Login extends React.Component {
 
+    state = {
+        password: "",
+        password_confirmation: ""
+    }
+
+    signUp = () => {
+        console.log(this.props.userAge)
+        const { userAge, location, children, username } = this.props
+        const { password, password_confirmation } = this.state
+        console.log(userAge)
+
+        const newUser = {
+            username: username,
+            age: userAge,
+            location: location,
+            children: children
+        }
+
+        adapter.postUsers(newUser)
+            .then(resp => localStorage.setItem("token", resp.token))
+    }
+
+
+    login = () => {
+
+        const { username } = this.props
+        const { password } = this.state
+
+
+        const newUser = {
+            username: username,
+            password: password,
+        }
+
+        adapter.signInUsers(newUser)
+            .then(resp => localStorage.setItem("token", resp.token))
+    }
+
     render() {
-        const { activeItem } = this.state
+        const { authorised } = this.props
 
         return (
             <div>
                 <Menu pointing>
-                    <Menu.Item name='Sign up' active={activeItem === 'signup'} onClick={this.props.updateAuthorised('signup')} />
-                    <Menu.Item name='login' active={activeItem === 'login'} onClick={this.props.updateAuthorised('login')} />
+                    <Menu.Item name='Sign up' active={authorised === 'Sign up'} onClick={() => this.props.updateAuthorised('Sign up')} />
+                    <Menu.Item name='login' active={authorised === 'login'} onClick={() => this.props.updateAuthorised('login')} />
                 </Menu>
 
                 {this.props.authorised === 'Sign up' ?
@@ -26,13 +64,13 @@ class Login extends React.Component {
                         </Form.Field>
                         <Form.Field>
                             <label>Password</label>
-                            <input placeholder='Password' onChange={(event) => { this.props.updatePassword(event.target.value) }} />
+                            <input placeholder='Password' type="password" onChange={(event) => { this.setState({ password: event.target.value }) }} />
                         </Form.Field>
                         <Form.Field>
                             <label>Confirm Passsword</label>
-                            <input placeholder='Confirm Passsword' onChange={(event) => { this.props.updatePasswordConf(event.target.value) }} />
+                            <input placeholder='Confirm Passsword' type="password" onChange={(event) => { this.setState({ password_confirmation: event.target.value }) }} />
                         </Form.Field>
-                        <Button type='submit'>Sign Up</Button>
+                        <Button type='submit' onClick={this.signUp}>Sign Up</Button>
                     </Form> : ""
                 }
 
@@ -45,9 +83,9 @@ class Login extends React.Component {
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
-                                <input placeholder='Password' onChange={(event) => { this.props.updatePassword(event.target.value) }} />
+                                <input placeholder='Password' type="password" onChange={(event) => { this.setState({ password: event.target.value }) }} />
                             </Form.Field>
-                            <Button type='submit'>Login</Button>
+                            <Button type='submit' onClick={this.login}>Login</Button>
                         </Form>
                     </Segment> : ""}
             </div>
@@ -60,13 +98,15 @@ const mapStateToProps = (state) => ({
     username: state.username,
     password: state.password,
     passwordConf: state.passwordConf,
-    authorised: state.authorised
+    authorised: state.authorised,
+    userAge: state.userAge,
+    location: state.userLocation,
+    children: state.userChildren
 })
 
 const mapDispatchToProps = (dispatch) => ({
     updateUsername: (newUsername) => { dispatch(updateUsername(newUsername)) },
-    updatePassword: (newPassword) => { dispatch(updatePassword(newPassword)) },
-    updatePasswordConf: (newPasswordConf) => { dispatch(updatePasswordConf(newPasswordConf)) },
+
     updateAuthorised: (status) => { dispatch(updateAuthorised(status)) },
 })
 
