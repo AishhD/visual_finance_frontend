@@ -16,7 +16,6 @@ export default combineReducers({
     userLocation,
     userChildren,
     username,
-
     allAgeGroups,
     authorised,
     childrenData,
