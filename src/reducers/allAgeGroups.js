@@ -1,8 +1,9 @@
-export const userAge = (state = {}, action) => {
+export const allAgeGroups = (state = "", action) => {
     switch (action.type) {
-        case "UPDATE_AGE":
+        case "UPDTAE_ALL_AGE_GROUPS":
             return action.payload
         default:
             return state
     }
 }
+

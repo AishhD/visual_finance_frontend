@@ -30,6 +30,6 @@ const mapStateToProps = (state) => ({
     location: state.userLocation
 })
 
-const mapdipatchToProps = (dispatch) => ({ updateUserLocation: (newLocation) => { dispatch(updateUserLocation(newLocation)) } })
+const mapDipatchToProps = (dispatch) => ({ updateUserLocation: (newLocation) => { dispatch(updateUserLocation(newLocation)) } })
 
-export default connect(mapStateToProps, mapdipatchToProps)(LocationGroup);
+export default connect(mapStateToProps, mapDipatchToProps)(LocationGroup);

@@ -1,6 +1,6 @@
-export const userAge = (state = {}, action) => {
+export const username = (state = "", action) => {
     switch (action.type) {
-        case "UPDATE_AGE":
+        case "UPDATE_USERNAME":
             return action.payload
         default:
             return state

@@ -1,8 +1,10 @@
-export const userAge = (state = {}, action) => {
+export const authorised = (state = "", action) => {
     switch (action.type) {
-        case "UPDATE_AGE":
+        case "UPDATE_AUTHORISED":
             return action.payload
         default:
             return state
     }
 }
+
+

@@ -9,7 +9,7 @@ export default class NationalCharts extends React.Component {
         return (
             <div >
                 <h1> hello</h1>
-                <LinkButton to="/Login">Submit</LinkButton>
+                <LinkButton to="/Login">Sign Up</LinkButton>
             </div>
         )
     }

@@ -4,7 +4,9 @@ import ChildrenGroup from './ChildrenGroup';
 import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
-import LinkButton from './link-button'
+// import LinkButton from './link-button'
+import { Segment, Button, Container, Grid } from 'semantic-ui-react'
+
 
 
 class Questionnaire extends React.Component {
@@ -38,13 +40,40 @@ class Questionnaire extends React.Component {
     render() {
         return (
             <div className="ui stackable center aligned page grid">
-                <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p>
-                <h1>Fill in your details</h1>
-                <AgeGroup />
-                <LocationGroup onLocationChange={this.selectHandler} />
-                <ChildrenGroup onChildrenChange={this.selectHandler} />
-                {/* <Button onClick={this.onSubmit}>Submit</Button> */}
-                <LinkButton to="/NationalCharts">Submit</LinkButton>
+                {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
+                <Segment raised style={{ marginTop: '15em' }}>
+                    <Container>
+                        <Grid>
+                            <Grid.Row centered>
+                                <Grid.Column >
+                                    <h1 class="ui centered header">Fill in your details</h1>
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <Grid.Column >
+                                    <AgeGroup />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <Grid.Column >
+                                    <LocationGroup onLocationChange={this.selectHandler} />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <Grid.Column >
+                                    <ChildrenGroup onChildrenChange={this.selectHandler} />
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <Grid.Column >
+                                    {/* <Button onClick={this.onSubmit}>Submit</Button> */}
+                                    {/* <LinkButton  to="/NationalCharts">Submit</LinkButton> */}
+                                    <Button >Submit</Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
             </div>
         )
     }

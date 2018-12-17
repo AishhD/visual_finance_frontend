@@ -8,7 +8,7 @@ class ChildrenGroup extends React.Component {
     render() {
         return (
             <div className="ui stackable center aligned page grid">
-                <h1>Selct your children group</h1>
+                <h1>Select your children group</h1>
                 <select onChange={(event) => { this.props.updateUserChildren(event.target.value) }} value={this.props.children}>
                     {/* <option selected disabled>Children</option> */}
                     <option value="Yes">Yes</option>
