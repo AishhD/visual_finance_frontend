@@ -8,9 +8,7 @@ import updateAllCities from '../actions/updateAllCities'
 class UserStats extends React.Component {
 
     componentDidMount() {
-
         if (this.props.allAgeGroups === "" && this.props.allCities === "" && this.props.childrenData === "") {
-            console.log("j")
             adapter.getAgeGroups()
                 .then(allAges => this.props.updateAllAgeGroups(allAges))
 
@@ -30,7 +28,9 @@ class UserStats extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    allAgeGroups: state.allAgeGroups,
+    allCities: state.allCities,
+    childrenData: state.childrenData
 })
 
 const mapDispatchToProps = (dispatch) => ({
