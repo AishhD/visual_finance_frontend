@@ -42,8 +42,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     updateUsername: (newUsername) => { dispatch(updateUsername(newUsername)) },
-    updatePassword: (newPassword) => { dispatch(updatePassword(newPassword)) },
-    updatePasswordConf: (newPasswordConf) => { dispatch(updatePasswordConf(newPasswordConf)) },
     updateAuthorised: (status) => { dispatch(updateAuthorised(status)) },
     updateUserLocation: (newLocation) => { dispatch(updateUserLocation(newLocation)) },
     updateUserChildren: (children) => { dispatch(updateUserChildren(children)) },
