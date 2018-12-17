@@ -8,6 +8,9 @@ import { Form } from 'semantic-ui-react'
 
 class AgeGroup extends React.Component {
 
+
+
+
     componentDidMount() {
         adapter.getAgeGroups()
             .then(allAges => this.props.updateAllAgeGroups(allAges))

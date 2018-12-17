@@ -16,7 +16,6 @@ class Login extends React.Component {
     signUp = () => {
         console.log(this.props.userAge)
         const { userAge, location, children, username } = this.props
-        const { password, password_confirmation } = this.state
         console.log(userAge)
 
         const newUser = {
@@ -28,6 +27,8 @@ class Login extends React.Component {
 
         adapter.postUsers(newUser)
             .then(resp => localStorage.setItem("token", resp.token))
+
+        this.props.history.push('/user_stats')
     }
 
 
@@ -44,6 +45,8 @@ class Login extends React.Component {
 
         adapter.signInUsers(newUser)
             .then(resp => localStorage.setItem("token", resp.token))
+
+        this.props.history.push('/UserStats')
     }
 
     render() {
@@ -96,17 +99,14 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => ({
     username: state.username,
-    password: state.password,
-    passwordConf: state.passwordConf,
     authorised: state.authorised,
     userAge: state.userAge,
     location: state.userLocation,
-    children: state.userChildren
+    children: state.userChildren,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     updateUsername: (newUsername) => { dispatch(updateUsername(newUsername)) },
-
     updateAuthorised: (status) => { dispatch(updateAuthorised(status)) },
 })
 
