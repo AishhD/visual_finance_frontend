@@ -1,6 +1,6 @@
 import React from 'react';
 import 'c3/c3.css';
-import UserPieChart from "./UserPieChart"
+import NatationalStatsPieChart from "./NatationalStatsPieChart"
 import { connect } from 'react-redux'
 
 class UserChildrenPieChart extends React.Component {
@@ -8,7 +8,7 @@ class UserChildrenPieChart extends React.Component {
     render() {
         return (
             <div >
-                <UserPieChart userData={this.props.childrenData} title={this.props.childrenData["children"]} />
+                <NatationalStatsPieChart userData={this.props.childrenData} title={"Average spending for people with children"} />
             </div >
         )
     }
