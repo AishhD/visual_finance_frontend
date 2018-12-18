@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import updateUserAge from "../actions/updateUserAge";
+import updateUserAgeData from "../actions/updateUserAgeData";
 import * as adapter from "../Adapter.js";
 import updateAllAgeGroups from '../actions/updateAllAgeGroups';
 import { Form } from 'semantic-ui-react'
@@ -16,10 +17,18 @@ class AgeGroup extends React.Component {
             .then(allAges => this.props.updateAllAgeGroups(allAges))
     }
 
+    userAgeData(age) {
+        console.log(age)
+        this.props.updateUserAgeData(age)
+    }
+
     selectedAge = (event) => {
-        const age = this.props.allAgeGroups.find(age => age["age_group"] === event.target.value)
+        const age = this.props.allAgeGroups.find(age => age["age_group"] === event.target.value);
+        this.userAgeData(age)
         return age["age_group"]
     }
+
+
 
     render() {
         return (
@@ -48,7 +57,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     updateUserAge: (newAge) => { dispatch(updateUserAge(newAge)) },
-    updateAllAgeGroups: (allAges) => { dispatch(updateAllAgeGroups(allAges)) }
+    updateUserAgeData: (newAgeData) => { dispatch(updateUserAgeData(newAgeData)) },
+    updateAllAgeGroups: (allAges) => { dispatch(updateAllAgeGroups(allAges)) },
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AgeGroup)
