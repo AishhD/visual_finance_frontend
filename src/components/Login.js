@@ -28,7 +28,7 @@ class Login extends React.Component {
         adapter.postUsers(newUser)
             .then(resp => localStorage.setItem("token", resp.token))
 
-        this.props.history.push('/user_stats')
+        this.props.history.push('/UserStats')
     }
 
 

@@ -8,7 +8,7 @@ class UserAgePieChart extends React.Component {
     render() {
         return (
             <div >
-                <UserPieChart userData={this.props.userAgeData} title={this.props.userAgeData["age_group"]} />
+                <UserPieChart userData={this.props.userAgeData} title={"The spending average for someone who is " + this.props.userAgeData["age_group"] + ":"} />
             </div >
         )
     }

@@ -37,12 +37,20 @@ class Questionnaire extends React.Component {
 
     }
 
+
+    handleError() {
+        return <h1>{this.props.location.state.error}</h1>
+    }
+
     render() {
+
         return (
             <div className="ui stackable center aligned page grid">
+
                 {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
                 <Segment raised style={{ marginTop: '15em' }}>
                     <Container>
+                        {/* <h1>{this.props.location.state.error}</h1> */}
                         <Grid>
                             <Grid.Row centered>
                                 <Grid.Column >

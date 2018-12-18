@@ -5,39 +5,49 @@ import { connect } from 'react-redux'
 import UserAgePieChart from './UserAgePieChart'
 import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
+import { Redirect } from 'react-router-dom'
 
 
 class NationalCharts extends React.Component {
 
 
     render() {
+        const { children, age, location } = this.props
 
         return (
-            <div >
-                <div id="chart">
-                    <UserAgePieChart />
-                </div>
-                <div id="chart">
-                    <UserLocationPieChart />
-                </div>
-                {this.props.children === "Yes" ?
+            children && age && location ?
+                <div >
+                    <h1>National Spending by category</h1>
                     <div id="chart">
-                        <UserChildrenPieChart />
-                    </div> : ""}
-                <LinkButton to="/Login">Sign Up</LinkButton>
-            </div>
+                        <UserAgePieChart />
+                    </div>
+                    <div id="chart">
+                        <UserLocationPieChart />
+                    </div>
+                    {this.props.children === "Yes" ?
+                        <div id="chart">
+                            <UserChildrenPieChart />
+                        </div> : ""}
+                    <LinkButton to="/Login">Sign up to compare your spending</LinkButton>
+                </div>
+                :
+                <Redirect to={{
+                    pathname: '/Questionnaire',
+                    state: { error: "Please fill in this form to continue" }
+                }}
+                />
         )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        children: state.userChildren
+        children: state.userChildren,
+        age: state.userAge,
+        location: state.userLocation
     }
 }
 
 
-const mapDispatchToProps = (dispatch) => {
 
-}
-export default connect(mapStateToProps, mapDispatchToProps)(NationalCharts)
+export default connect(mapStateToProps, null)(NationalCharts)
