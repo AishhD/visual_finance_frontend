@@ -1,32 +1,31 @@
 import React from 'react';
-import C3Chart from 'react-c3js';
 import 'c3/c3.css';
+import UserPieChart from "./UserPieChart"
+import { connect } from 'react-redux'
 
-export default class UserChildrenPieChart extends React.Component {
+class UserChildrenPieChart extends React.Component {
 
     render() {
-        const data = {
-            columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-            ],
-            type: 'pie',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-        };
-
-        const title = {
-            text: 'Mad cat'
-        }
-
+        console.log("child", this.props.childrenData)
         return (
             <div >
-                <h1> hello</h1>
-                <div id="chart">
-                    <C3Chart data={data} title={title} />
-                </div>
+                <h1> Location</h1>
+                <UserPieChart userData={this.props.childrenData} />
             </div >
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        childrenData: state.childrenData
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserChildrenPieChart)

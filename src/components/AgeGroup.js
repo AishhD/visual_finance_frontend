@@ -18,7 +18,6 @@ class AgeGroup extends React.Component {
     }
 
     userAgeData(age) {
-        console.log(age)
         this.props.updateUserAgeData(age)
     }
 

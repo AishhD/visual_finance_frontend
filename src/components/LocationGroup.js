@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import updateUserLocation from '../actions/updateUserLocation';
+import updateUserLocationData from '../actions/updateUserLocationData';
 import * as adapter from "../Adapter.js";
 import updateAllCities from '../actions/updateAllCities'
 import { Form } from 'semantic-ui-react'
@@ -14,8 +15,13 @@ class LocationGroup extends React.Component {
             .then(allLocations => this.props.updateAllCities(allLocations))
     }
 
+    userLocationData(location) {
+        this.props.updateUserLocationData(location)
+    }
+
     selectedCity = (event) => {
         const city = this.props.allCities.find(city => city["city_name"] === event.target.value)
+        this.userLocationData(city)
         return city["city_name"]
     }
 
@@ -51,6 +57,7 @@ const mapStateToProps = (state) => ({
 
 const mapDipatchToProps = (dispatch) => ({
     updateUserLocation: (newLocation) => { dispatch(updateUserLocation(newLocation)) },
+    updateUserLocationData: (locationData) => { dispatch(updateUserLocationData(locationData)) },
     updateAllCities: (allCities) => { dispatch(updateAllCities(allCities)) }
 })
 
