@@ -4,7 +4,7 @@ import updateUserLocation from '../actions/updateUserLocation';
 import updateUserLocationData from '../actions/updateUserLocationData';
 import * as adapter from "../Adapter.js";
 import updateAllCities from '../actions/updateAllCities'
-import { Form } from 'semantic-ui-react'
+import { Form, Dropdown } from 'semantic-ui-react'
 
 
 class LocationGroup extends React.Component {
@@ -19,28 +19,37 @@ class LocationGroup extends React.Component {
         this.props.updateUserLocationData(location)
     }
 
-    selectedCity = (event) => {
-        const city = this.props.allCities.find(city => city["city_name"] === event.target.value)
+    selectedCity = (event, data) => {
+        const city = this.props.allCities.find(city => city["city_name"] === data.value)
         this.userLocationData(city)
         return city["city_name"]
     }
 
     render() {
+        let options = []
+        const locationGroupsHandler = () => {
+            this.props.allCities.forEach(cityGroup => {
+                let option = {};
+
+                option.text = cityGroup.city_name
+                option.value = cityGroup.city_name
+
+                options.push(option);
+            })
+        }
+        if (this.props.allCities) locationGroupsHandler()
 
         return (
+
             <div className="ui stackable center aligned page grid">
                 <h1>Selct your location group</h1>
-                <Form>
-                    <Form.Field required>
-                        {this.props.allCities ?
-                            <select value={this.props.location} onChange={(event) => { this.props.updateUserLocation(this.selectedCity(event)) }} name='location'>
-                                {this.props.allCities.map(place =>
-                                    < option value={place["city_name"]} key={place["city_name"]} > {place["city_name"]}</option>
-                                )}
-                            </select> :
-                            "not done"}
-                    </Form.Field>
-                </Form>
+                {(this.props.allCities) ?
+                    <Form>
+                        <Form.Field required>
+                            <Dropdown placeholder='Select Location' fluid selection onChange={(event, data) => { this.props.updateUserLocation(this.selectedCity(event, data)) }} options={options} />
+                        </Form.Field>
+                    </Form>
+                    : "Please wait"}
             </div>
 
 

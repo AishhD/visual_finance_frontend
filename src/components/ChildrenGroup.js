@@ -4,6 +4,7 @@ import updateUserChildren from "../actions/updateUserChildren";
 import updateChildrenData from "../actions/updateChildrenData"
 import * as adapter from "../Adapter.js";
 import updateUserChildrenData from '../actions/updateUserChildrenData'
+import { Form, Dropdown } from 'semantic-ui-react'
 
 
 class ChildrenGroup extends React.Component {
@@ -19,15 +20,27 @@ class ChildrenGroup extends React.Component {
     // }
 
     render() {
+        let options = [{
+            "text": "Yes",
+            "value": "Yes"
+        },
+        {
+            "text": "No",
+            "value": "No"
+        }]
         return (
+
             <div className="ui stackable center aligned page grid">
                 <h1>Do you have any children?</h1>
-                <select onChange={(event) => { this.props.updateUserChildren(event.target.value) }} value={this.props.children}>
-                    {/* <option selected disabled>Children</option> */}
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div >
+                {(this.props.childrenData) ?
+                    <Form>
+                        <Form.Field required>
+                            <Dropdown placeholder='Select Children' fluid selection onChange={(event, data) => { this.props.updateUserChildren(data.value) }} options={options} />
+                        </Form.Field>
+                    </Form>
+                    : "Please wait"}
+            </div>
+
         )
     }
 }
