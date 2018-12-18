@@ -9,9 +9,9 @@ class UserAgePieChart extends React.Component {
         return (
             <div >
                 {this.props.userAgeData["age_group"] === "less than 30" ?
-                    <NatationalStatsPieChart userData={this.props.userAgeData} title={"Average spending for people " + this.props.userAgeData["age_group"] + " year olds"} />
+                    <NatationalStatsPieChart userData={this.props.userAgeData} title={"Average spending breakdown for people " + this.props.userAgeData["age_group"] + " year olds"} />
                     :
-                    <NatationalStatsPieChart userData={this.props.userAgeData} title={"Average spending for " + this.props.userAgeData["age_group"] + " year olds"} />}
+                    <NatationalStatsPieChart userData={this.props.userAgeData} title={"Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds"} />}
             </div >
         )
     }

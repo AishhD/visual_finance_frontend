@@ -6,6 +6,7 @@ import UserAgePieChart from './UserAgePieChart'
 import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
 import { Redirect } from 'react-router-dom'
+import NationalStatsBarGraph from "./NationalStatsBarGraph"
 
 
 class NationalCharts extends React.Component {
@@ -24,11 +25,16 @@ class NationalCharts extends React.Component {
                     <div id="chart">
                         <UserLocationPieChart />
                     </div>
+
+
                     {this.props.children === "Yes" ?
                         <div id="chart">
                             <UserChildrenPieChart />
-                        </div> : ""}
+                            < NationalStatsBarGraph />
+                        </div> : < NationalStatsBarGraph />}
                     <LinkButton to="/Login">Sign up to compare your spending</LinkButton>
+
+
                 </div>
                 :
                 <Redirect to={{
@@ -36,7 +42,12 @@ class NationalCharts extends React.Component {
                     state: { error: "Please fill in this form to continue" }
                 }}
                 />
+
+
+
+
         )
+
     }
 }
 

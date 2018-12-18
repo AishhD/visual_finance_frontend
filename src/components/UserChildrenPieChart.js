@@ -8,7 +8,7 @@ class UserChildrenPieChart extends React.Component {
     render() {
         return (
             <div >
-                <NatationalStatsPieChart userData={this.props.childrenData} title={"Average spending for people with children"} />
+                <NatationalStatsPieChart userData={this.props.childrenData} title={"Average spending breakdown for people with children"} />
             </div >
         )
     }

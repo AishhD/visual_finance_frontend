@@ -9,9 +9,9 @@ class UserLocationPieChart extends React.Component {
         return (
             <div >
                 {this.props.userLocationData["city_name"] === "London" || this.props.userLocationData["city_name"] === "Yorkshire and The Humber" ?
-                    <NatationalStatsPieChart userData={this.props.userLocationData} title={"Average spending for people in " + this.props.userLocationData["city_name"]} />
+                    <NatationalStatsPieChart userData={this.props.userLocationData} title={"Average spending breakdown for people in " + this.props.userLocationData["city_name"]} />
                     :
-                    <NatationalStatsPieChart userData={this.props.userLocationData} title={"Average spending for people in the " + this.props.userLocationData["city_name"]} />}
+                    <NatationalStatsPieChart userData={this.props.userLocationData} title={"Average spending breakdown for people in the " + this.props.userLocationData["city_name"]} />}
             </div >
         )
     }
