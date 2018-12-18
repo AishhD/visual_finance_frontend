@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import updateUserChildren from "../actions/updateUserChildren";
 import updateChildrenData from "../actions/updateChildrenData"
 import * as adapter from "../Adapter.js";
+import updateUserChildrenData from '../actions/updateUserChildrenData'
 
 
 class ChildrenGroup extends React.Component {
@@ -26,7 +27,7 @@ class ChildrenGroup extends React.Component {
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
-            </div>
+            </div >
         )
     }
 }
@@ -38,7 +39,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     updateUserChildren: (children) => { dispatch(updateUserChildren(children)) },
-    updateChildrenData: (childrenData) => { dispatch(updateChildrenData(childrenData)) }
+    updateChildrenData: (childrenData) => { dispatch(updateChildrenData(childrenData)) },
+    updateUserChildrenData: (userChildrenData) => { dispatch(updateUserChildrenData(userChildrenData)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildrenGroup)

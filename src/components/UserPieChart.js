@@ -5,7 +5,6 @@ import 'c3/c3.css';
 export default class UserPieChart extends React.Component {
 
     render() {
-        // console.log("crazy", this.props.userAgeData["spending_category"]["food_non_alcholic_drinks"])
         const data = {
             columns: [
                 ['Food & non-alcholic drinks', this.props.userData["spending_category"]["food_non_alcholic_drinks"]],
@@ -25,12 +24,11 @@ export default class UserPieChart extends React.Component {
         };
 
         const title = {
-            text: 'Mad cat'
+            text: this.props.title
         }
 
         return (
             <div >
-                <h1> hello</h1>
                 <div id="chart">
                     <C3Chart data={data} title={title} />
                 </div>

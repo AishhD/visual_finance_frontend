@@ -6,11 +6,9 @@ import { connect } from 'react-redux'
 class UserChildrenPieChart extends React.Component {
 
     render() {
-        console.log("child", this.props.childrenData)
         return (
             <div >
-                <h1> Location</h1>
-                <UserPieChart userData={this.props.childrenData} />
+                <UserPieChart userData={this.props.childrenData} title={this.props.childrenData["children"]} />
             </div >
         )
     }
