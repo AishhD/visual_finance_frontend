@@ -22,11 +22,13 @@ class Login extends React.Component {
             username: username,
             age: userAge,
             location: location,
-            children: children
+            children: children,
+            password: this.state.password
         }
 
         adapter.postUsers(newUser)
             .then(resp => localStorage.setItem("token", resp.token))
+
 
         this.props.history.push('/UserStats')
     }
@@ -73,7 +75,7 @@ class Login extends React.Component {
                             <label>Confirm Passsword</label>
                             <input placeholder='Confirm Passsword' type="password" onChange={(event) => { this.setState({ password_confirmation: event.target.value }) }} />
                         </Form.Field>
-                        <Button type='submit' onClick={this.signUp}>Sign Up</Button>
+                        <Button type="button" onClick={this.signUp} >Sign Up</Button>
                     </Form> : ""
                 }
 
