@@ -2,6 +2,10 @@ import React from 'react'
 import { Menu, Segment, Form, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import updateUsername from "../actions/updateUsername";
+import updateUserAge from "../actions/updateUserAge";
+import updateUserLocation from "../actions/updateUserLocation";
+import updateUserChildren from "../actions/updateUserChildren";
+import updateUserToken from "../actions/updateUserToken";
 import Navbar from "./Navbar"
 
 import updateAuthorised from "../actions/updateAuthorised";
@@ -15,8 +19,9 @@ class Login extends React.Component {
     }
 
     signin = user => {
-        console.log(user)
+
         localStorage.setItem('token', user.token)
+
     }
 
 
@@ -42,9 +47,13 @@ class Login extends React.Component {
 
 
     login = () => {
-        let serverResponse = (resp) => {
-            localStorage.setItem("token", resp.token)
-            console.log(resp)
+        let serverResponse = (user) => {
+            localStorage.setItem("token", user.token)
+            this.props.updateUserAge(user.age)
+            this.props.updateUserLocation(user.location)
+            this.props.updateUserChildren(user.children)
+            this.props.updateUserToken(user.token)
+            console.log(user)
         }
         const { username } = this.props
         const { password } = this.state
@@ -121,6 +130,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     updateUsername: (newUsername) => { dispatch(updateUsername(newUsername)) },
     updateAuthorised: (status) => { dispatch(updateAuthorised(status)) },
+    updateUserAge: (userAge) => { dispatch(updateUserAge(userAge)) },
+    updateUserLocation: (userLocation) => { dispatch(updateUserLocation(userLocation)) },
+    updateUserChildren: (userChildren) => { dispatch(updateUserChildren(userChildren)) },
+    updateUserToken: (userToken) => { dispatch(updateUserToken(userToken)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
