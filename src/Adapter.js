@@ -12,6 +12,10 @@ export const getUsers = () => {
     return fetch(`${usersURL}`).then(resp => resp.json());
 }
 
+export const fetchUser = userName => {
+    return fetch(`${usersURL}/${userName}`).then(resp => resp.json());
+};
+
 export const postUsers = object => {
     return fetch(usersURL, {
         method: "POST",
@@ -21,6 +25,9 @@ export const postUsers = object => {
         body: JSON.stringify({ user: object })
     }).then(resp => resp.json());
 }
+
+
+
 
 export const signInUsers = object => {
     return fetch(signInURL, {

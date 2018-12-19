@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import "./App.css";
 import * as adapter from "./Adapter.js";
 import HomePage from "./components/HomePage";
+import Questionnaire from './components/Questionnaire'
+import NationalCharts from './components/NationalCharts'
+import UserStats from './components/UserStats'
+import Login from './components/Login'
+import Navbar from './components/Navbar'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
@@ -32,10 +38,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <header className="App-header">
-          <HomePage />
-        </header>
+        <Navbar />
+        <Switch>
+          <Route path="/Questionnaire" component={Questionnaire} />
+          <Route path="/NationalCharts" component={NationalCharts} />
+          <Route path="/Login" component={Login} />
+          <Route path="/UserStats" component={UserStats} />
+        </Switch>
       </div>
     );
   }

@@ -12,6 +12,7 @@ import { allCities } from './allCities'
 import { userAgeData } from './userAgeData'
 import { userLocationData } from './userLocationData'
 import { userChildrenData } from './userChildrenData'
+import { userToken } from './userToken'
 
 export default combineReducers({
     filterData,
@@ -25,5 +26,6 @@ export default combineReducers({
     allCities,
     userAgeData,
     userLocationData,
-    userChildrenData
+    userChildrenData,
+    userToken
 })

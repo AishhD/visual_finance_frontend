@@ -7,6 +7,9 @@ import updateAllCities from '../actions/updateAllCities'
 
 class UserStats extends React.Component {
 
+    //check for token localstorage.getItem(token)
+    //send validation request to the back to check if token is valid
+
     componentDidMount() {
         if (this.props.allAgeGroups === "" && this.props.allCities === "" && this.props.childrenData === "") {
             adapter.getAgeGroups()
@@ -20,9 +23,19 @@ class UserStats extends React.Component {
         }
     }
 
+    loggedin() {
+        const token = localStorage.getItem("token")
+    }
+
+
     render() {
+
         return (
-            <h1>logged in</h1>
+            <div>
+                {localStorage.getItem("token") ?
+                    <h1>logged in</h1> :
+                    ""}
+            </div>
         )
     }
 }

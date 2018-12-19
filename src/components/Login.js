@@ -2,6 +2,7 @@ import React from 'react'
 import { Menu, Segment, Form, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import updateUsername from "../actions/updateUsername";
+import Navbar from "./Navbar"
 
 import updateAuthorised from "../actions/updateAuthorised";
 import * as adapter from "../Adapter.js";
@@ -12,6 +13,12 @@ class Login extends React.Component {
         password: "",
         password_confirmation: ""
     }
+
+    signin = user => {
+        console.log(user)
+        localStorage.setItem('token', user.token)
+    }
+
 
     signUp = () => {
         console.log(this.props.userAge)
@@ -27,15 +34,18 @@ class Login extends React.Component {
         }
 
         adapter.postUsers(newUser)
-            .then(resp => localStorage.setItem("token", resp.token))
+            .then(resp => this.signin(resp))
 
-
+        // localStorage.setItem("token", resp.token)
         this.props.history.push('/UserStats')
     }
 
 
     login = () => {
-
+        let serverResponse = (resp) => {
+            localStorage.setItem("token", resp.token)
+            console.log(resp)
+        }
         const { username } = this.props
         const { password } = this.state
 
@@ -46,7 +56,8 @@ class Login extends React.Component {
         }
 
         adapter.signInUsers(newUser)
-            .then(resp => localStorage.setItem("token", resp.token))
+            .then(resp => serverResponse(resp))
+
 
         this.props.history.push('/UserStats')
     }

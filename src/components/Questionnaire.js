@@ -6,6 +6,7 @@ import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
 import LinkButton from './link-button'
 import { Segment, Container, Grid } from 'semantic-ui-react'
+import Navbar from "./Navbar"
 
 
 
@@ -45,43 +46,46 @@ class Questionnaire extends React.Component {
     render() {
 
         return (
-            <div className="ui stackable center aligned page grid">
+            <div>
 
-                {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
-                <Segment raised style={{ marginTop: '15em' }}>
-                    <Container>
-                        {/* <h1>{this.props.location.state.error}</h1> */}
-                        <Grid>
-                            <Grid.Row centered>
-                                <Grid.Column >
-                                    <h1 className="ui centered header">Fill in your details</h1>
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row centered>
-                                <Grid.Column >
-                                    <AgeGroup />
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row centered>
-                                <Grid.Column >
-                                    <LocationGroup />
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row centered>
-                                <Grid.Column >
-                                    <ChildrenGroup />
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row centered>
-                                <Grid.Column >
-                                    {/* <Button onClick={this.onSubmit}>Submit</Button> */}
-                                    <LinkButton to="/NationalCharts">Submit</LinkButton>
-                                    {/* <Button to="/NationalCharts">Submit</Button> */}
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </Container>
-                </Segment>
+                <div className="ui stackable center aligned page grid">
+
+                    {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
+                    <Segment raised style={{ marginTop: '15em' }}>
+                        <Container>
+                            {/* <h1>{this.props.location.state.error}</h1> */}
+                            <Grid>
+                                <Grid.Row centered>
+                                    <Grid.Column >
+                                        <h1 className="ui centered header">Fill in your details</h1>
+                                    </Grid.Column>
+                                </Grid.Row>
+                                <Grid.Row centered>
+                                    <Grid.Column >
+                                        <AgeGroup />
+                                    </Grid.Column>
+                                </Grid.Row>
+                                <Grid.Row centered>
+                                    <Grid.Column >
+                                        <LocationGroup />
+                                    </Grid.Column>
+                                </Grid.Row>
+                                <Grid.Row centered>
+                                    <Grid.Column >
+                                        <ChildrenGroup />
+                                    </Grid.Column>
+                                </Grid.Row>
+                                <Grid.Row centered>
+                                    <Grid.Column >
+                                        {/* <Button onClick={this.onSubmit}>Submit</Button> */}
+                                        <LinkButton to="/NationalCharts">Submit</LinkButton>
+                                        {/* <Button to="/NationalCharts">Submit</Button> */}
+                                    </Grid.Column>
+                                </Grid.Row>
+                            </Grid>
+                        </Container>
+                    </Segment>
+                </div>
             </div>
         )
     }

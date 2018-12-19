@@ -11,6 +11,7 @@ import Questionnaire from './components/Questionnaire'
 import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
+import Navbar from './components/Navbar'
 // import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
@@ -19,13 +20,7 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
 ReactDOM.render(
   <Provider store={store} >
     <BrowserRouter>
-      <Switch>
-        <Route path="/Questionnaire" component={Questionnaire} />
-        <Route path="/NationalCharts" component={NationalCharts} />
-        <Route path="/Login" component={Login} />
-        <Route path="/UserStats" component={UserStats} />
-        <Route path="/" component={App} />
-      </Switch>
+      <App />
     </BrowserRouter>
   </Provider>,
   // document.getElementById('container')

@@ -10,9 +10,9 @@ class NatationalStatsPieChart extends React.Component {
             columns: [
                 [
                     this.props.userLocationData["city_name"] === "London" || this.props.userLocationData["city_name"] === "Yorkshire and The Humber" ?
-                        "Average spending breakdown for people in " + this.props.userLocationData["city_name"]
+                        "Average spending in " + this.props.userLocationData["city_name"]
                         :
-                        "Average spending breakdown for people in the " + this.props.userLocationData["city_name"]
+                        "Average spending in the " + this.props.userLocationData["city_name"]
                     , this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
                     this.props.userLocationData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                     this.props.userLocationData["spending_category"]["clothing_footwear"],
@@ -24,9 +24,9 @@ class NatationalStatsPieChart extends React.Component {
                     this.props.userLocationData["spending_category"]["other"]],
 
                 [this.props.userAgeData["age_group"] === "less than 30" ?
-                    "Average spending breakdown for people " + this.props.userAgeData["age_group"] + " year olds"
+                    "Average spending for people " + this.props.userAgeData["age_group"] + " year olds"
                     :
-                    "Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds", this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                    "Average spending for " + this.props.userAgeData["age_group"] + " year olds", this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
                 this.props.userAgeData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.userAgeData["spending_category"]["clothing_footwear"],
                 this.props.userAgeData["spending_category"]["household_bills"],
@@ -36,7 +36,7 @@ class NatationalStatsPieChart extends React.Component {
                 this.props.userAgeData["spending_category"]["transport"],
                 this.props.userAgeData["spending_category"]["other"]],
 
-                (this.props.children === "Yes") ? ["Average spending breakdown for people with children",
+                (this.props.children === "Yes") ? ["Average spending for people with children",
                     this.props.userChildrenData["spending_category"]["food_non_alcholic_drinks"],
                     this.props.userChildrenData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                     this.props.userChildrenData["spending_category"]["clothing_footwear"],
