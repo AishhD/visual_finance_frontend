@@ -18,9 +18,6 @@ export default class NatationalStatsPieChart extends React.Component {
                 ['Other', this.props.userData["spending_category"]["other"]],
             ],
             type: 'pie',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
         };
 
         const title = {

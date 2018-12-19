@@ -13,34 +13,68 @@ class NatationalStatsPieChart extends React.Component {
                         "Average spending breakdown for people in " + this.props.userLocationData["city_name"]
                         :
                         "Average spending breakdown for people in the " + this.props.userLocationData["city_name"]
-                    , -30, 200, 200, 400, -150, 250],
+                    , this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                    this.props.userLocationData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
+                    this.props.userLocationData["spending_category"]["clothing_footwear"],
+                    this.props.userLocationData["spending_category"]["household_bills"],
+                    this.props.userLocationData["spending_category"]["recreation_culture"],
+                    this.props.userLocationData["spending_category"]["education"],
+                    this.props.userLocationData["spending_category"]["resturants_hotels"],
+                    this.props.userLocationData["spending_category"]["transport"],
+                    this.props.userLocationData["spending_category"]["other"]],
+
                 [this.props.userAgeData["age_group"] === "less than 30" ?
                     "Average spending breakdown for people " + this.props.userAgeData["age_group"] + " year olds"
                     :
-                    "Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds", 130, 100, -100, 200, -150, 50],
-                (this.props.children === "Yes") ? ["Average spending breakdown for people with children", -230, 200, 200, -300, 250, 250] : ""
+                    "Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds", this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                this.props.userAgeData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
+                this.props.userAgeData["spending_category"]["clothing_footwear"],
+                this.props.userAgeData["spending_category"]["household_bills"],
+                this.props.userAgeData["spending_category"]["recreation_culture"],
+                this.props.userAgeData["spending_category"]["education"],
+                this.props.userAgeData["spending_category"]["resturants_hotels"],
+                this.props.userAgeData["spending_category"]["transport"],
+                this.props.userAgeData["spending_category"]["other"]],
+
+                (this.props.children === "Yes") ? ["Average spending breakdown for people with children",
+                    this.props.userChildrenData["spending_category"]["food_non_alcholic_drinks"],
+                    this.props.userChildrenData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
+                    this.props.userChildrenData["spending_category"]["clothing_footwear"],
+                    this.props.userChildrenData["spending_category"]["household_bills"],
+                    this.props.userChildrenData["spending_category"]["recreation_culture"],
+                    this.props.userChildrenData["spending_category"]["education"],
+                    this.props.userChildrenData["spending_category"]["resturants_hotels"],
+                    this.props.userChildrenData["spending_category"]["transport"],
+                    this.props.userChildrenData["spending_category"]["other"]] : ""
             ],
             type: 'bar',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+            labels: true,
         };
 
         const title = {
             text: "Average Spending breakdown by category"
         }
 
+        const legend = {
+            position: 'inset'
+        }
+
         const axis = {
             x: {
                 type: 'category',
-                categories: ['cat1', 'cat2', 'cat3']
+                categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
+            },
+            y: {
+                max: 180,
+                min: 0,
+                padding: { top: 0, bottom: 0 }
             }
         }
 
         return (
             <div >
                 <div id="chart">
-                    <C3Chart data={data} title={title} axis={axis} />
+                    <C3Chart data={data} title={title} axis={axis} legend={legend} />
                 </div>
             </div >
         )
@@ -51,6 +85,7 @@ const mapStateToProps = (state) => {
     return {
         userLocationData: state.userLocationData,
         userAgeData: state.userAgeData,
+        userChildrenData: state.userChildrenData,
         children: state.userChildren,
     }
 }
