@@ -8,7 +8,6 @@ class Navbar extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     handleLoginClick = () => {
-        console.log("cick")
         this.props.history.push(`/Login`)
         // return <Redirect to='/Login' />
     }
