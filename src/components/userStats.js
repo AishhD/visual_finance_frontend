@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as adapter from "../Adapter.js";
 import updateAllAgeGroups from '../actions/updateAllAgeGroups';
 import updateChildrenData from "../actions/updateChildrenData"
+import updateErrors from "../actions/updateErrors"
 import updateAllCities from '../actions/updateAllCities'
 
 class UserStats extends React.Component {
@@ -10,7 +11,16 @@ class UserStats extends React.Component {
     //check for token localstorage.getItem(token)
     //send validation request to the back to check if token is valid
 
+    handleError() {
+        this.props.updateError("Please retry")
+
+    }
+
     componentDidMount() {
+        adapter.validate()
+            .catch(error => {
+                this.props.history.push(`/Login`)
+            })
         if (this.props.allAgeGroups === "" && this.props.allCities === "" && this.props.childrenData === "") {
             adapter.getAgeGroups()
                 .then(allAges => this.props.updateAllAgeGroups(allAges))
@@ -23,19 +33,17 @@ class UserStats extends React.Component {
         }
     }
 
-    loggedin() {
-        const token = localStorage.getItem("token")
-    }
-
 
     render() {
-
         return (
-            <div>
-                {localStorage.getItem("token") ?
-                    <h1>logged in</h1> :
-                    ""}
-            </div>
+
+            < div >
+                {
+                    localStorage.getItem("token") ?
+                        <h1>logged in</h1> :
+                        ""
+                }
+            </div >
         )
     }
 }
@@ -49,7 +57,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     updateAllAgeGroups: (allAges) => { dispatch(updateAllAgeGroups(allAges)) },
     updateChildrenData: (childrenData) => { dispatch(updateChildrenData(childrenData)) },
-    updateAllCities: (allCities) => { dispatch(updateAllCities(allCities)) }
+    updateAllCities: (allCities) => { dispatch(updateAllCities(allCities)) },
+    updateErrors: (error) => { dispatch(updateErrors(error)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserStats)

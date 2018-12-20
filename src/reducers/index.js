@@ -4,7 +4,7 @@ import { userAge } from './userAge'
 import { userLocation } from './userLocation'
 import { userChildren } from './userChildren'
 import { username } from './username'
-
+import { errors } from './errors'
 import { allAgeGroups } from './allAgeGroups'
 import { authorised } from './authorised'
 import { childrenData } from './childrenData'
@@ -13,6 +13,7 @@ import { userAgeData } from './userAgeData'
 import { userLocationData } from './userLocationData'
 import { userChildrenData } from './userChildrenData'
 import { userToken } from './userToken'
+import { userSpending } from './userSpending'
 
 export default combineReducers({
     filterData,
@@ -27,5 +28,7 @@ export default combineReducers({
     userAgeData,
     userLocationData,
     userChildrenData,
-    userToken
+    userToken,
+    errors,
+    userSpending,
 })

@@ -5,15 +5,24 @@ const signInURL = "http://localhost:3000/api/v1/users/login"
 const ageURL = "http://localhost:3000/api/v1/age_options"
 const cityURL = "http://localhost:3000/api/v1/city_options"
 const childrenURL = "http://localhost:3000/api/v1/children_options/1"
+const currentUser = "http://localhost:3000/api/v1/users/validate"
+
+
+const handleResponse = resp => {
+    if (resp.ok)
+        return resp.json()
+    else
+        return Promise.reject(resp.json())
+}
 
 // -----users-----
 
 export const getUsers = () => {
-    return fetch(`${usersURL}`).then(resp => resp.json());
+    return fetch(`${usersURL}`).then(handleResponse);
 }
 
 export const fetchUser = userName => {
-    return fetch(`${usersURL}/${userName}`).then(resp => resp.json());
+    return fetch(`${usersURL}/${userName}`).then(handleResponse);
 };
 
 export const postUsers = object => {
@@ -23,10 +32,17 @@ export const postUsers = object => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ user: object })
-    }).then(resp => resp.json());
+    }).then(handleResponse);
 }
 
 
+export const validate = () => {
+    return fetch(`${currentUser}`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(handleResponse)
+}
 
 
 export const signInUsers = object => {
@@ -36,7 +52,7 @@ export const signInUsers = object => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ user: object })
-    }).then(resp => resp.json());
+    }).then(handleResponse);
 }
 
 export const patchUser = object => {
@@ -47,23 +63,23 @@ export const patchUser = object => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ user: object })
-    }).then(resp => resp.json());
+    }).then(handleResponse);
 };
 
 // -----Age-----
 
 export const getAgeGroups = () => {
-    return fetch(`${ageURL}`).then(resp => resp.json());
+    return fetch(`${ageURL}`).then(handleResponse);
 }
 
 // -----City-----
 
 export const getCityGroups = () => {
-    return fetch(`${cityURL}`).then(resp => resp.json());
+    return fetch(`${cityURL}`).then(handleResponse);
 }
 
 // -----Children-----
 
 export const getChildrenData = () => {
-    return fetch(`${childrenURL}`).then(resp => resp.json());
+    return fetch(`${childrenURL}`).then(handleResponse);
 }

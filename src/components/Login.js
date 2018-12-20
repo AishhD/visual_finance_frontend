@@ -26,7 +26,6 @@ class Login extends React.Component {
 
 
     signUp = () => {
-        console.log(this.props.userAge)
         const { userAge, location, children, username } = this.props
         console.log(userAge)
 
@@ -53,7 +52,6 @@ class Login extends React.Component {
             this.props.updateUserLocation(user.location)
             this.props.updateUserChildren(user.children)
             this.props.updateUserToken(user.token)
-            console.log(user)
         }
         const { username } = this.props
         const { password } = this.state
@@ -125,6 +123,7 @@ const mapStateToProps = (state) => ({
     userAge: state.userAge,
     location: state.userLocation,
     children: state.userChildren,
+    errors: state.errors
 })
 
 const mapDispatchToProps = (dispatch) => ({

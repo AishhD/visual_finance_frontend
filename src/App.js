@@ -7,6 +7,7 @@ import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
+import SpendingQuestionnaire from './components/SpendingQuestionnaire'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path="/Questionnaire" component={Questionnaire} />
           <Route path="/NationalCharts" component={NationalCharts} />
           <Route path="/Login" component={Login} />
+          <Route path="/SpendingQuestionnaire" component={SpendingQuestionnaire} />
           <Route path="/UserStats" component={UserStats} />
         </Switch>
       </div>
