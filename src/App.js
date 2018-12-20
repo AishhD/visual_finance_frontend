@@ -1,39 +1,34 @@
 import React, { Component } from "react";
 import "./App.css";
-import * as adapter from "./Adapter.js";
-import HomePage from "./components/HomePage";
+// import * as adapter from "./Adapter.js";
+// import HomePage from "./components/HomePage";
 import Questionnaire from './components/Questionnaire'
 import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
-  componentDidMount() {
-    adapter.getUsers()
-      .then(users => console.log(users))
-  }
 
+  // postRequest() {
+  //   adapter.postUsers({ username: "sam", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
+  //     .then(user => console.log(user))
+  // }
 
-  postRequest() {
-    adapter.postUsers({ username: "sam", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
-      .then(user => console.log(user))
-  }
-
-  patchRequest() {
-    adapter.patchUser({
-      age: "less than 30",
-      children: "false",
-      id: 3,
-      location: "london",
-      password: "scoobySnacks",
-      username: "scrapy"
-    })
-      .then(user => console.log(user))
-  }
+  // patchRequest() {
+  //   adapter.patchUser({
+  //     age: "less than 30",
+  //     children: "false",
+  //     id: 3,
+  //     location: "london",
+  //     password: "scoobySnacks",
+  //     username: "scrapy"
+  //   })
+  //     .then(user => console.log(user))
+  // }
 
 
   render() {

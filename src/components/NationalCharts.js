@@ -7,7 +7,6 @@ import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
 import { Redirect } from 'react-router-dom'
 import NationalStatsBarGraph from "./NationalStatsBarGraph"
-import Navbar from "./Navbar"
 
 
 class NationalCharts extends React.Component {

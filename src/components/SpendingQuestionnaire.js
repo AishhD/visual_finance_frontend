@@ -1,7 +1,4 @@
 import React from 'react';
-import AgeGroup from './AgeGroup';
-import ChildrenGroup from './ChildrenGroup';
-import LocationGroup from './LocationGroup';
 import updateUserSpendingFood from '../actions/updateUserSpendingFood';
 import updateUserSpendingClothing from '../actions/updateUserSpendingClothing';
 import updateUserSpendingEducation from '../actions/updateUserSpendingEducation';
@@ -11,29 +8,33 @@ import updateUserSpendingOther from '../actions/updateUserSpendingOther';
 import updateUserSpendingRecreation from '../actions/updateUserSpendingRecreation';
 import updateUserSpendingTransport from '../actions/updateUserSpendingTransport';
 import updateUserSpendingResturants from '../actions/updateUserSpendingResturants';
+import updateErrors from '../actions/updateErrors';
 import { connect } from 'react-redux';
-import LinkButton from './link-button'
-import { Segment, Container, Form, Input, Button, Icon, Label, Image } from 'semantic-ui-react'
+import { Segment, Container, Form, Button } from 'semantic-ui-react'
 import InputSection from './SpendingCategoriesForm'
+
 
 
 
 class SpendingQuestionnaire extends React.Component {
 
+    redirectUserStats = () => {
+        this.props.history.push('/UserStats')
+    }
 
     render() {
 
-        const { updateUserSpendingFood, updateUserSpendingAlcohol, updateUserSpendingClothing, updateUserSpendingEducation, updateUserSpendingHousehold, updateUserSpendingOther, updateUserSpendingRecreation, updateUserSpendingTransport, updateUserSpendingResturants } = this.props
+        const { updateUserSpendingFood, updateUserSpendingAlcohol, updateUserSpendingClothing, updateUserSpendingEducation, updateUserSpendingHousehold, updateUserSpendingOther, updateUserSpendingRecreation, updateUserSpendingTransport, updateUserSpendingResturants, userSpending, updateErrors, errors } = this.props
         return (
 
             <div>
 
                 <div className="ui stackable center aligned page grid">
-
                     {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
                     <Segment raised style={{ marginTop: '15em' }}>
                         <Container>
                             <h2>Weekly Spending</h2>
+                            {errors ? <h4>{errors}</h4> : ""}
                             <Form >
 
                                 <Form.Group widths='equal'>
@@ -56,7 +57,9 @@ class SpendingQuestionnaire extends React.Component {
                                     <InputSection label={"Other"} update={updateUserSpendingOther} />
                                     <Form.Field
                                         control={Button}
+                                        type="button"
                                         content='Confirm'
+                                        onClick={e => userSpending["food_non_alcholic_drinks"] && userSpending["alcoholic_drinks_tobacco_narcotics"] && userSpending["household_bills"] && userSpending["transport"] && userSpending["resturants_hotels"] && userSpending["clothing_footwear"] && userSpending["education"] && userSpending["other"] ? this.props.history.push('/UserStats') : updateErrors("Please fill in all categories")}
                                     />
                                 </Form.Group>
 
@@ -71,7 +74,8 @@ class SpendingQuestionnaire extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        userSpending: state.userSpending,
+        errors: state.errors
     }
 }
 
@@ -86,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
         updateUserSpendingRecreation: (spending) => dispatch(updateUserSpendingRecreation(spending)),
         updateUserSpendingTransport: (spending) => dispatch(updateUserSpendingTransport(spending)),
         updateUserSpendingResturants: (spending) => dispatch(updateUserSpendingResturants(spending)),
+        updateErrors: (errors) => dispatch(updateErrors(errors)),
     }
 }
 

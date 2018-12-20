@@ -6,7 +6,6 @@ import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
 import LinkButton from './link-button'
 import { Segment, Container, Grid } from 'semantic-ui-react'
-import Navbar from "./Navbar"
 
 
 

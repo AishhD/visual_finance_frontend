@@ -6,7 +6,8 @@ import updateUserAge from "../actions/updateUserAge";
 import updateUserLocation from "../actions/updateUserLocation";
 import updateUserChildren from "../actions/updateUserChildren";
 import updateUserToken from "../actions/updateUserToken";
-import Navbar from "./Navbar"
+import updateErrors from '../actions/updateErrors';
+
 
 import updateAuthorised from "../actions/updateAuthorised";
 import * as adapter from "../Adapter.js";
@@ -56,17 +57,21 @@ class Login extends React.Component {
         const { username } = this.props
         const { password } = this.state
 
-
+        const successful = (resp) => {
+            serverResponse(resp)
+            this.props.history.push('/SpendingQuestionnaire')
+        }
         const newUser = {
             username: username,
             password: password,
         }
 
         adapter.signInUsers(newUser)
-            .then(resp => serverResponse(resp))
+            .then(resp => successful(resp))
+            .catch(error => this.props.updateErrors("Your username and/or password did not match our records"))
 
 
-        this.props.history.push('/UserStats')
+
     }
 
     render() {
@@ -108,7 +113,7 @@ class Login extends React.Component {
                                 <label>Password</label>
                                 <input placeholder='Password' type="password" onChange={(event) => { this.setState({ password: event.target.value }) }} />
                             </Form.Field>
-                            <Button type='submit' onClick={this.login}>Login</Button>
+                            <Button type='button' onClick={this.login}>Login</Button>
                         </Form>
                     </Segment> : ""}
             </div>
@@ -123,7 +128,6 @@ const mapStateToProps = (state) => ({
     userAge: state.userAge,
     location: state.userLocation,
     children: state.userChildren,
-    errors: state.errors
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -133,6 +137,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateUserLocation: (userLocation) => { dispatch(updateUserLocation(userLocation)) },
     updateUserChildren: (userChildren) => { dispatch(updateUserChildren(userChildren)) },
     updateUserToken: (userToken) => { dispatch(updateUserToken(userToken)) },
+    updateErrors: (errors) => dispatch(updateErrors(errors)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

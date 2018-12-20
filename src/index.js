@@ -3,16 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, } from "react-router-dom";
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import rootReducer from './reducers/index'
-import Questionnaire from './components/Questionnaire'
-import NationalCharts from './components/NationalCharts'
-import UserStats from './components/UserStats'
-import Login from './components/Login'
-import Navbar from './components/Navbar'
-// import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
