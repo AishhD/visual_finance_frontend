@@ -3,9 +3,18 @@ import AgeGroup from './AgeGroup';
 import ChildrenGroup from './ChildrenGroup';
 import LocationGroup from './LocationGroup';
 import updateUserSpendingFood from '../actions/updateUserSpendingFood';
+import updateUserSpendingClothing from '../actions/updateUserSpendingClothing';
+import updateUserSpendingEducation from '../actions/updateUserSpendingEducation';
+import updateUserSpendingAlcohol from '../actions/updateUserSpendingAlcohol';
+import updateUserSpendingHousehold from '../actions/updateUserSpendingHousehold';
+import updateUserSpendingOther from '../actions/updateUserSpendingOther';
+import updateUserSpendingRecreation from '../actions/updateUserSpendingRecreation';
+import updateUserSpendingTransport from '../actions/updateUserSpendingTransport';
+import updateUserSpendingResturants from '../actions/updateUserSpendingResturants';
 import { connect } from 'react-redux';
 import LinkButton from './link-button'
 import { Segment, Container, Form, Input, Button, Icon, Label, Image } from 'semantic-ui-react'
+import InputSection from './SpendingCategoriesForm'
 
 
 
@@ -13,7 +22,8 @@ class SpendingQuestionnaire extends React.Component {
 
 
     render() {
-        const { updateUserSpendingFood } = this.props
+
+        const { updateUserSpendingFood, updateUserSpendingAlcohol, updateUserSpendingClothing, updateUserSpendingEducation, updateUserSpendingHousehold, updateUserSpendingOther, updateUserSpendingRecreation, updateUserSpendingTransport, updateUserSpendingResturants } = this.props
         return (
 
             <div>
@@ -27,62 +37,23 @@ class SpendingQuestionnaire extends React.Component {
                             <Form >
 
                                 <Form.Group widths='equal'>
-                                    <Form.Field
-
-                                        control={Input}
-                                        label='Food & non-alcholic drinks'
-                                        placeholder="£"
-                                        onChange={event => updateUserSpendingFood(event.target.value)}
-                                    />
-
-                                    <Form.Field
-                                        control={Input}
-                                        label='Alcoholic drinks, tobacco & narcotics'
-                                        placeholder="£"
-                                    />
+                                    <InputSection label={"Food & non-alcholic drinks"} update={updateUserSpendingFood} />
+                                    <InputSection label={"Alcoholic drinks, tobacco & narcotics"} update={updateUserSpendingAlcohol} />
                                 </Form.Group>
                                 <Form.Group widths='equal'>
-                                    <Form.Field
-                                        control={Input}
-                                        label='Household and bills'
-                                        placeholder="£"
-                                    />
-                                    <Form.Field
-                                        control={Input}
-                                        label='Transport'
-                                        placeholder="£"
-                                    />
+                                    <InputSection label={"Household and bills"} update={updateUserSpendingHousehold} />
+                                    <InputSection label={"Transport"} update={updateUserSpendingTransport} />
                                 </Form.Group>
                                 <Form.Group widths='equal'>
-                                    <Form.Field
-                                        control={Input}
-                                        label='Resturants & Hotels'
-                                        placeholder="£"
-                                    />
-                                    <Form.Field
-                                        control={Input}
-                                        label='Clothing & footwear'
-                                        placeholder="£"
-                                    />
+                                    <InputSection label={"Resturants & Hotels"} update={updateUserSpendingResturants} />
+                                    <InputSection label={"Clothing & footwear"} update={updateUserSpendingClothing} />
                                 </Form.Group>
                                 <Form.Group widths='equal'>
-                                    <Form.Field
-                                        control={Input}
-                                        label='Reacreation & Culture'
-                                        placeholder="£"
-                                    />
-                                    <Form.Field
-                                        control={Input}
-                                        label='Education'
-                                        placeholder="£"
-                                    />
+                                    <InputSection label={"Recreation & Culture"} update={updateUserSpendingRecreation} />
+                                    <InputSection label={"Education"} update={updateUserSpendingEducation} />
                                 </Form.Group>
                                 <Form.Group widths='equal'>
-                                    <Form.Field
-                                        control={Input}
-                                        label='Other'
-                                        placeholder="£"
-                                    />
+                                    <InputSection label={"Other"} update={updateUserSpendingOther} />
                                     <Form.Field
                                         control={Button}
                                         content='Confirm'
@@ -106,7 +77,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUserSpendingFood: (spending) => dispatch(updateUserSpendingFood(spending))
+        updateUserSpendingFood: (spending) => dispatch(updateUserSpendingFood(spending)),
+        updateUserSpendingClothing: (spending) => dispatch(updateUserSpendingClothing(spending)),
+        updateUserSpendingEducation: (spending) => dispatch(updateUserSpendingEducation(spending)),
+        updateUserSpendingAlcohol: (spending) => dispatch(updateUserSpendingAlcohol(spending)),
+        updateUserSpendingHousehold: (spending) => dispatch(updateUserSpendingHousehold(spending)),
+        updateUserSpendingOther: (spending) => dispatch(updateUserSpendingOther(spending)),
+        updateUserSpendingRecreation: (spending) => dispatch(updateUserSpendingRecreation(spending)),
+        updateUserSpendingTransport: (spending) => dispatch(updateUserSpendingTransport(spending)),
+        updateUserSpendingResturants: (spending) => dispatch(updateUserSpendingResturants(spending)),
     }
 }
 
