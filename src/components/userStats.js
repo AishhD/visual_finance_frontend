@@ -39,6 +39,8 @@ class UserStats extends React.Component {
         }
         adapter.getNationalAverage()
             .then(average => this.props.updateNationalAverage(average))
+        adapter.getUserAverage()
+            .then(resp => console.log(resp))
     }
 
     render() {

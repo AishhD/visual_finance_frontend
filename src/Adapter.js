@@ -7,7 +7,7 @@ const cityURL = "http://localhost:3000/api/v1/city_options"
 const nationalAverageURL = "http://localhost:3000/api/v1/national_averages"
 const childrenURL = "http://localhost:3000/api/v1/children_options/1"
 const currentUser = "http://localhost:3000/api/v1/users/validate"
-
+const averageURL = "http://localhost:3000/api/v1/users/average"
 
 const handleResponse = resp => {
     console.log(resp)
@@ -90,4 +90,11 @@ export const getChildrenData = () => {
 
 export const getNationalAverage = () => {
     return fetch(`${nationalAverageURL}`).then(handleResponse);
+}
+
+
+// -----User Average-----
+
+export const getUserAverage = () => {
+    return fetch(`${averageURL}`).then(handleResponse);
 }
