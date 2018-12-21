@@ -5,13 +5,14 @@ import 'c3/c3.css';
 export default class ComparisonLineGraph extends React.Component {
 
     render() {
+        console.log(this.props.userData["spending_category"]["food_non_alcholic_drinks"])
         const data = {
             columns: [
-                ['Food & non-alcholic drinks', this.props.userData["spending_category"]["food_non_alcholic_drinks"], this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"], this.props.userData["spending_category"]["clothing_footwear"], this.props.userData["spending_category"]["household_bills"], this.props.userData["spending_category"]["recreation_culture"], this.props.userData["spending_category"]["education"], this.props.userData["spending_category"]["resturants_hotels"], this.props.userData["spending_category"]["transport"], this.props.userData["spending_category"]["other"]],
+                ['Your Spending', this.props.userData["spending_category"]["food_non_alcholic_drinks"], this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"], this.props.userData["spending_category"]["clothing_footwear"], this.props.userData["spending_category"]["household_bills"], this.props.userData["spending_category"]["recreation_culture"], this.props.userData["spending_category"]["education"], this.props.userData["spending_category"]["resturants_hotels"], this.props.userData["spending_category"]["transport"], this.props.userData["spending_category"]["other"]],
 
+                ['National Average Spending', this.props.nationalAverageData["spending_category"]["food_non_alcholic_drinks"], this.props.nationalAverageData["spending_category"]["alcoholic_drinks_tobacco_narcotics"], this.props.nationalAverageData["spending_category"]["clothing_footwear"], this.props.nationalAverageData["spending_category"]["household_bills"], this.props.nationalAverageData["spending_category"]["recreation_culture"], this.props.nationalAverageData["spending_category"]["education"], this.props.nationalAverageData["spending_category"]["resturants_hotels"], this.props.nationalAverageData["spending_category"]["transport"], this.props.nationalAverageData["spending_category"]["other"]],
 
-                ['Alcoholic drinks, tobacco & narcotics', this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"]],
-                ['Clothing & Footwear', this.props.userData["spending_category"]["clothing_footwear"]],
+                ['National User Spending', this.props.userData["spending_category"]["food_non_alcholic_drinks"], this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"], this.props.userData["spending_category"]["clothing_footwear"], this.props.userData["spending_category"]["household_bills"], this.props.userData["spending_category"]["recreation_culture"], this.props.userData["spending_category"]["education"], this.props.userData["spending_category"]["resturants_hotels"], this.props.userData["spending_category"]["transport"], this.props.userData["spending_category"]["other"]],
 
             ],
             type: 'line',

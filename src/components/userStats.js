@@ -63,12 +63,13 @@ class UserStats extends React.Component {
 
 
 
+        console.log(this.props.userSpending)
         return (
             <Segment raised style={{ marginTop: '15em' }}>
                 <Container>
                     <div >
-                        {this.props.nationalAverage ?
-                            <ComparisonLineGraph userData={this.props.nationalAverage[0]} title={"Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds"} />
+                        {this.props.nationalAverage && this.props.userSpending ?
+                            <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} userTitle={"Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds"} />
                             :
                             ""
                         }
@@ -93,6 +94,7 @@ const mapStateToProps = (state) => {
         childrenData: state.childrenData,
         userLocationData: state.userLocationData,
         userAgeData: state.userAgeData,
+        userSpending: state.userSpending,
         userChildrenData: state.userChildrenData,
         children: state.userChildren,
         nationalAverage: state.nationalAverage,

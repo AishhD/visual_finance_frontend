@@ -59,7 +59,7 @@ class SpendingQuestionnaire extends React.Component {
                                         control={Button}
                                         type="button"
                                         content='Confirm'
-                                        onClick={e => userSpending["food_non_alcholic_drinks"] && userSpending["alcoholic_drinks_tobacco_narcotics"] && userSpending["household_bills"] && userSpending["transport"] && userSpending["resturants_hotels"] && userSpending["clothing_footwear"] && userSpending["education"] && userSpending["other"] ? this.props.history.push('/UserStats') : updateErrors("Please fill in all categories")}
+                                        onClick={e => userSpending["spending_category"]["food_non_alcholic_drinks"] && userSpending["spending_category"]["alcoholic_drinks_tobacco_narcotics"] && userSpending["spending_category"]["household_bills"] && userSpending["spending_category"]["transport"] && userSpending["spending_category"]["resturants_hotels"] && userSpending["spending_category"]["clothing_footwear"] && userSpending["spending_category"]["education"] && userSpending["spending_category"]["other"] ? this.props.history.push('/UserStats') : updateErrors("Please fill in all categories")}
                                     />
                                 </Form.Group>
 
