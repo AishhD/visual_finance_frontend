@@ -5,9 +5,11 @@ import updateAllAgeGroups from '../actions/updateAllAgeGroups';
 import updateChildrenData from "../actions/updateChildrenData"
 import updateErrors from "../actions/updateErrors"
 import updateAllCities from '../actions/updateAllCities'
+import updateNationalAverage from '../actions/updateNationalAverage'
 import 'c3/c3.css';
 import C3Chart from 'react-c3js';
 import { Segment, Container } from 'semantic-ui-react'
+import ComparisonLineGraph from './ComparisonLineGraph.js';
 
 
 class UserStats extends React.Component {
@@ -35,6 +37,8 @@ class UserStats extends React.Component {
             adapter.getCityGroups()
                 .then(allLocations => this.props.updateAllCities(allLocations))
         }
+        adapter.getNationalAverage()
+            .then(average => this.props.updateNationalAverage(average))
     }
 
     render() {
@@ -63,9 +67,12 @@ class UserStats extends React.Component {
             <Segment raised style={{ marginTop: '15em' }}>
                 <Container>
                     <div >
-                        <div id="chart">
-                            <C3Chart data={data} axis={axis} />
-                        </div>
+                        {this.props.nationalAverage ?
+                            <ComparisonLineGraph userData={this.props.nationalAverage[0]} title={"Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds"} />
+                            :
+                            ""
+                        }
+
                     </div >
                 </Container>
             </Segment>
@@ -88,6 +95,7 @@ const mapStateToProps = (state) => {
         userAgeData: state.userAgeData,
         userChildrenData: state.userChildrenData,
         children: state.userChildren,
+        nationalAverage: state.nationalAverage,
     }
 }
 
@@ -95,7 +103,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateAllAgeGroups: (allAges) => { dispatch(updateAllAgeGroups(allAges)) },
     updateChildrenData: (childrenData) => { dispatch(updateChildrenData(childrenData)) },
     updateAllCities: (allCities) => { dispatch(updateAllCities(allCities)) },
-    updateErrors: (error) => { dispatch(updateErrors(error)) }
+    updateErrors: (error) => { dispatch(updateErrors(error)) },
+    updateNationalAverage: (average) => { dispatch(updateNationalAverage(average)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserStats)

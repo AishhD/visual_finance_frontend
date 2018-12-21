@@ -14,6 +14,7 @@ import { userLocationData } from './userLocationData'
 import { userChildrenData } from './userChildrenData'
 import { userToken } from './userToken'
 import { userSpending } from './userSpending'
+import { nationalAverage } from './nationalAverage'
 
 export default combineReducers({
     filterData,
@@ -31,4 +32,5 @@ export default combineReducers({
     userToken,
     errors,
     userSpending,
+    nationalAverage
 })

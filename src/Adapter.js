@@ -4,11 +4,13 @@ const usersURL = "http://localhost:3000/api/v1/users"
 const signInURL = "http://localhost:3000/api/v1/users/login"
 const ageURL = "http://localhost:3000/api/v1/age_options"
 const cityURL = "http://localhost:3000/api/v1/city_options"
+const nationalAverageURL = "http://localhost:3000/api/v1/national_averages"
 const childrenURL = "http://localhost:3000/api/v1/children_options/1"
 const currentUser = "http://localhost:3000/api/v1/users/validate"
 
 
 const handleResponse = resp => {
+    console.log(resp)
     if (resp.ok)
         return resp.json()
     else
@@ -82,4 +84,10 @@ export const getCityGroups = () => {
 
 export const getChildrenData = () => {
     return fetch(`${childrenURL}`).then(handleResponse);
+}
+
+// -----National Average-----
+
+export const getNationalAverage = () => {
+    return fetch(`${nationalAverageURL}`).then(handleResponse);
 }
