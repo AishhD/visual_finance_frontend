@@ -10,7 +10,6 @@ const currentUser = "http://localhost:3000/api/v1/users/validate"
 const averageURL = "http://localhost:3000/api/v1/users/average"
 
 const handleResponse = resp => {
-    console.log(resp)
     if (resp.ok)
         return resp.json()
     else

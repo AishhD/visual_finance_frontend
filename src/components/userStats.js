@@ -6,6 +6,7 @@ import updateChildrenData from "../actions/updateChildrenData"
 import updateErrors from "../actions/updateErrors"
 import updateAllCities from '../actions/updateAllCities'
 import updateNationalAverage from '../actions/updateNationalAverage'
+import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import 'c3/c3.css';
 import C3Chart from 'react-c3js';
 import { Segment, Container } from 'semantic-ui-react'
@@ -40,7 +41,7 @@ class UserStats extends React.Component {
         adapter.getNationalAverage()
             .then(average => this.props.updateNationalAverage(average))
         adapter.getUserAverage()
-            .then(resp => console.log(resp))
+            .then(average => this.props.updateAverageUserSpending(average))
     }
 
     render() {
@@ -65,13 +66,13 @@ class UserStats extends React.Component {
 
 
 
-        console.log(this.props.userSpending)
+
         return (
             <Segment raised style={{ marginTop: '15em' }}>
                 <Container>
                     <div >
-                        {this.props.nationalAverage && this.props.userSpending ?
-                            <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} userTitle={"Average spending breakdown for " + this.props.userAgeData["age_group"] + " year olds"} />
+                        {this.props.nationalAverage && this.props.userSpending && this.props.averageUserSpending ?
+                            <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} averageUserData={this.props.averageUserSpending} title={"Weekly Spending"} />
                             :
                             ""
                         }
@@ -100,6 +101,7 @@ const mapStateToProps = (state) => {
         userChildrenData: state.userChildrenData,
         children: state.userChildren,
         nationalAverage: state.nationalAverage,
+        averageUserSpending: state.averageUserSpending
     }
 }
 
@@ -109,6 +111,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateAllCities: (allCities) => { dispatch(updateAllCities(allCities)) },
     updateErrors: (error) => { dispatch(updateErrors(error)) },
     updateNationalAverage: (average) => { dispatch(updateNationalAverage(average)) },
+    updateAverageUserSpending: (average) => { dispatch(updateAverageUserSpending(average)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserStats)

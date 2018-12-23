@@ -1,4 +1,18 @@
-export const userSpending = (state = "", action) => {
+const initialState = {
+    spending_category: {
+        alcoholic_drinks_tobacco_narcotics: 0,
+        food_non_alcholic_drinks: 0,
+        household_bills: 0,
+        transport: 0,
+        resturants_hotels: 0,
+        recreation_culture: 0,
+        clothing_footwear: 0,
+        education: 0,
+        other: 0
+    }
+}
+
+export const userSpending = (state = initialState, action) => {
     switch (action.type) {
 
         case "UPDATE_USER_SPENDING_ALCOHOL":
