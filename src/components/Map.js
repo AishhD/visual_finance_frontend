@@ -96,7 +96,7 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
 import { connect } from "react-redux"
-import { countries } from 'country-data';
+import { lookup, countries, } from 'country-data';
 
 
 
@@ -108,14 +108,16 @@ class App extends Component {
             householdSpending: null,
             selectedCoutry: null
         }
+    }
 
-        this.render = this.render.bind(this)
+    componentDidMount() {
+
     }
 
     // selectedCity = "hello"
 
     render() {
-        console.log(countries["TW"].name);
+        console.log(lookup.countries({ name: 'France' })[0].alpha3);
         let selectedCity
         const config = {
             "type": "map",
