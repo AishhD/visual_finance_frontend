@@ -96,7 +96,9 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
 import { connect } from "react-redux"
-import { lookup, countries, } from 'country-data';
+import { lookup } from 'country-data';
+import * as adapter from "../Adapter.js";
+
 
 
 
@@ -105,20 +107,30 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            householdSpending: null,
+            allCountriesHouseholdSpending: null,
             selectedCoutry: null
         }
     }
 
     componentDidMount() {
-
+        adapter.getAllCountriesrtyHouseholdSpending()
+            .then(spendingData => this.setState({ allCountriesHouseholdSpending: spendingData }))
     }
 
-    // selectedCity = "hello"
+
+
+    selectedCountrySpending = (country) => {
+        let selectedCity = country.mapObject.enTitle
+        if (selectedCity !== "Russia" && selectedCity !== "Venezuela" && selectedCity !== "Bolivia" && selectedCity !== "Svalbard and Jan Mayen" && selectedCity !== "Syria" && selectedCity !== "Tanzania" && selectedCity !== "Democratic Republic of Congo") {
+            // console.log(lookup.countries({ name: selectedCity }));
+
+            console.log(lookup.countries({ name: selectedCity })[0].alpha3);
+            console.log('selected!', selectedCity)
+            return selectedCity
+        }
+    }
 
     render() {
-        console.log(lookup.countries({ name: 'France' })[0].alpha3);
-        let selectedCity
         const config = {
             "type": "map",
             "theme": "light",
@@ -133,12 +145,9 @@ class App extends Component {
             },
             "listeners": [{
                 "event": "clickMapObject",
-                "method": function (e) {
+                "method": (e) => {
                     console.log(e.mapObject.enTitle)
-                    selectedCity = e.mapObject.enTitle
-
-
-                    console.log(selectedCity)
+                    this.selectedCountrySpending(e)
                 }
             }]
         }

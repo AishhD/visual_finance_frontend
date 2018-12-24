@@ -8,6 +8,7 @@ const nationalAverageURL = "http://localhost:3000/api/v1/national_averages"
 const childrenURL = "http://localhost:3000/api/v1/children_options/1"
 const currentUser = "http://localhost:3000/api/v1/users/validate"
 const averageURL = "http://localhost:3000/api/v1/users/average"
+const countryHouseholdSpendingURL = "http://localhost:3000/api/v1/household_spendings"
 
 const handleResponse = resp => {
     if (resp.ok)
@@ -97,3 +98,8 @@ export const getNationalAverage = () => {
 export const getUserAverage = () => {
     return fetch(`${averageURL}`).then(handleResponse);
 }
+
+// -----Household spending by country-----
+export const getAllCountriesrtyHouseholdSpending = () => {
+    return fetch(`${countryHouseholdSpendingURL}`).then(handleResponse);
+};
