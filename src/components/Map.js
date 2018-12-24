@@ -95,10 +95,28 @@
 
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
+import { connect } from "react-redux"
+import { countries } from 'country-data';
+
 
 
 class App extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            householdSpending: null,
+            selectedCoutry: null
+        }
+
+        this.render = this.render.bind(this)
+    }
+
+    // selectedCity = "hello"
+
     render() {
+        console.log(countries["TW"].name);
+        let selectedCity
         const config = {
             "type": "map",
             "theme": "light",
@@ -115,6 +133,10 @@ class App extends Component {
                 "event": "clickMapObject",
                 "method": function (e) {
                     console.log(e.mapObject.enTitle)
+                    selectedCity = e.mapObject.enTitle
+
+
+                    console.log(selectedCity)
                 }
             }]
         }
@@ -126,4 +148,14 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
