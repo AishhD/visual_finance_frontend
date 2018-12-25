@@ -46,20 +46,49 @@ class App extends Component {
             "type": "map",
             "theme": "light",
             "colorSteps": 10,
+
             "dataProvider": {
                 "map": "worldLow",
                 "getAreasFromMap": true,
+                "colorRanges": [{
+                    "start": 0,
+                    "end": 10000,
+                    "color": "#0080FF",
+                    "variation": 0.4
+                }, {
+                    "start": 10001,
+                    "end": 20000,
+                    "color": "#FF2626",
+                    "variation": 0.4
+                }, {
+                    "start": 20001,
+                    "end": 100000,
+                    "color": "#00B22D",
+                    "variation": 0.4
+                }],
                 "areas": [{
                     "id": "AU",
-                    "value": 4447100
+                    "value": 10006
                 },
                 {
                     "id": "US",
-                    "value": 4447100
+                    "value": 30788
                 },
                 {
                     "id": "FR",
-                    "value": 4447100
+                    "value": 307784
+                },
+                {
+                    "id": "AQ",
+                    "value": 307983
+                },
+                {
+                    "id": "BO",
+                    "value": 3079876
+                },
+                {
+                    "id": "CL",
+                    "value": 3079875
                 },
                 ],
 
@@ -71,10 +100,10 @@ class App extends Component {
             },
 
 
-
             "areasSettings": {
                 // "selectedColor": "#CC0000",
-                "selectable": true
+                "selectable": true,
+                "balloonText": "National Spending in [[title]]: <b>[[value]]</b>"
             },
 
             "listeners": [{
