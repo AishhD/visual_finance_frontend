@@ -42,17 +42,22 @@ class App extends Component {
     }
 
     render() {
+
         const config = {
             "type": "map",
             "theme": "light",
-            "colorSteps": 10,
+            "colorSteps": 60,
 
             "dataProvider": {
+
+
                 "map": "worldLow",
                 "getAreasFromMap": true,
                 "areas": [{
                     "id": "AU",
-                    "value": 658188.6034
+                    "value": 658188.6034,
+                    // "color": "#d8854f",
+                    "selected": true
                 },
                 {
                     "id": "AT",
@@ -249,19 +254,40 @@ class App extends Component {
 
                 ],
 
-                "valueLegend": {
-                    "right": 10,
-                    "minValue": "little",
-                    "maxValue": "a lot!"
-                },
             },
 
 
             "areasSettings": {
-                // "selectedColor": "#CC0000",
+                "fill": "pink",
                 "selectable": true,
-                "balloonText": "National Spending in [[title]]: <b>[[value]]</b>"
+
+                // // "variation": 1,
+                // "selectedColor": "#CC0000",
+                // "outlineColor": "#666666",
+                // // "colorSolid": "#367B25",
+
+                "balloonText": "National Spending in [[title]]: <b>[[value]]</b>",
+
+
             },
+
+
+            "valueLegend": {
+                divId: "legenddiv",
+                "bottom": 10,
+                "right": 10,
+                "align": "center",
+
+
+            },
+
+            // "listeners": [{
+            //     "event": "rendered",
+            //     "method": console.log("nff")
+            // }, {
+            //     "event": "zoomed",
+            //     "method": console.log("fdf")
+            // }],
 
             "listeners": [{
                 "event": "clickMapObject",
