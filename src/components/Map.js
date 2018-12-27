@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
 import { connect } from "react-redux"
-import { lookup } from 'country-data';
 import * as adapter from "../Adapter.js";
 
 
@@ -31,28 +30,25 @@ class App extends Component {
     }
 
     selectedCountrySpending = (country) => {
-        let selectedCity = country.mapObject.enTitle
-        if (selectedCity !== "Russia" && selectedCity !== "Venezuela" && selectedCity !== "Bolivia" && selectedCity !== "Svalbard and Jan Mayen" && selectedCity !== "Syria" && selectedCity !== "Tanzania" && selectedCity !== "Democratic Republic of Congo") {
-            // console.log(lookup.countries({ name: selectedCity }));
-
-            console.log(lookup.countries({ name: selectedCity })[0].alpha3);
-            console.log('selected!', selectedCity)
-            return selectedCity
+        if (country.mapObject.enTitle === "United Kingdom") {
+            this.props.history.push(`/Questionnaire`)
         }
     }
 
     render() {
 
+
+
         const config = {
             "type": "map",
-            "theme": "light",
+            "theme": "dark",
             "colorSteps": 60,
 
             "dataProvider": {
 
 
                 "map": "worldLow",
-                "getAreasFromMap": true,
+
                 "areas": [{
                     "id": "AU",
                     "value": 658188.6034,
@@ -165,7 +161,13 @@ class App extends Component {
                 },
                 {
                     "id": "GB",
-                    "value": 1690313.7486
+                    "value": 1690313.7486,
+                    // "url": "thh",
+                    "description": [{
+                        "text": "United States is now selected.</br></br>Close this description box to unselect the area.",
+                        "url": "thh",
+                    }]
+
                 },
                 {
                     "id": "US",
@@ -256,19 +258,14 @@ class App extends Component {
 
             },
 
-
             "areasSettings": {
                 "fill": "pink",
+                "color": "#8dc6ff",
                 "selectable": true,
-
-                // // "variation": 1,
-                // "selectedColor": "#CC0000",
-                // "outlineColor": "#666666",
-                // // "colorSolid": "#367B25",
-
-                "balloonText": "National Spending in [[title]]: <b>[[value]]</b>",
-
-
+                "selectedColor": "#001f3f",
+                // "outlineColor": "#001f3f",
+                "colorSolid": "#002266",
+                "balloonText": "[[title]]: <b>[[value]]</b>"
             },
 
 
@@ -281,26 +278,33 @@ class App extends Component {
 
             },
 
-            // "listeners": [{
-            //     "event": "rendered",
-            //     "method": console.log("nff")
-            // }, {
-            //     "event": "zoomed",
-            //     "method": console.log("fdf")
-            // }],
+            "zoomControl": {
+                // "maxZoomLevel": 0,
+                "zoomFactor": false,
+            },
 
             "listeners": [{
-                "event": "clickMapObject",
-                "method": (e) => {
-                    console.log(e.mapObject.enTitle)
-                    this.selectedCountrySpending(e)
-                }
-            }]
+                // "event": "clickMapObject",
+                // "method": (e) => {
+                //     console.log(e.mapObject.enTitle)
+                //     this.selectedCountrySpending(e)
+                // },
+                "event": "doubleClickMapObject",
+                "method": function (ev) {
+                    // ev.chart.selectObject();
+                    console.log(ev)
+                },
+            }
+
+            ]
         }
         return (
-
-            <AmCharts.React style={{ width: "100%", height: "600px" }} options={config} />
-
+            <div>
+                <h1>Compare Total Household Spending</h1>
+                <AmCharts.React style={{ width: "100%", height: "700px" }} options={config} />
+                {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
+                <h5>Source: <a href="https://data.oecd.org/hha/household-spending.htm">OECD</a> </h5>
+            </div>
         );
     }
 }
