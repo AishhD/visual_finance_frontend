@@ -8,6 +8,7 @@ import UserStats from './components/UserStats'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Map from './components/Map'
+import ukMap from './components/ukMap'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
 import { Route, Switch } from "react-router-dom";
 
@@ -42,6 +43,7 @@ class App extends Component {
           <Route path="/Login" component={Login} />
           <Route path="/SpendingQuestionnaire" component={SpendingQuestionnaire} />
           <Route path="/UserStats" component={UserStats} />
+          <Route path="/UK" component={ukMap} />
           <Route path="/" component={Map} />
         </Switch>
       </div>

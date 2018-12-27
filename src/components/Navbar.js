@@ -12,14 +12,21 @@ class Navbar extends Component {
         // return <Redirect to='/Login' />
     }
 
+
+
     render() {
         const { activeItem } = this.state
 
         return (
             <Menu>
+                <Menu.Menu position='left'>
+                    <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
+                        <img src='https://media.giphy.com/media/Wif2BJsS56nEk/source.gif' alt="" />
+                    </Menu.Item>
+                </Menu.Menu>
                 <Menu.Menu position='right'>
-                    <Menu.Item name='Compare your spending' active={activeItem === 'Compare your spending'} onClick={this.handleItemClick}>
-                        Compare your spending
+                    <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
+                        Compare UK spending
                     </Menu.Item>
 
                     <Menu.Item name='Login' active={activeItem === 'Login'} onClick={this.handleLoginClick}>
@@ -32,3 +39,6 @@ class Navbar extends Component {
 }
 
 export default withRouter(Navbar)
+
+// https://media.giphy.com/media/Wif2BJsS56nEk/source.gif
+// http://tampainternationalfilmfestival.com/assets/spinning-globe.gif

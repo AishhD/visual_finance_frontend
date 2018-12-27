@@ -28,7 +28,7 @@ export default class ComparisonLineGraph extends React.Component {
                 categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
             },
             y: {
-                max: 180,
+
                 min: 0,
                 padding: { top: 0, bottom: 0 }
             }
