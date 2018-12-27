@@ -8,36 +8,23 @@ import * as adapter from "../Adapter.js";
 
 class App extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            allCountriesHouseholdSpending: null,
-            selectedCoutry: null,
-            countrySpending: [{
-                "id": "AU",
-                "value": 4447100
-            },
-            {
-                "id": "US",
-                "value": 658188
-            }]
-        }
-    }
 
     componentDidMount() {
         adapter.getAllCountriesrtyHouseholdSpending()
             .then(spendingData => this.setState({ allCountriesHouseholdSpending: spendingData }))
     }
 
-    selectedCountrySpending = (country) => {
-        if (country.mapObject.enTitle === "United Kingdom") {
-            this.props.history.push(`/Questionnaire`)
-        }
-    }
+    // selectedCountrySpending = (country) => {
+    //     if (country.mapObject.enTitle === "United Kingdom") {
+    //         this.props.history.push(`/Questionnaire`)
+    //     }
+    // }
 
     render() {
 
-
+        const descriptionEngland = () => {
+            return '<a href="/Questionnaire">Compare your spending</a><br /><br />'
+        }
 
         const config = {
             "type": "map",
@@ -45,129 +32,119 @@ class App extends Component {
             "colorSteps": 60,
 
             "dataProvider": {
-
-
                 "map": "worldLow",
-
                 "areas": [{
                     "id": "AU",
-                    "value": 658188.6034,
-                    // "color": "#d8854f",
-                    "selected": true
+                    "value": 658189,
                 },
                 {
                     "id": "AT",
-                    "value": 217653.4063
+                    "value": 217653
                 },
                 {
                     "id": "BE",
-                    "value": 255659.6354
+                    "value": 255660
                 },
                 {
                     "id": "CA",
-                    "value": 896977.0966
+                    "value": 896977
                 },
                 {
                     "id": "CZ",
-                    "value": 163205.4061
+                    "value": 163205
                 },
                 {
                     "id": "DK",
-                    "value": 126823.0316
+                    "value": 126823
                 },
                 {
                     "id": "FI",
-                    "value": 121446.2354
+                    "value": 121446
                 },
                 {
                     "id": "FR",
-                    "value": 1403614.3297
+                    "value": 1403614
                 },
                 {
                     "id": "DE",
-                    "value": 2025194.7713
+                    "value": 2025195
                 },
                 {
                     "id": "GR",
-                    "value": 193573.1991
+                    "value": 193573
                 },
                 {
                     "id": "HU",
-                    "value": 123184.6912
+                    "value": 123185
                 },
                 {
                     "id": "IS",
-                    "value": 7750.9996
+                    "value": 7751
                 },
                 {
                     "id": "IE",
-                    "value": 104896.5726
+                    "value": 104897
                 },
                 {
                     "id": "IT",
-                    "value": 1343001.8871
+                    "value": 1343002
                 },
                 {
                     "id": "JP",
-                    "value": 2858279.4738
+                    "value": 2858279
                 },
                 {
                     "id": "KR",
-                    "value": 843197.7037
+                    "value": 843198
                 },
                 {
                     "id": "LU",
-                    "value": 16924.2754
+                    "value": 16924
                 },
                 {
                     "id": "MX",
-                    "value": 1397196.1327
+                    "value": 1397196
                 },
                 {
                     "id": "NL",
-                    "value": 374867.3299
+                    "value": 374867
                 },
                 {
                     "id": "NZ",
-                    "value": 98121.1706
+                    "value": 98121
                 },
                 {
                     "id": "NO",
-                    "value": 131626.6558
+                    "value": 131627
                 },
                 {
                     "id": "PL",
-                    "value": 582920.2456
+                    "value": 582920
                 },
                 {
                     "id": "PT",
-                    "value": 194040.4139
+                    "value": 194040
                 },
                 {
                     "id": "SK",
-                    "value": 86245.6174
+                    "value": 86246
                 },
                 {
                     "id": "SE",
-                    "value": 204506.4823
+                    "value": 204506
                 },
                 {
                     "id": "CH",
-                    "value": 272084.3728
+                    "value": 272084
                 },
                 {
                     "id": "TR",
-                    "value": 1173948.4546
+                    "value": 1173948
                 },
                 {
                     "id": "GB",
-                    "value": 1690313.7486,
-                    // "url": "thh",
-                    "description": [{
-                        "text": "United States is now selected.</br></br>Close this description box to unselect the area.",
-                        "url": "thh",
-                    }]
-
+                    "value": 1690314,
+                    "description": descriptionEngland()
                 },
                 {
                     "id": "US",
@@ -175,83 +152,83 @@ class App extends Component {
                 },
                 {
                     "id": "CN",
-                    "value": 7647509.0513
+                    "value": 7647509
                 },
                 {
                     "id": "CO",
-                    "value": 457024.4046
+                    "value": 457024
                 },
                 {
                     "id": "EE",
-                    "value": 718996.8247
+                    "value": 718997
                 },
                 {
                     "id": "ID",
-                    "value": 1604083.5143
+                    "value": 1604084
                 },
                 {
                     "id": "IL",
-                    "value": 160786.6547
+                    "value": 160787
                 },
                 {
                     "id": "RU",
-                    "value": 1878151.8028
+                    "value": 1878152
                 },
                 {
                     "id": "SI",
-                    "value": 34171.3078
+                    "value": 34171
                 },
                 {
                     "id": "ZA",
-                    "value": 434411.0314
+                    "value": 434411
                 },
                 {
                     "id": "LV",
-                    "value": 28685.4382
+                    "value": 28685
                 },
                 {
                     "id": "BR",
-                    "value": 2008772.3645
+                    "value": 2008772
                 },
                 {
                     "id": "LT",
-                    "value": 52215.6076
+                    "value": 52216
                 },
                 {
                     "id": "AR",
-                    "value": 1591951.0939
+                    "value": 1591951
                 },
                 {
                     "id": "CR",
-                    "value": 48779.4833
+                    "value": 48779
                 },
                 {
                     "id": "BG",
-                    "value": 80496.4417
+                    "value": 80496
                 },
                 {
                     "id": "HR",
-                    "value": 54174.6536
+                    "value": 54175
                 },
                 {
                     "id": "CY",
-                    "value": 18292.5731
+                    "value": 18293
                 },
                 {
                     "id": "MT",
-                    "value": 7539.5316
+                    "value": 7540
                 },
                 {
                     "id": "RO",
-                    "value": 259423.3035
+                    "value": 259423
                 },
                 {
                     "id": "MK",
-                    "value": 19497.3638
+                    "value": 19497
                 },
                 {
                     "id": "ZM",
-                    "value": 29721.2534
+                    "value": 29721
                 },
 
                 ],
@@ -269,17 +246,18 @@ class App extends Component {
             },
 
 
+
             "valueLegend": {
                 divId: "legenddiv",
                 "bottom": 10,
                 "right": 10,
                 "align": "center",
-
-
             },
 
             "zoomControl": {
-                // "maxZoomLevel": 0,
+                // "zoomControlEnabled": false,   
+                // "homeButtonEnabled": false
+                // "maxZoomLevel": 0
                 "zoomFactor": false,
             },
 
@@ -289,7 +267,7 @@ class App extends Component {
                 //     console.log(e.mapObject.enTitle)
                 //     this.selectedCountrySpending(e)
                 // },
-                "event": "doubleClickMapObject",
+                "event": "descriptionClosed",
                 "method": function (ev) {
                     // ev.chart.selectObject();
                     console.log(ev)
@@ -300,9 +278,11 @@ class App extends Component {
         }
         return (
             <div>
-                <h1>Compare Total Household Spending</h1>
+                <h1>Total Household Spending</h1>
+
                 <AmCharts.React style={{ width: "100%", height: "700px" }} options={config} />
                 {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
+                <h5>Measured in million USD</h5>
                 <h5>Source: <a href="https://data.oecd.org/hha/household-spending.htm">OECD</a> </h5>
             </div>
         );
