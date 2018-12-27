@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
-import { connect } from "react-redux"
-import * as adapter from "../Adapter.js";
 import mapData from "./mapData"
 
-
-
-
-class App extends Component {
-
-
-    componentDidMount() {
-        adapter.getAllCountriesrtyHouseholdSpending()
-            .then(spendingData => this.setState({ allCountriesHouseholdSpending: spendingData }))
-    }
+class Map extends Component {
 
     render() {
 
@@ -25,7 +14,6 @@ class App extends Component {
             "dataProvider": {
                 "map": "worldLow",
                 "areas": mapData()
-
             },
 
             "areasSettings": {
@@ -37,8 +25,6 @@ class App extends Component {
                 "colorSolid": "#002266",
                 "balloonText": "[[title]]: <b>[[value]]</b>"
             },
-
-
 
             "valueLegend": {
                 divId: "legenddiv",
@@ -65,31 +51,20 @@ class App extends Component {
                     // ev.chart.selectObject();
                     console.log(ev)
                 },
-            }
-
-            ]
+            }]
         }
+
         return (
             <div>
-                <h1>Total Household Spending</h1>
-
+                <h1>Total Household Spending by Country</h1>
                 <AmCharts.React style={{ width: "100%", height: "700px" }} options={config} />
                 {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
-                <h5>Measured in million USD</h5>
                 <h5>Source: <a href="https://data.oecd.org/hha/household-spending.htm">OECD</a> </h5>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-
-})
-
-const mapDispatchToProps = (dispatch) => ({
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default Map
 
 
