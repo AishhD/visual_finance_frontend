@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
-import mapData from "./mapData"
+import { getAllCountriesrtyHouseholdSpending } from "../Adapter.js";
 
 class Map extends Component {
+
+    state = {
+        householdSpending: null
+    }
+
+    componentDidMount() {
+        getAllCountriesrtyHouseholdSpending()
+            .then(spending => this.setState({ householdSpending: spending }))
+            .then(spending => this.removeID())
+    }
+
+    removeID() {
+        const { getCode } = require('country-list');
+        const spendingData = JSON.parse(JSON.stringify(this.state.householdSpending))
+        const newSpendingData = spendingData
+            .map(countryObj => ({
+                id: getCode(countryObj.country),
+                value: Math.round(countryObj.value),
+            }))
+            .filter(countryObj => countryObj.value !== 0)
+            .filter(countryObj => countryObj.id !== undefined)
+        this.setState({ householdSpending: newSpendingData })
+    }
 
     render() {
 
@@ -13,7 +36,7 @@ class Map extends Component {
             "fill": "blue",
             "dataProvider": {
                 "map": "worldLow",
-                "areas": mapData()
+                "areas": this.state.householdSpending
             },
             "include": "UK",
 
@@ -60,11 +83,11 @@ class Map extends Component {
 
         return (
             <div>
-                <h1>Total Household Spending by Country</h1>
+                <h1>Household Consumption Expenditure per Capita</h1>
                 <AmCharts.React style={{ width: "100%", height: "700px" }} options={config} />
                 {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
-                <h4>This indicator is measured in million USD, in current prices and PPPs, as % of GDP, in annual growth rates and in % of disposable income. </h4>
-                <h5>Source: <a href="https://data.oecd.org/hha/household-spending.htm">OECD</a> </h5>
+                <h4>2017 US$ </h4>
+                <h5>Source: <a href="https://data.worldbank.org/indicator/NE.CON.PRVT.PC.KD">The World Bank</a> </h5>
             </div>
         );
     }

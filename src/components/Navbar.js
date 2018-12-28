@@ -19,14 +19,14 @@ class Navbar extends Component {
 
         return (
             <Menu>
-                <Menu.Menu position='left'>
+                {/* <Menu.Menu position='left'>
                     <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
                         <img src='https://media.giphy.com/media/Wif2BJsS56nEk/source.gif' alt="" />
                     </Menu.Item>
-                </Menu.Menu>
+                </Menu.Menu> */}
                 <Menu.Menu position='right'>
                     <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
-                        Compare UK spending
+                        Weekly UK spending
                     </Menu.Item>
 
                     <Menu.Item name='Login' active={activeItem === 'Login'} onClick={this.handleLoginClick}>

@@ -8,6 +8,7 @@
     "@amcharts/amcharts4-geodata": "^4.0.24",
     "country-data": "0.0.31",
     "country-iso-3-to-2": "^1.0.1",
+    "country-list": "^2.1.0",
     "d3": "^5.7.0",
     "d3-geo": "^1.11.3",
     "highcharts": "^7.0.1",

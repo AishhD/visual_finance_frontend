@@ -5,8 +5,8 @@ const descriptionEngland = () => {
 const mapData = () => {
     return [
         {
-            "id": "AU",
-            "value": 658189,
+            id: "AU",
+            value: 658189,
         },
         {
             "id": "AT",
