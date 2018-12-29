@@ -16,6 +16,7 @@ import { userToken } from './userToken'
 import { userSpending } from './userSpending'
 import { nationalAverage } from './nationalAverage'
 import { averageUserSpending } from './averageUserSpending'
+import { spendingDataID } from './spendingDataID'
 import { reducer as formReducer } from 'redux-form'
 
 export default combineReducers({
@@ -36,5 +37,6 @@ export default combineReducers({
     userSpending,
     nationalAverage,
     averageUserSpending,
+    spendingDataID,
     form: formReducer,
 })

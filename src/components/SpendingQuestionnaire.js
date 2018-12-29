@@ -8,7 +8,7 @@ import updateUserSpendingOther from '../actions/updateUserSpendingOther';
 import updateUserSpendingRecreation from '../actions/updateUserSpendingRecreation';
 import updateUserSpendingTransport from '../actions/updateUserSpendingTransport';
 import updateUserSpendingResturants from '../actions/updateUserSpendingResturants';
-import updateErrors from '../actions/updateErrors';
+import updateSpendingDataID from '../actions/updateSpendingDataID';
 import { connect } from 'react-redux';
 import { Segment, Container, } from 'semantic-ui-react';
 import ValidatingSpendingQues from "./ValidatingSpendingQues"
@@ -33,28 +33,29 @@ class SpendingQuestionnaire extends React.Component {
         updateUserSpendingRecreation(values.recreation)
         updateUserSpendingResturants(values.resturants)
         updateUserSpendingTransport(values.transport)
-        this.postRequest()
+        this.postRequest(values)
         this.props.history.push(`/UserStats`)
 
     }
 
 
-    postRequest() {
-        const { userSpending } = this.props
+    postRequest(values) {
+
+        const { updateSpendingDataID } = this.props
         const object = {
-            alcoholic_drinks_tobacco_narcotics: userSpending["spending_category"]["food_non_alcholic_drinks"],
-            food_non_alcholic_drinks: userSpending["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
-            clothing_footwear: userSpending["spending_category"]["clothing_footwear"],
-            household_bills: userSpending["spending_category"]["household_bills"],
-            recreation_culture: userSpending["spending_category"]["recreation_culture"],
-            education: userSpending["spending_category"]["education"],
-            resturants_hotels: userSpending["spending_category"]["resturants_hotels"],
-            transport: userSpending["spending_category"]["transport"],
-            other: userSpending["spending_category"]["other"],
+            alcoholic_drinks_tobacco_narcotics: values.alcohol,
+            food_non_alcholic_drinks: values.food,
+            clothing_footwear: values.clothing,
+            household_bills: values.household,
+            recreation_culture: values.recreation,
+            education: values.education,
+            resturants_hotels: values.resturants,
+            transport: values.transport,
+            other: values.other,
         }
 
         adapter.postSpendingData(object)
-            .then(resp => console.log(resp))
+            .then(resp => updateSpendingDataID(resp.id))
     }
 
     render() {
@@ -95,7 +96,7 @@ const mapDispatchToProps = (dispatch) => {
         updateUserSpendingRecreation: (spending) => dispatch(updateUserSpendingRecreation(spending)),
         updateUserSpendingTransport: (spending) => dispatch(updateUserSpendingTransport(spending)),
         updateUserSpendingResturants: (spending) => dispatch(updateUserSpendingResturants(spending)),
-        updateErrors: (errors) => dispatch(updateErrors(errors)),
+        updateSpendingDataID: (id) => dispatch(updateSpendingDataID(id)),
     }
 }
 
