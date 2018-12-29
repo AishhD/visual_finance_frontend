@@ -1,14 +1,15 @@
 
 
-const usersURL = "http://localhost:3000/api/v1/users"
+const usersURL = "http://localhost:3000/api/v1/spending_data/average"
 const signInURL = "http://localhost:3000/api/v1/users/login"
 const ageURL = "http://localhost:3000/api/v1/age_options"
 const cityURL = "http://localhost:3000/api/v1/city_options"
 const nationalAverageURL = "http://localhost:3000/api/v1/national_averages"
 const childrenURL = "http://localhost:3000/api/v1/children_options/1"
 const currentUser = "http://localhost:3000/api/v1/users/validate"
-const averageURL = "http://localhost:3000/api/v1/users/average"
+const averageURL = "http://localhost:3000/api/v1/spending_data/average"
 const countryHouseholdSpendingURL = "http://localhost:3000/api/v1/household_spendings"
+const spendingDataURL = "http://localhost:3000/api/v1/spending_data"
 
 const handleResponse = resp => {
     if (resp.ok)
@@ -67,6 +68,18 @@ export const patchUser = object => {
         body: JSON.stringify({ user: object })
     }).then(handleResponse);
 };
+
+// -----Sending Data-----
+
+export const postSpendingData = object => {
+    return fetch(spendingDataURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ spending_data: object })
+    }).then(handleResponse);
+}
 
 // -----Age-----
 

@@ -4,9 +4,9 @@ import { Button, Form, Input } from 'semantic-ui-react';
 
 const requiredNumber = (value) => {
     if (!value) {
-        return 'Required'
+        return 'Required that you enter a number'
     } else if (parseInt(value) === isNaN) {
-        return 'Must be a number'
+        return 'Required that you enter a number'
     }
 
 }
@@ -61,7 +61,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 // )
 
 const SyncValidationForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props
+    const { handleSubmit, submitting } = props
     return (
         <Form onSubmit={handleSubmit} >
 

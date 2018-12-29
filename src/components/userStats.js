@@ -8,7 +8,6 @@ import updateAllCities from '../actions/updateAllCities'
 import updateNationalAverage from '../actions/updateNationalAverage'
 import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import 'c3/c3.css';
-import C3Chart from 'react-c3js';
 import { Segment, Container } from 'semantic-ui-react'
 import ComparisonLineGraph from './ComparisonLineGraph.js';
 
@@ -45,24 +44,24 @@ class UserStats extends React.Component {
     }
 
     render() {
-        const data = {
-            columns: [
+        // const data = {
+        //     columns: [
 
-                ["National Average",
-                    0, 2, 3, 5]
-                ,
-                ["Your spending",
-                    0, 25, 3, 5]
-            ],
-            type: 'line',
-            labels: true,
-        };
-        const axis = {
-            x: {
-                type: 'category',
-                categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
-            },
-        }
+        //         ["National Average",
+        //             0, 2, 3, 5]
+        //         ,
+        //         ["Your spending",
+        //             0, 25, 3, 5]
+        //     ],
+        //     type: 'line',
+        //     labels: true,
+        // // };
+        // const axis = {
+        //     x: {
+        //         type: 'category',
+        //         categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
+        //     },
+        // }
 
 
 
@@ -79,7 +78,7 @@ class UserStats extends React.Component {
 
                     </div >
                 </Container>
-            </Segment>
+            </Segment >
         )
     }
 }

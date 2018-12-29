@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
-import mapData from "./mapData"
 
 class Map extends Component {
 
@@ -48,11 +47,11 @@ class Map extends Component {
                     console.log(e.mapObject.enTitle)
                     this.selectedCountrySpending(e)
                 },
-                "event": "descriptionClosed",
-                "method": function (ev) {
-                    // ev.chart.selectObject();
-                    console.log(ev)
-                },
+                // "event": "descriptionClosed",
+                // "method": function (ev) {
+                //     // ev.chart.selectObject();
+                //     console.log(ev)
+                // },
 
             },]
         }

@@ -17,9 +17,6 @@ class Map extends Component {
     removeID() {
         const { getCode } = require('country-list');
         const spendingData = JSON.parse(JSON.stringify(this.state.householdSpending))
-        const descriptionEngland = () => {
-            return '<a href="/UK">Compare your spending</a><br /><br />'
-        }
         let newSpendingData = spendingData
             .map(countryObj => (
                 countryObj.country !== "United Kingdom" ?
