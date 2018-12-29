@@ -17,11 +17,24 @@ class Map extends Component {
     removeID() {
         const { getCode } = require('country-list');
         const spendingData = JSON.parse(JSON.stringify(this.state.householdSpending))
-        const newSpendingData = spendingData
-            .map(countryObj => ({
-                id: getCode(countryObj.country),
-                value: Math.round(countryObj.value),
-            }))
+        const descriptionEngland = () => {
+            return '<a href="/UK">Compare your spending</a><br /><br />'
+        }
+        let newSpendingData = spendingData
+            .map(countryObj => (
+                countryObj.country !== "United Kingdom" ?
+                    {
+
+                        id: getCode(countryObj.country),
+                        value: Math.round(countryObj.value),
+                    }
+                    :
+                    {
+                        id: getCode(countryObj.country),
+                        value: Math.round(countryObj.value),
+                        "description": '<a href="/UK">Compare your spending</a><br /><br />'
+                    }
+            ))
             .filter(countryObj => countryObj.value !== 0)
             .filter(countryObj => countryObj.id !== undefined)
         this.setState({ householdSpending: newSpendingData })
@@ -32,7 +45,7 @@ class Map extends Component {
         const config = {
             "type": "map",
             "theme": "light",
-            "colorSteps": 60,
+            "colorSteps": 10,
             "fill": "blue",
             "dataProvider": {
                 "map": "worldLow",
@@ -75,19 +88,24 @@ class Map extends Component {
                 "event": "descriptionClosed",
                 "method": function (ev) {
                     // ev.chart.selectObject();
-                    console.log(ev)
+                    // console.log(ev)
                 },
 
             },]
         }
 
         return (
-            <div>
-                <h1>Household Consumption Expenditure per Capita</h1>
-                <AmCharts.React style={{ width: "100%", height: "700px" }} options={config} />
+            <div class="flex-container">
+                <div>
+                    <h1>Household Consumption Expenditure per Capita</h1>
+                </div>
+                <div style={{ width: "100%", height: "500px" }}>
+                    <AmCharts.React style={{ width: "100%", height: "100%" }} options={config} />
+                </div>
                 {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
-                <h4>2017 US$ </h4>
-                <h5>Source: <a href="https://data.worldbank.org/indicator/NE.CON.PRVT.PC.KD">The World Bank</a> </h5>
+                <div><h4>2017 US$ </h4>
+                    <h5>Source: <a href="https://data.worldbank.org/indicator/NE.CON.PRVT.PC.KD">The World Bank</a> </h5>
+                </div>
             </div>
         );
     }

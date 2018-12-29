@@ -1,0 +1,4 @@
++ next@7.0.2
+added 137 packages from 199 contributors and audited 43593 packages in 28.747s
+found 18 vulnerabilities (16 low, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details

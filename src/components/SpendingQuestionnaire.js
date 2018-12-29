@@ -10,11 +10,9 @@ import updateUserSpendingTransport from '../actions/updateUserSpendingTransport'
 import updateUserSpendingResturants from '../actions/updateUserSpendingResturants';
 import updateErrors from '../actions/updateErrors';
 import { connect } from 'react-redux';
-import { Segment, Container, Form, Button } from 'semantic-ui-react'
+import { Segment, Container, Button, Form } from 'semantic-ui-react';
+import ValidatingSpendingQues from "./ValidatingSpendingQues"
 import InputSection from './SpendingCategoriesForm'
-
-
-
 
 class SpendingQuestionnaire extends React.Component {
 
@@ -22,8 +20,12 @@ class SpendingQuestionnaire extends React.Component {
         this.props.history.push('/UserStats')
     }
 
-    render() {
+    handleSubmit(values) {
+        console.log(values)
+    }
 
+
+    render() {
         const { updateUserSpendingFood, updateUserSpendingAlcohol, updateUserSpendingClothing, updateUserSpendingEducation, updateUserSpendingHousehold, updateUserSpendingOther, updateUserSpendingRecreation, updateUserSpendingTransport, updateUserSpendingResturants, userSpending, updateErrors, errors } = this.props
         return (
 
@@ -35,35 +37,7 @@ class SpendingQuestionnaire extends React.Component {
                         <Container>
                             <h2>Weekly Spending</h2>
                             {errors ? <h4>{errors}</h4> : ""}
-                            <Form >
-
-                                <Form.Group widths='equal'>
-                                    <InputSection label={"Food & non-alcholic drinks"} update={updateUserSpendingFood} />
-                                    <InputSection label={"Alcoholic drinks, tobacco & narcotics"} update={updateUserSpendingAlcohol} />
-                                </Form.Group>
-                                <Form.Group widths='equal'>
-                                    <InputSection label={"Household and bills"} update={updateUserSpendingHousehold} />
-                                    <InputSection label={"Transport"} update={updateUserSpendingTransport} />
-                                </Form.Group>
-                                <Form.Group widths='equal'>
-                                    <InputSection label={"Resturants & Hotels"} update={updateUserSpendingResturants} />
-                                    <InputSection label={"Clothing & footwear"} update={updateUserSpendingClothing} />
-                                </Form.Group>
-                                <Form.Group widths='equal'>
-                                    <InputSection label={"Recreation & Culture"} update={updateUserSpendingRecreation} />
-                                    <InputSection label={"Education"} update={updateUserSpendingEducation} />
-                                </Form.Group>
-                                <Form.Group widths='equal'>
-                                    <InputSection label={"Other"} update={updateUserSpendingOther} />
-                                    <Form.Field
-                                        control={Button}
-                                        type="button"
-                                        content='Confirm'
-                                        onClick={e => userSpending["spending_category"]["food_non_alcholic_drinks"] && userSpending["spending_category"]["alcoholic_drinks_tobacco_narcotics"] && userSpending["spending_category"]["household_bills"] && userSpending["spending_category"]["transport"] && userSpending["spending_category"]["resturants_hotels"] && userSpending["spending_category"]["clothing_footwear"] && userSpending["spending_category"]["education"] && userSpending["spending_category"]["other"] ? this.props.history.push('/UserStats') : updateErrors("Please fill in all categories")}
-                                    />
-                                </Form.Group>
-
-                            </Form>
+                            <ValidatingSpendingQues onSubmit={this.handleSubmit} />
                         </Container>
                     </Segment>
                 </div>

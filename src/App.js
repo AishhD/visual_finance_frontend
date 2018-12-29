@@ -46,6 +46,7 @@ class App extends Component {
           <Route path="/UserStats" component={UserStats} />
           <Route path="/UK" component={ukMap} />
           <Route path="/api" component={api} />
+
           <Route path="/" component={Map} />
         </Switch>
       </div>
