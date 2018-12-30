@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Segment, Form, Button, Container } from 'semantic-ui-react'
+import { Menu, Segment, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import updateUsername from "../actions/updateUsername";
 import updateUserAge from "../actions/updateUserAge";
@@ -8,6 +8,7 @@ import updateUserChildren from "../actions/updateUserChildren";
 import updateUserToken from "../actions/updateUserToken";
 import updateErrors from '../actions/updateErrors';
 import ValidatingLoginQues from './ValidatingLoginQues'
+import ValidatingSignUpQues from './ValidatingSignUpQues'
 
 
 import updateAuthorised from "../actions/updateAuthorised";
@@ -27,16 +28,17 @@ class Login extends React.Component {
     }
 
 
-    signUp = () => {
-        const { userAge, location, children, username } = this.props
-        console.log(userAge)
+    handleSubmitSignUp = (userInput) => {
+        const { userAge, location, children, username, updateUsername } = this.props
+        console.log(userInput)
+        updateUsername(userInput.username)
 
         const newUser = {
-            username: username,
+            username: userInput.username,
             age: userAge,
             location: location,
             children: children,
-            password: this.state.password
+            password: userInput.password
         }
 
         adapter.postUsers(newUser)
@@ -47,7 +49,26 @@ class Login extends React.Component {
     }
 
 
-    login = () => {
+    handleSubmitlogin = (userInput) => {
+
+        const { updateUsername } = this.props
+
+        updateUsername(userInput.username)
+
+        const loginUser = {
+            username: userInput.username,
+            password: userInput.password,
+        }
+
+        adapter.signInUsers(loginUser)
+            .then(resp => successful(resp))
+            .catch(error => this.props.updateErrors("Your username and/or password did not match our records"))
+
+        const successful = (resp) => {
+            serverResponse(resp)
+            this.props.history.push('/SpendingQuestionnaire')
+        }
+
         let serverResponse = (user) => {
             localStorage.setItem("token", user.token)
             this.props.updateUserAge(user.age)
@@ -55,24 +76,6 @@ class Login extends React.Component {
             this.props.updateUserChildren(user.children)
             this.props.updateUserToken(user.token)
         }
-        const { username } = this.props
-        const { password } = this.state
-
-        const successful = (resp) => {
-            serverResponse(resp)
-            this.props.history.push('/SpendingQuestionnaire')
-        }
-        const newUser = {
-            username: username,
-            password: password,
-        }
-
-        adapter.signInUsers(newUser)
-            .then(resp => successful(resp))
-            .catch(error => this.props.updateErrors("Your username and/or password did not match our records"))
-
-
-
     }
 
     render() {
@@ -86,27 +89,17 @@ class Login extends React.Component {
                 </Menu>
 
                 {this.props.authorised === 'Sign up' ?
-                    <Form>
-                        <Form.Field>
-                            <label>Username</label>
-                            <input placeholder='Username' onChange={(event) => { this.props.updateUsername(event.target.value) }} />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Password</label>
-                            <input placeholder='Password' type="password" onChange={(event) => { this.setState({ password: event.target.value }) }} />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Confirm Passsword</label>
-                            <input placeholder='Confirm Passsword' type="password" onChange={(event) => { this.setState({ password_confirmation: event.target.value }) }} />
-                        </Form.Field>
-                        <Button type="button" onClick={this.signUp} >Sign Up</Button>
-                    </Form> : ""
-                }
+                    <Segment>
+                        <Container>
+                            <ValidatingSignUpQues onSubmit={this.handleSubmitSignUp} />
+                        </Container>
+                    </Segment> : ""}
+
 
                 {this.props.authorised === 'login' ?
                     <Segment>
                         <Container>
-                            <ValidatingLoginQues onSubmit={this.handleSubmit} />
+                            <ValidatingLoginQues onSubmit={this.handleSubmitlogin} />
                         </Container>
                     </Segment> : ""}
             </div>

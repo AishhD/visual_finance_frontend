@@ -14,6 +14,13 @@ const validate = values => {
     } else if (values.password.length > 15) {
         errors.password = 'Must be 15 characters or less'
     }
+    if (!values.password_conf) {
+        errors.password_conf = 'Required'
+    } else if (!values.password_conf === values.password) {
+        errors.password_conf = 'Passwords must match'
+    } else if (values.password_conf.length > 15) {
+        errors.password_conf = 'Must be 15 characters or less'
+    }
     return errors
 }
 
@@ -52,6 +59,7 @@ const SyncValidationForm = (props) => {
         <Form onSubmit={handleSubmit}>
             <Field name="username" type="text" component={renderField} label="Username" />
             <Field name="password" type="password" component={renderField} label="Password" />
+            <Field name="password_conf" type="password" component={renderField} label="Password Confirmation" />
             <Button type="submit" disabled={submitting}>Submit</Button>
         </Form>
     )
