@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Segment, Form, Button } from 'semantic-ui-react'
+import { Menu, Segment, Form, Button, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import updateUsername from "../actions/updateUsername";
 import updateUserAge from "../actions/updateUserAge";
@@ -7,6 +7,7 @@ import updateUserLocation from "../actions/updateUserLocation";
 import updateUserChildren from "../actions/updateUserChildren";
 import updateUserToken from "../actions/updateUserToken";
 import updateErrors from '../actions/updateErrors';
+import ValidatingLoginQues from './ValidatingLoginQues'
 
 
 import updateAuthorised from "../actions/updateAuthorised";
@@ -104,17 +105,9 @@ class Login extends React.Component {
 
                 {this.props.authorised === 'login' ?
                     <Segment>
-                        <Form>
-                            <Form.Field>
-                                <label>Username</label>
-                                <input placeholder='Username' onChange={(event) => { this.props.updateUsername(event.target.value) }} />
-                            </Form.Field>
-                            <Form.Field>
-                                <label>Password</label>
-                                <input placeholder='Password' type="password" onChange={(event) => { this.setState({ password: event.target.value }) }} />
-                            </Form.Field>
-                            <Button type='button' onClick={this.login}>Login</Button>
-                        </Form>
+                        <Container>
+                            <ValidatingLoginQues onSubmit={this.handleSubmit} />
+                        </Container>
                     </Segment> : ""}
             </div>
         )
