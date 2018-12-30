@@ -16,7 +16,7 @@ const validate = values => {
     }
     if (!values.password_conf) {
         errors.password_conf = 'Required'
-    } else if (!values.password_conf === values.password) {
+    } else if (values.password_conf !== values.password) {
         errors.password_conf = 'Passwords must match'
     } else if (values.password_conf.length > 15) {
         errors.password_conf = 'Must be 15 characters or less'
@@ -38,7 +38,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
             label={label}
             type={type}
         />
-        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+        {touched && ((error && <span style={{ color: 'red' }} >{error}</span>) || (warning && <span style={{ color: 'red' }}>{warning}</span>))}
     </div >
 )
 
@@ -47,7 +47,6 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 //         <label>{label}</label>
 //         <div>
 //             <input {...input} placeholder={label} type={type} />
-
 //         </div>
 //     </div>
 // )
