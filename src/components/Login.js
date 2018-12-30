@@ -9,6 +9,16 @@ import updateUserToken from "../actions/updateUserToken";
 import updateErrors from '../actions/updateErrors';
 import ValidatingLoginQues from './ValidatingLoginQues'
 import ValidatingSignUpQues from './ValidatingSignUpQues'
+import updateUserSpendingFood from '../actions/updateUserSpendingFood';
+import updateUserSpendingClothing from '../actions/updateUserSpendingClothing';
+import updateUserSpendingEducation from '../actions/updateUserSpendingEducation';
+import updateUserSpendingAlcohol from '../actions/updateUserSpendingAlcohol';
+import updateUserSpendingHousehold from '../actions/updateUserSpendingHousehold';
+import updateUserSpendingOther from '../actions/updateUserSpendingOther';
+import updateUserSpendingRecreation from '../actions/updateUserSpendingRecreation';
+import updateUserSpendingTransport from '../actions/updateUserSpendingTransport';
+import updateUserSpendingResturants from '../actions/updateUserSpendingResturants';
+import updateSpendingDataID from '../actions/updateSpendingDataID';
 
 
 import updateAuthorised from "../actions/updateAuthorised";
@@ -24,7 +34,7 @@ class Login extends React.Component {
 
 
     handleSubmitSignUp = (userInput) => {
-        const { userAge, location, children, username, updateUsername, spendingDatumID } = this.props
+        const { userAge, location, children, updateUsername, spendingDataID } = this.props
         updateUsername(userInput.username)
 
         const newUser = {
@@ -33,20 +43,20 @@ class Login extends React.Component {
             age: userAge,
             location: location,
             children: children,
-            spending_datum_id: spendingDatumID
+            spending_datum_id: spendingDataID
         }
 
         adapter.postUsers(newUser)
             .then(resp => this.signin(resp))
-
-        // localStorage.setItem("token", resp.token)
-        // this.props.history.push('/UserStats')
+            .catch(error => this.props.history.push('/Login'))
+            .then(resp => localStorage.setItem("token", resp.token),
+                this.props.history.push('/UserStats'))
     }
 
 
     handleSubmitlogin = (userInput) => {
 
-        const { updateUsername } = this.props
+        const { updateUsername, updateUserSpendingFood, updateUserSpendingAlcohol, updateUserSpendingClothing, updateUserSpendingEducation, updateUserSpendingHousehold, updateUserSpendingOther, updateUserSpendingRecreation, updateUserSpendingTransport, updateUserSpendingResturants, updateSpendingDataID } = this.props
 
         updateUsername(userInput.username)
 
@@ -65,11 +75,22 @@ class Login extends React.Component {
         }
 
         let serverResponse = (user) => {
+
+            updateUserSpendingAlcohol(user.spending_datum["alcoholic_drinks_tobacco_narcotics"])
+            updateUserSpendingClothing(user.spending_datum["clothing_footwear"])
+            updateUserSpendingEducation(user.spending_datum["education"])
+            updateUserSpendingFood(user.spending_datum["food_non_alcholic_drinks"])
+            updateUserSpendingHousehold(user.spending_datum["household_bills"])
+            updateUserSpendingOther(user.spending_datum["other"])
+            updateUserSpendingRecreation(user.spending_datum["recreation_culture"])
+            updateUserSpendingResturants(user.spending_datum["resturants_hotels"])
+            updateUserSpendingTransport(user.spending_datum["transport"])
             localStorage.setItem("token", user.token)
             this.props.updateUserAge(user.age)
             this.props.updateUserLocation(user.location)
             this.props.updateUserChildren(user.children)
             this.props.updateUserToken(user.token)
+            updateSpendingDataID(user.spending_datum.id)
         }
     }
 
@@ -104,12 +125,11 @@ class Login extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    username: state.username,
     authorised: state.authorised,
     userAge: state.userAge,
     location: state.userLocation,
     children: state.userChildren,
-    spendingDatumID: state.spendingDatumID
+    spendingDataID: state.spendingDataID
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -120,6 +140,16 @@ const mapDispatchToProps = (dispatch) => ({
     updateUserChildren: (userChildren) => { dispatch(updateUserChildren(userChildren)) },
     updateUserToken: (userToken) => { dispatch(updateUserToken(userToken)) },
     updateErrors: (errors) => dispatch(updateErrors(errors)),
+    updateUserSpendingFood: (spending) => dispatch(updateUserSpendingFood(spending)),
+    updateUserSpendingClothing: (spending) => dispatch(updateUserSpendingClothing(spending)),
+    updateUserSpendingEducation: (spending) => dispatch(updateUserSpendingEducation(spending)),
+    updateUserSpendingAlcohol: (spending) => dispatch(updateUserSpendingAlcohol(spending)),
+    updateUserSpendingHousehold: (spending) => dispatch(updateUserSpendingHousehold(spending)),
+    updateUserSpendingOther: (spending) => dispatch(updateUserSpendingOther(spending)),
+    updateUserSpendingRecreation: (spending) => dispatch(updateUserSpendingRecreation(spending)),
+    updateUserSpendingTransport: (spending) => dispatch(updateUserSpendingTransport(spending)),
+    updateUserSpendingResturants: (spending) => dispatch(updateUserSpendingResturants(spending)),
+    updateSpendingDataID: (id) => dispatch(updateSpendingDataID(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

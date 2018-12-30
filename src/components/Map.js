@@ -92,7 +92,7 @@ class Map extends Component {
         }
 
         return (
-            <div class="flex-container">
+            <div className="flex-container">
                 <div>
                     <h1>Household Consumption Expenditure per Capita</h1>
                 </div>
