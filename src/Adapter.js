@@ -1,6 +1,6 @@
 
 
-const usersURL = "http://localhost:3000/api/v1/spending_data/average"
+const usersURL = "http://localhost:3000/api/v1/users"
 const signInURL = "http://localhost:3000/api/v1/users/login"
 const ageURL = "http://localhost:3000/api/v1/age_options"
 const cityURL = "http://localhost:3000/api/v1/city_options"

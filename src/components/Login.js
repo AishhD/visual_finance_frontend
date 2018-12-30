@@ -16,11 +16,6 @@ import * as adapter from "../Adapter.js";
 
 class Login extends React.Component {
 
-    state = {
-        password: "",
-        password_confirmation: ""
-    }
-
     signin = user => {
 
         localStorage.setItem('token', user.token)
@@ -29,23 +24,23 @@ class Login extends React.Component {
 
 
     handleSubmitSignUp = (userInput) => {
-        const { userAge, location, children, username, updateUsername } = this.props
-        console.log(userInput)
+        const { userAge, location, children, username, updateUsername, spendingDatumID } = this.props
         updateUsername(userInput.username)
 
         const newUser = {
             username: userInput.username,
+            password: userInput.password,
             age: userAge,
             location: location,
             children: children,
-            password: userInput.password
+            spending_datum_id: spendingDatumID
         }
 
         adapter.postUsers(newUser)
             .then(resp => this.signin(resp))
 
         // localStorage.setItem("token", resp.token)
-        this.props.history.push('/UserStats')
+        // this.props.history.push('/UserStats')
     }
 
 
@@ -114,6 +109,7 @@ const mapStateToProps = (state) => ({
     userAge: state.userAge,
     location: state.userLocation,
     children: state.userChildren,
+    spendingDatumID: state.spendingDatumID
 })
 
 const mapDispatchToProps = (dispatch) => ({
