@@ -83,6 +83,16 @@ const WebpageHeading = ({ mobile }) => (
                 marginTop: mobile ? '1.5em' : '3em',
             }}
         />
+        {/* <Header
+            as='h2'
+            content='Comparing household spending.'
+            inverted
+            style={{
+                fontSize: mobile ? '1.5em' : '1.7em',
+                fontWeight: 'normal',
+                marginTop: mobile ? '0.5em' : '1.5em',
+            }}
+        /> */}
         <br />
         <img src="http://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300" alt="UK map" />
     </Container>

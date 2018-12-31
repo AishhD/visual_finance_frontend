@@ -14,7 +14,7 @@ export default class ComparisonLineGraph extends React.Component {
                 ['Average User Spending', this.props.averageUserData["spending_category"]["food_non_alcholic_drinks"], this.props.averageUserData["spending_category"]["alcoholic_drinks_tobacco_narcotics"], this.props.averageUserData["spending_category"]["clothing_footwear"], this.props.averageUserData["spending_category"]["household_bills"], this.props.averageUserData["spending_category"]["recreation_culture"], this.props.averageUserData["spending_category"]["education"], this.props.averageUserData["spending_category"]["resturants_hotels"], this.props.averageUserData["spending_category"]["transport"], this.props.averageUserData["spending_category"]["other"]],
 
             ],
-            type: 'line',
+            type: 'bar',
         };
 
 

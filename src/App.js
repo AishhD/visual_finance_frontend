@@ -19,25 +19,6 @@ import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
-
-  // postRequest() {
-  //   adapter.postUsers({ username: "sam", password: "wheat", password_confirmation: "wheat", age: "less than 30", location: "london", children: "false" })
-  //     .then(user => console.log(user))
-  // }
-
-  // patchRequest() {
-  //   adapter.patchUser({
-  //     age: "less than 30",
-  //     children: "false",
-  //     id: 3,
-  //     location: "london",
-  //     password: "scoobySnacks",
-  //     username: "scrapy"
-  //   })
-  //     .then(user => console.log(user))
-  // }
-
-
   render() {
     return (
       <div className="App">
