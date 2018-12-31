@@ -101,7 +101,6 @@ class Map extends Component {
                 </div>
                 {/* <AmCharts.React style={{ width: "100%", height: "calc(100% - 60px)" }} options={config} /> */}
                 <div><h4>2017 US$ </h4>
-                    <h5>Source: <a href="https://data.worldbank.org/indicator/NE.CON.PRVT.PC.KD">The World Bank</a> </h5>
                 </div>
             </div>
         );

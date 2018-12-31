@@ -7,9 +7,10 @@ import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
-import Map from './components/Map'
+import Homepage from './components/Homepage'
 import ukMap from './components/ukMap'
 import api from './components/api'
+import design from './components/Homepage'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
 import { Route, Switch } from "react-router-dom";
 
@@ -46,8 +47,7 @@ class App extends Component {
           <Route path="/UserStats" component={UserStats} />
           <Route path="/UK" component={ukMap} />
           <Route path="/api" component={api} />
-
-          <Route path="/" component={Map} />
+          <Route path="/" component={Homepage} />
         </Switch>
       </div>
     );
