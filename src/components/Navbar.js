@@ -48,6 +48,8 @@ import React, { Component } from 'react'
 import Questionnaire from './Questionnaire.js'
 import NationalCharts from './NationalCharts'
 import LinkButton from './link-button'
+import { NavLink } from 'react-router-dom'
+
 
 
 import {
@@ -65,6 +67,14 @@ import {
     Sidebar,
     Visibility,
 } from 'semantic-ui-react'
+
+
+
+const handleLoginClick = () => {
+    this.props.history.push(`/Login`)
+    // return <Redirect to='/Login' />
+}
+
 
 /* eslint-disable react/no-multi-comp */
 /* Heads up! WebpageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
@@ -143,11 +153,15 @@ class DesktopContainer extends Component {
                                 <Menu.Item as='a'>Work</Menu.Item>
                                 <Menu.Item as='a'>Company</Menu.Item>
                                 <Menu.Item as='a'>Careers</Menu.Item>
-                                <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                <Menu.Item position='right' >
+                                    <Button as='a' inverted={!fixed} as={NavLink}
+                                        to="/Login"
+                                        name="home">
                                         Log in
                   </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={NavLink}
+                                        to="/SignUp"
+                                        name="home">
                                         Sign Up
                   </Button>
                                 </Menu.Item>
@@ -211,10 +225,14 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar' />
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted>
+                                    <Button as='a' inverted onClick={this.handleLoginClick} as={NavLink}
+                                        to="/Login"
+                                        name="home">
                                         Log in
                   </Button>
-                                    <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
+                                    <Button as='a' inverted style={{ marginLeft: '0.5em' }} as={NavLink}
+                                        to="/SignUp"
+                                        name="home">
                                         Sign Up
                   </Button>
                                 </Menu.Item>

@@ -6,6 +6,7 @@ import Questionnaire from './components/Questionnaire'
 import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import Navbar from './components/Navbar'
 import Homepage from './components/Homepage'
 import ukMap from './components/ukMap'
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path="/Questionnaire" component={Questionnaire} />
           <Route path="/NationalCharts" component={NationalCharts} />
           <Route path="/Login" component={Login} />
+          <Route path="/SignUp" component={SignUp} />
           <Route path="/SpendingQuestionnaire" component={SpendingQuestionnaire} />
           <Route path="/UserStats" component={UserStats} />
           <Route path="/UK" component={ukMap} />
