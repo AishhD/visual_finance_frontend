@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Form, Input } from 'semantic-ui-react';
+import { Button, Form, Input, Segment, Grid, Header, Image } from 'semantic-ui-react';
 
 const requiredNumber = (value) => {
     if (!value) {
@@ -63,30 +63,29 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 const SyncValidationForm = (props) => {
     const { handleSubmit, submitting } = props
     return (
-
         <Form onSubmit={handleSubmit} celled='internally' columns='equal' stackable >
 
-            <Form.Group widths='equal'>
-                <Field name="food" type="number" component={renderField} label="Food & non-alcholic drinks" />
-                <Field name="alcohol" type="number" component={renderField} label="Alcoholic drinks, tobacco & narcotics" />
-            </Form.Group>
-            <Form.Group widths='equal'>
-                <Field name="household" type="number" component={renderField} label="Household and bills" />
-                <Field name="transport" type="number" component={renderField} label="Transport" />
-            </Form.Group>
-            <Form.Group widths='equal'>
-                <Field name="resturants" type="number" component={renderField} label="Resturants & Hotels" />
-                <Field name="clothing" type="number" component={renderField} label="Clothing & footwear" />
-            </Form.Group>
-            <Form.Group widths='equal'>
-                <Field name="recreation" type="number" component={renderField} label="Recreation & Culture" />
-                <Field name="education" type="number" component={renderField} label="Education" />
-            </Form.Group>
-            <Form.Group widths='equal'>
-                <Field name="other" type="number" component={renderField} label="Other" />
-                <Button type="submit" disabled={submitting}>Submit</Button>
-            </Form.Group>
+            <Segment style={{ padding: '0em' }} vertical>
+                <Grid celled='internally' columns='equal' stackable>
+                    <Grid.Row textAlign='center'>
+                        <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                            <Field name="food" type="number" component={renderField} label="Food & non-alcholic drinks" width={20} />
+                            <Field name="household" type="number" component={renderField} label="Household and bills" />
+                            <Field name="resturants" type="number" component={renderField} label="Resturants & Hotels" />
+                            <Field name="recreation" type="number" component={renderField} label="Recreation & Culture" />
+                            <Field name="other" type="number" component={renderField} label="Other" />
+                        </Grid.Column>
+                        <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                            <Field name="alcohol" type="number" component={renderField} label="Alcoholic drinks, tobacco & narcotics" />
+                            <Field name="transport" type="number" component={renderField} label="Transport" />
+                            <Field name="clothing" type="number" component={renderField} label="Clothing & footwear" />
+                            <Field name="education" type="number" component={renderField} label="Education" />
+                            <br /><Button type="submit" disabled={submitting}>Submit</Button>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
 
+            </Segment>
         </Form>
     )
 }

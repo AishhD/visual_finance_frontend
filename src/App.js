@@ -13,6 +13,8 @@ import api from './components/api'
 import CategoryPage from './components/CategoryPage'
 import CategoryGraphsPage from './components/CategoryGraphsPage'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
+import SpendingQuestionnairePage from './components/SpendingQuestionnairePage'
+import Footer from './components/Footer'
 import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -50,8 +52,10 @@ class App extends Component {
           <Route path="/api" component={api} />
           <Route path="/categoryGraphs" component={CategoryGraphsPage} />
           <Route path="/category" component={CategoryPage} />
+          <Route path="/spending" component={SpendingQuestionnairePage} />
           <Route path="/" component={Homepage} />
         </Switch>
+        <Footer />
       </div>
     );
   }

@@ -64,15 +64,15 @@ class SpendingQuestionnaire extends React.Component {
 
             <div>
 
-                <div className="ui stackable center aligned page grid">
-                    {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
-                    <Segment raised style={{ marginTop: '15em' }}>
-                        <Container>
-                            <h2>Weekly Spending</h2>
-                            <ValidatingSpendingQues onSubmit={this.handleSubmit} />
-                        </Container>
-                    </Segment>
-                </div>
+
+                {/* <p>{this.props.location.pathname}, {this.props.age}, {this.props.children}</p> */}
+                <Segment raised >
+                    <Container>
+                        <h2>Weekly Spending</h2>
+                        <ValidatingSpendingQues onSubmit={this.handleSubmit} />
+                    </Container>
+                </Segment>
+
             </div >
         )
     }
