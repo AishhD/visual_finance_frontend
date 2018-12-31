@@ -203,7 +203,7 @@ const HomepageLayout = () => (
                     Find out about the UK weekly Spending
         </Header>
                 <p style={{ fontSize: '1.33em' }}>
-                    Comparision of the UK finance by age, location and whether or not they have children.
+                    Comparision of the UK household spending by age, location and whether or not they have children.
                 </p>
                 <Button as='a' size='large'>
                     Compare

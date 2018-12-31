@@ -10,7 +10,8 @@ import Navbar from './components/Navbar'
 import Homepage from './components/Homepage'
 import ukMap from './components/ukMap'
 import api from './components/api'
-import design from './components/Homepage'
+import CategoryPage from './components/CategoryPage'
+import CategoryGraphsPage from './components/CategoryGraphsPage'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
 import { Route, Switch } from "react-router-dom";
 
@@ -47,6 +48,8 @@ class App extends Component {
           <Route path="/UserStats" component={UserStats} />
           <Route path="/UK" component={ukMap} />
           <Route path="/api" component={api} />
+          <Route path="/categoryGraphs" component={CategoryGraphsPage} />
+          <Route path="/category" component={CategoryPage} />
           <Route path="/" component={Homepage} />
         </Switch>
       </div>

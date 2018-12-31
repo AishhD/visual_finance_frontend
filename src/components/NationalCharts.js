@@ -7,6 +7,7 @@ import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
 import { Redirect } from 'react-router-dom'
 import NationalStatsBarGraph from "./NationalStatsBarGraph"
+import { Divider, Grid } from 'semantic-ui-react'
 
 
 class NationalCharts extends React.Component {
@@ -18,31 +19,47 @@ class NationalCharts extends React.Component {
         return (
             children && age && location ?
                 <div >
-                    <h1>National Spending by category</h1>
-                    <div id="chart">
-                        <UserAgePieChart />
-                    </div>
-                    <div id="chart">
-                        <UserLocationPieChart />
-                    </div>
+
+                    <Grid celled='internally' columns='equal' stackable >
+                        <Grid.Row centered>
+                            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                <Divider
+                                    as='h3'
+                                    className='header'
+                                    horizontal
+                                    style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+                                >
+                                    National Spending by category
+                            </Divider>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row centered>
+                            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                <UserAgePieChart />
+                            </Grid.Column>
+                            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                <UserLocationPieChart />
+                            </Grid.Column>
+
+                            {this.props.children === "Yes" ?
+                                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                    <UserChildrenPieChart />
+                                </Grid.Column>
+                                : ""}
 
 
-                    {this.props.children === "Yes" ?
-                        <div id="chart">
-                            <UserChildrenPieChart />
-                            < NationalStatsBarGraph />
-                        </div> : < NationalStatsBarGraph />}
-                    <LinkButton to="/Login">Sign up to compare your spending</LinkButton>
+                        </Grid.Row>
+                        <Grid.Row centered>
+                            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                < NationalStatsBarGraph />
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+
 
 
                 </div>
-                :
-                <Redirect to={{
-                    pathname: '/Questionnaire',
-                    state: { error: "Please fill in this form to continue" }
-                }}
-                />
-
+                : ""
         )
 
     }
@@ -56,6 +73,13 @@ const mapStateToProps = (state) => {
     }
 }
 
+
+{/* <Redirect to={{
+                    pathname: '/Questionnaire',
+                    state: { error: "Please fill in this form to continue" }
+                }} */}
+
+// />
 
 
 export default connect(mapStateToProps, null)(NationalCharts)

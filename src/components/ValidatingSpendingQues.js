@@ -63,7 +63,8 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 const SyncValidationForm = (props) => {
     const { handleSubmit, submitting } = props
     return (
-        <Form onSubmit={handleSubmit} >
+
+        <Form onSubmit={handleSubmit} celled='internally' columns='equal' stackable >
 
             <Form.Group widths='equal'>
                 <Field name="food" type="number" component={renderField} label="Food & non-alcholic drinks" />
