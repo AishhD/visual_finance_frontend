@@ -45,9 +45,6 @@
 
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import Questionnaire from './Questionnaire.js'
-import NationalCharts from './NationalCharts'
-import LinkButton from './link-button'
 import { NavLink } from 'react-router-dom'
 
 
@@ -55,25 +52,14 @@ import { NavLink } from 'react-router-dom'
 import {
     Button,
     Container,
-    Divider,
-    Grid,
     Header,
     Icon,
-    Image,
-    List,
     Menu,
     Responsive,
     Segment,
     Sidebar,
     Visibility,
 } from 'semantic-ui-react'
-
-
-
-const handleLoginClick = () => {
-    this.props.history.push(`/Login`)
-    // return <Redirect to='/Login' />
-}
 
 
 /* eslint-disable react/no-multi-comp */
@@ -147,12 +133,12 @@ class DesktopContainer extends Component {
                             size='large'
                         >
                             <Container>
-                                <Menu.Item as='a' active>
+                                <Menu.Item as={NavLink}
+                                    to="/"
+                                    name="home" active>
                                     Home
-                </Menu.Item>
-                                <Menu.Item as='a'>Work</Menu.Item>
-                                <Menu.Item as='a'>Company</Menu.Item>
-                                <Menu.Item as='a'>Careers</Menu.Item>
+                                </Menu.Item>
+
                                 <Menu.Item position='right' >
                                     <Button as='a' inverted={!fixed} as={NavLink}
                                         to="/Login"
@@ -202,14 +188,11 @@ class MobileContainer extends Component {
                     vertical
                     visible={sidebarOpened}
                 >
-                    <Menu.Item as='a' active>
+                    <Menu.Item as={NavLink}
+                        to="/"
+                        name="home" active>
                         Home
           </Menu.Item>
-                    <Menu.Item as='a'>Work</Menu.Item>
-                    <Menu.Item as='a'>Company</Menu.Item>
-                    <Menu.Item as='a'>Careers</Menu.Item>
-                    <Menu.Item as='a'>Log in</Menu.Item>
-                    <Menu.Item as='a'>Sign Up</Menu.Item>
                 </Sidebar>
 
                 <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -227,12 +210,12 @@ class MobileContainer extends Component {
                                 <Menu.Item position='right'>
                                     <Button as='a' inverted onClick={this.handleLoginClick} as={NavLink}
                                         to="/Login"
-                                        name="home">
+                                        name="login">
                                         Log in
                   </Button>
                                     <Button as='a' inverted style={{ marginLeft: '0.5em' }} as={NavLink}
                                         to="/SignUp"
-                                        name="home">
+                                        name="signUp">
                                         Sign Up
                   </Button>
                                 </Menu.Item>

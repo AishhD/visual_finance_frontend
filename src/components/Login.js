@@ -32,6 +32,10 @@ class Login extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.updateAuthorised('login')
+    }
+
 
     handleSubmitSignUp = (userInput) => {
         const { userAge, location, children, updateUsername, spendingDataID } = this.props
@@ -71,7 +75,7 @@ class Login extends React.Component {
 
         const successful = (resp) => {
             serverResponse(resp)
-            this.props.history.push('/SpendingQuestionnaire')
+            this.props.history.push('/UserStats')
         }
 
         let serverResponse = (user) => {

@@ -16,25 +16,27 @@ class Map extends Component {
 
     removeID() {
         const { getCode } = require('country-list');
-        const spendingData = JSON.parse(JSON.stringify(this.state.householdSpending))
-        let newSpendingData = spendingData
-            .map(countryObj => (
-                countryObj.country !== "United Kingdom" ?
-                    {
+        if (this.state.householdSpending) {
+            const spendingData = JSON.parse(JSON.stringify(this.state.householdSpending))
+            let newSpendingData = spendingData
+                .map(countryObj => (
+                    countryObj.country !== "United Kingdom" ?
+                        {
 
-                        id: getCode(countryObj.country),
-                        value: Math.round(countryObj.value),
-                    }
-                    :
-                    {
-                        id: getCode(countryObj.country),
-                        value: Math.round(countryObj.value),
-                        "description": '<a href="/UK">Compare your spending</a><br /><br />'
-                    }
-            ))
-            .filter(countryObj => countryObj.value !== 0)
-            .filter(countryObj => countryObj.id !== undefined)
-        this.setState({ householdSpending: newSpendingData })
+                            id: getCode(countryObj.country),
+                            value: Math.round(countryObj.value),
+                        }
+                        :
+                        {
+                            id: getCode(countryObj.country),
+                            value: Math.round(countryObj.value),
+                            "description": '<a href="/UK">Compare your spending</a><br /><br />'
+                        }
+                ))
+                .filter(countryObj => countryObj.value !== 0)
+                .filter(countryObj => countryObj.id !== undefined)
+            this.setState({ householdSpending: newSpendingData })
+        } else { return "Please wait" }
     }
 
     render() {

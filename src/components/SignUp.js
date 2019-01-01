@@ -32,6 +32,9 @@ class Login extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.updateAuthorised('Sign up')
+    }
 
     handleSubmitSignUp = (userInput) => {
         const { userAge, location, children, updateUsername, spendingDataID } = this.props
@@ -71,7 +74,7 @@ class Login extends React.Component {
 
         const successful = (resp) => {
             serverResponse(resp)
-            this.props.history.push('/SpendingQuestionnaire')
+            this.props.history.push('/UserStats')
         }
 
         let serverResponse = (user) => {
@@ -96,7 +99,6 @@ class Login extends React.Component {
 
     render() {
         const { authorised } = this.props
-        this.props.updateAuthorised('Sign up')
         return (
             <div>
                 <Menu pointing>

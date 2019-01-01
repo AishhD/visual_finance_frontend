@@ -42,7 +42,7 @@ class LocationGroup extends React.Component {
         return (
 
             <div className="ui stackable center aligned page grid">
-                <h1>Selct your location group</h1>
+                <h1>Select your location group</h1>
                 {(this.props.allCities) ?
                     <Form>
                         <Form.Field required>
