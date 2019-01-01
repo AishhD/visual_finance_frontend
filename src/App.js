@@ -3,6 +3,7 @@ import "./App.css";
 // import * as adapter from "./Adapter.js";
 // import HomePage from "./components/HomePage";
 import Questionnaire from './components/Questionnaire'
+import AllQuestionnaire from './components/AllQuestionnaire'
 import NationalCharts from './components/NationalCharts'
 import UserStats from './components/UserStats'
 import Login from './components/Login'
@@ -26,6 +27,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route path="/Questionnaire" component={Questionnaire} />
+          <Route path="/AllQuestionnaire" component={AllQuestionnaire} />
           <Route path="/NationalCharts" component={NationalCharts} />
           <Route path="/Login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
