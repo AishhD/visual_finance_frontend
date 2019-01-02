@@ -1,5 +1,4 @@
 import React from 'react'
-import UserStats from './UserStats.js'
 import AllQuestionnaire from './AllQuestionnaire.js'
 
 import {

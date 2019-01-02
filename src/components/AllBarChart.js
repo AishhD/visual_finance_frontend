@@ -30,9 +30,6 @@ class AllBarChart extends React.Component {
     }
 
     render() {
-        console.log("first data", this.props.firstData)
-        console.log("second data", this.props.secondData)
-        console.log("third data", this.props.thirdData)
         const data = {
             columns: [
                 [

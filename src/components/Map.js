@@ -48,7 +48,7 @@ class Map extends Component {
             "fill": "blue",
             "dataProvider": {
                 "map": "worldLow",
-                "areas": this.state.householdSpending
+                "areas": this.state.householdSpending || []
             },
             "include": "UK",
 

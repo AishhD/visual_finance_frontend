@@ -36,12 +36,6 @@ class BarChartQuestionnaire extends React.Component {
     }
 
     selectHandler = (event, data, state) => {
-        console.log("data", data.value)
-        console.log(this.state.firstSelection, this.state.secondSelection)
-        let value = event.target.value;
-
-        this.setState({ [event.target.name]: value })
-
         if (this.props.allAgeGroups.find(age => age["age_group"] === data.value)) {
             const age = this.props.allAgeGroups.find(age => age["age_group"] === data.value);
             this.setState({ [state]: age })

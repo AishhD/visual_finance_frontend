@@ -45,7 +45,7 @@
 
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -133,19 +133,19 @@ class DesktopContainer extends Component {
                             size='large'
                         >
                             <Container>
-                                <Menu.Item as={NavLink}
+                                <Menu.Item as={Link}
                                     to="/"
                                     name="home" active>
                                     Home
                                 </Menu.Item>
 
                                 <Menu.Item position='right' >
-                                    <Button as='a' inverted={!fixed} as={NavLink}
+                                    <Button inverted={!fixed} as={Link}
                                         to="/Login"
                                         name="home">
                                         Log in
                   </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={NavLink}
+                                    <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={Link}
                                         to="/SignUp"
                                         name="home">
                                         Sign Up
@@ -188,7 +188,7 @@ class MobileContainer extends Component {
                     vertical
                     visible={sidebarOpened}
                 >
-                    <Menu.Item as={NavLink}
+                    <Menu.Item as={Link}
                         to="/"
                         name="home" active>
                         Home
@@ -208,12 +208,12 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar' />
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted onClick={this.handleLoginClick} as={NavLink}
+                                    <Button inverted onClick={this.handleLoginClick} as={Link}
                                         to="/Login"
                                         name="login">
                                         Log in
                   </Button>
-                                    <Button as='a' inverted style={{ marginLeft: '0.5em' }} as={NavLink}
+                                    <Button inverted style={{ marginLeft: '0.5em' }} as={Link}
                                         to="/SignUp"
                                         name="signUp">
                                         Sign Up
