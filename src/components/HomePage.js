@@ -1,15 +1,10 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import LinkButton from './link-button'
 import {
-    Button,
     Container,
     Grid,
     Header,
-    Menu,
-    Responsive,
     Segment,
-    Visibility,
 } from 'semantic-ui-react'
 import Map from './Map.js'
 

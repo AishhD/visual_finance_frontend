@@ -5,9 +5,6 @@ import 'c3/c3.css';
 class AllBarChart extends React.Component {
 
     title(data) {
-        console.log("first", this.props.firstData)
-        console.log("second", this.props.secondData)
-        console.log("third", this.props.thirdData)
         // if (data["city_name"] && data["city_name"] === "London" || data["city_name"] === "Yorkshire and The Humber") {
         //     return "Average spending in " + data["city_name"]
         // } else if (data["city_name"]) {
@@ -19,10 +16,17 @@ class AllBarChart extends React.Component {
             return "Average spending for " + data["age_group"] + " year olds"
         } else if (data.children === "Yes") {
             return "Average spending for people with children"
+        } else if (data["city_name"] === "London" || data["city_name"] === "Yorkshire and The Humber") {
+            return "Average spending in " + data["city_name"]
+        } else if (data["city_name"]) {
+            return "Average spending in the " + data["city_name"]
         }
     }
 
     render() {
+        console.log("first data", this.props.firstData)
+        console.log("second data", this.props.secondData)
+        console.log("third data", this.props.thirdData)
         const data = {
             columns: [
                 [

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Form, Input, Segment, Grid, Header, Image } from 'semantic-ui-react';
+import { Button, Form, Input, Segment, Grid, } from 'semantic-ui-react';
 
 const requiredNumber = (value) => {
     if (!value) {
@@ -23,7 +23,8 @@ const validate = values => {
     errors.education = requiredNumber(values.education)
     errors.other = requiredNumber(values.other)
     for (var key in errors) {
-        if (errors[key] == undefined) {
+        // if (errors[key] == undefined)
+        if (errors[key] === undefined) {
             delete errors[key]
         }
     }

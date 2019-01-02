@@ -1,16 +1,11 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import Questionnaire from './Questionnaire.js'
+import React from 'react'
 import NationalCharts from './NationalCharts'
 import LinkButton from './link-button'
 
 import {
-    Button,
+
     Container,
     Divider,
-    Grid,
-    Header,
-    List,
     Segment,
 } from 'semantic-ui-react'
 
@@ -28,7 +23,7 @@ const HomepageLayout = () => (
                     horizontal
                     style={{ margin: '3em 0em', textTransform: 'uppercase' }}
                 >
-                    <a href='#'>Compare your spendings</a>
+                    Compare your spendings
                 </Divider>
                 <LinkButton size='large' to="/SpendingQuestionnaire">Submit</LinkButton>
             </Container>

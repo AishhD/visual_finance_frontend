@@ -1,11 +1,9 @@
 import React from 'react';
 import 'c3/c3.css';
-import LinkButton from './link-button'
 import { connect } from 'react-redux'
 import UserAgePieChart from './UserAgePieChart'
 import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
-import { Redirect } from 'react-router-dom'
 import NationalStatsBarGraph from "./NationalStatsBarGraph"
 import { Divider, Grid } from 'semantic-ui-react'
 
@@ -72,14 +70,6 @@ const mapStateToProps = (state) => {
         location: state.userLocation
     }
 }
-
-
-{/* <Redirect to={{
-                    pathname: '/Questionnaire',
-                    state: { error: "Please fill in this form to continue" }
-                }} */}
-
-// />
 
 
 export default connect(mapStateToProps, null)(NationalCharts)

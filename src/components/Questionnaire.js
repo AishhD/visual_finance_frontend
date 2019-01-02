@@ -4,7 +4,6 @@ import ChildrenGroup from './ChildrenGroup';
 import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
-import LinkButton from './link-button'
 import { Divider, Grid } from 'semantic-ui-react'
 
 

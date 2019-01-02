@@ -1,10 +1,7 @@
 import React from 'react';
 import AllOptionsDropdown from './AllOptionsDropdown';
-import ChildrenGroup from './ChildrenGroup';
-import LocationGroup from './LocationGroup';
 import { sendFiltersAction } from '../actions/sendFiltersAction';
 import { connect } from 'react-redux';
-import LinkButton from './link-button'
 import { Divider, Grid } from 'semantic-ui-react'
 import updateUserAge from "../actions/updateUserAge";
 import updateUserAgeData from "../actions/updateUserAgeData";
@@ -30,14 +27,15 @@ class BarChartQuestionnaire extends React.Component {
 
     selectHandler = (event, data, state) => {
         let value = event.target.value;
-        console.log(state)
-        console.log("selected", data.value)
 
         this.setState({ [event.target.name]: value })
 
         if (this.props.allAgeGroups.find(age => age["age_group"] === data.value)) {
             const age = this.props.allAgeGroups.find(age => age["age_group"] === data.value);
             this.setState({ [state]: age })
+        } else if (this.props.allCities.find(city => city["city_name"] === data.value)) {
+            const city = this.props.allCities.find(city => city["city_name"] === data.value)
+            this.setState({ [state]: city })
         }
     }
 
