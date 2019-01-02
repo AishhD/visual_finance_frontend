@@ -3,7 +3,11 @@ import { withRouter } from 'react-router-dom'
 
 
 export default withRouter(props => (
-    <button onClick={() => props.history.push(props.to)}>
+    <button className={'btn-medium'} onClick={() => {
+        window.scrollTo(0, 0);
+        props.history.push(props.to)
+    }
+    }>
         {props.children}
     </button>
 ))

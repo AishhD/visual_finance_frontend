@@ -45,6 +45,7 @@ class AllBarChart extends React.Component {
                     this.props.firstData["spending_category"]["other"]],
 
                 [this.title(this.props.secondData),
+                this.props.secondData["spending_category"]["food_non_alcholic_drinks"],
                 this.props.secondData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.secondData["spending_category"]["clothing_footwear"],
                 this.props.secondData["spending_category"]["household_bills"],
@@ -67,6 +68,7 @@ class AllBarChart extends React.Component {
             ],
             type: 'bar',
             labels: true,
+            unload: true
         };
 
         const title = {

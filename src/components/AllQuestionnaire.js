@@ -71,6 +71,7 @@ class BarChartQuestionnaire extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         const { firstSelection, secondSelection, thirdSelection } = this.state
         return (
             <div>

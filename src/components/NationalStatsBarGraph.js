@@ -26,7 +26,8 @@ class NatationalStatsBarChart extends React.Component {
                 [this.props.userAgeData["age_group"] === "less than 30" ?
                     "Average spending for people " + this.props.userAgeData["age_group"] + " year olds"
                     :
-                    "Average spending for " + this.props.userAgeData["age_group"] + " year olds", this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                    "Average spending for " + this.props.userAgeData["age_group"] + " year olds",
+                this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
                 this.props.userAgeData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.userAgeData["spending_category"]["clothing_footwear"],
                 this.props.userAgeData["spending_category"]["household_bills"],
