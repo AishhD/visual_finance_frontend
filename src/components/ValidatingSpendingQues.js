@@ -7,6 +7,8 @@ const requiredNumber = (value) => {
         return 'Required that you enter a number'
     } else if (parseInt(value) === isNaN) {
         return 'Required that you enter a number'
+    } else if (parseInt(value) > 3000) {
+        return 'Value must be less than 3000'
     }
 
 }

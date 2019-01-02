@@ -15,6 +15,8 @@ import updateUserChildrenData from '../actions/updateUserChildrenData'
 import updateNationalAverage from '../actions/updateNationalAverage'
 import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import AllBarChart from './AllBarChart'
+import Map from './Map'
+import LinkButton from './link-button'
 import * as adapter from "../Adapter.js";
 
 
@@ -65,13 +67,36 @@ class BarChartQuestionnaire extends React.Component {
 
     }
 
+    barChart = () => {
+        const { firstSelection, secondSelection, thirdSelection } = this.state
+        return <Grid columns='equal' stackable >
+            <Grid.Row centered>
+                <Grid.Column centered style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                    < AllBarChart firstData={firstSelection} secondData={secondSelection} thirdData={thirdSelection} />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row centered>
+                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                    <Divider
+                        as='h3'
+                        className='header'
+                        horizontal
+                        style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+                    >
+                    </Divider>
+                    <LinkButton to="/UserStats">Return</LinkButton>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+    }
+
+
 
     handleError() {
         return <h1>{this.props.location.state.error}</h1>
     }
 
     render() {
-        console.log(this.state)
         const { firstSelection, secondSelection, thirdSelection } = this.state
         return (
             <div>
@@ -108,7 +133,18 @@ class BarChartQuestionnaire extends React.Component {
                     </Grid.Row> */}
                 </Grid>
 
-                {firstSelection && secondSelection && thirdSelection ? < AllBarChart firstData={firstSelection} secondData={secondSelection} thirdData={thirdSelection} /> : ""}
+                {firstSelection && secondSelection && thirdSelection ? this.barChart() : <Grid.Row centered>
+                    <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                        <Divider
+                            as='h3'
+                            className='header'
+                            horizontal
+                            style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+                        >
+                        </Divider>
+                        <LinkButton to="/UserStats">Return</LinkButton>
+                    </Grid.Column>
+                </Grid.Row>}
 
             </div >
         )

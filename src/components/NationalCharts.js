@@ -44,14 +44,12 @@ class NationalCharts extends React.Component {
                                     <UserChildrenPieChart />
                                 </Grid.Column>
                                 : ""}
-
-
                         </Grid.Row>
-                        <Grid.Row centered>
+                        {/* <Grid.Row centered>
                             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                                 < NationalStatsBarGraph />
                             </Grid.Column>
-                        </Grid.Row>
+                        </Grid.Row> */}
                     </Grid>
 
 

@@ -4,6 +4,17 @@ import 'c3/c3.css';
 
 export default class NatationalStatsPieChart extends React.Component {
 
+    title() {
+        if (this.props.userData["age_group"]) {
+            console.log(this.props.userData["age_group"])
+            return this.props.userData["age_group"]
+        } else if (this.props.userData["city_name"]) {
+            return this.props.userData["city_name"]
+        } else if (this.props.userData["children"]) {
+            return this.props.userData["children"]
+        }
+    }
+
     render() {
         const data = {
             columns: [
@@ -17,8 +28,10 @@ export default class NatationalStatsPieChart extends React.Component {
                 ['Transport', this.props.userData["spending_category"]["transport"]],
                 ['Other', this.props.userData["spending_category"]["other"]],
             ],
-            type: 'pie',
+            type: 'donut',
         };
+
+
 
         const title = {
             text: this.props.title

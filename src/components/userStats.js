@@ -68,16 +68,33 @@ class UserStats extends React.Component {
 
 
         return (
-            <Segment raised style={{ marginTop: '15em' }}>
+            <Segment raised >
                 <Container>
                     <div >
 
-                        {this.props.nationalAverage && this.props.userSpending && this.props.averageUserSpending ?
-                            <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} averageUserData={this.props.averageUserSpending} title={"Weekly Spending"} />
-                            :
-                            ""
-                        }
+
                         <Grid celled='internally' columns='equal' stackable >
+                            <Grid.Row centered>
+                                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                    <Divider
+                                        as='h3'
+                                        className='header'
+                                        horizontal
+                                        style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+                                    >
+                                        Welcome
+                                    </Divider>
+                                </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                    {this.props.nationalAverage && this.props.userSpending && this.props.averageUserSpending ?
+                                        <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} averageUserData={this.props.averageUserSpending} title={"Weekly Spending"} />
+                                        :
+                                        ""
+                                    }
+                                </Grid.Column>
+                            </Grid.Row>
                             <Grid.Row centered>
                                 <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                                     <Divider
