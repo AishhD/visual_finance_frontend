@@ -14,13 +14,19 @@ class AllBarChart extends React.Component {
             return "Average spending for people " + data["age_group"] + " year olds"
         } else if (data["age_group"]) {
             return "Average spending for " + data["age_group"] + " year olds"
-        } else if (data.children === "Yes") {
-            return "Average spending for people with children"
         } else if (data["city_name"] === "London" || data["city_name"] === "Yorkshire and The Humber") {
             return "Average spending in " + data["city_name"]
         } else if (data["city_name"]) {
             return "Average spending in the " + data["city_name"]
+        } else if (data["children"]) {
+            return "Average spending for people with children"
+        } else if (data["national_average"]) {
+            return "National Average Spending"
+        } else if (data["average_user_spending"]) {
+            return "Average User Spending"
         }
+        return "Your Spending"
+        //need to add identifier to user spending
     }
 
     render() {

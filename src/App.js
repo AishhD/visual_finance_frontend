@@ -14,8 +14,8 @@ import ukMap from './components/ukMap'
 import api from './components/api'
 import CategoryPage from './components/CategoryPage'
 import CategoryGraphsPage from './components/CategoryGraphsPage'
+import SpendingComparisonPage from './components/SpendingComparisonPage'
 import SpendingQuestionnaire from './components/SpendingQuestionnaire'
-import SpendingQuestionnairePage from './components/SpendingQuestionnairePage'
 import Footer from './components/Footer'
 import { Route, Switch } from "react-router-dom";
 
@@ -31,13 +31,13 @@ class App extends Component {
           <Route path="/NationalCharts" component={NationalCharts} />
           <Route path="/Login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
-          <Route path="/SpendingQuestionnaire" component={SpendingQuestionnaire} />
+          <Route path="/SpendingComparison" component={SpendingComparisonPage} />
           <Route path="/UserStats" component={UserStats} />
           <Route path="/UK" component={ukMap} />
           <Route path="/api" component={api} />
           <Route path="/categoryGraphs" component={CategoryGraphsPage} />
           <Route path="/category" component={CategoryPage} />
-          <Route path="/spending" component={SpendingQuestionnairePage} />
+          <Route path="/SpendingQuestionnaire" component={SpendingQuestionnaire} />
           <Route path="/" component={Homepage} />
         </Switch>
         <Footer />

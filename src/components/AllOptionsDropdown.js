@@ -53,7 +53,16 @@ class AllOptionsDropdown extends React.Component {
         {
             "text": "National Average",
             "value": "National Average"
-        }]
+        },
+        {
+            "text": "Your Spending",
+            "value": "Your Spending"
+        },
+        {
+            "text": "Average User Spending",
+            "value": "Average User Spending"
+        }
+        ]
         const ageGroupsHandler = () => {
             this.props.allAgeGroups.forEach(ageGroup => {
                 let option = {};

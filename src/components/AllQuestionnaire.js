@@ -12,7 +12,10 @@ import updateAllCities from '../actions/updateAllCities'
 import updateUserChildren from "../actions/updateUserChildren";
 import updateChildrenData from "../actions/updateChildrenData"
 import updateUserChildrenData from '../actions/updateUserChildrenData'
+import updateNationalAverage from '../actions/updateNationalAverage'
+import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import AllBarChart from './AllBarChart'
+import * as adapter from "../Adapter.js";
 
 
 
@@ -25,7 +28,16 @@ class BarChartQuestionnaire extends React.Component {
         thirdSelection: null,
     }
 
+    componentDidMount() {
+        adapter.getNationalAverage()
+            .then(average => this.props.updateNationalAverage(average))
+        adapter.getUserAverage()
+            .then(average => this.props.updateAverageUserSpending(average))
+    }
+
     selectHandler = (event, data, state) => {
+        console.log("data", data.value)
+        console.log(this.state.firstSelection, this.state.secondSelection)
         let value = event.target.value;
 
         this.setState({ [event.target.name]: value })
@@ -36,6 +48,14 @@ class BarChartQuestionnaire extends React.Component {
         } else if (this.props.allCities.find(city => city["city_name"] === data.value)) {
             const city = this.props.allCities.find(city => city["city_name"] === data.value)
             this.setState({ [state]: city })
+        } else if (data.value === "With Children") {
+            this.setState({ [state]: this.props.childrenData })
+        } else if (data.value === "National Average") {
+            this.setState({ [state]: this.props.nationalAverage[0] })
+        } else if (data.value === "Your Spending") {
+            this.setState({ [state]: this.props.userSpending })
+        } else if (data.value === "Average User Spending") {
+            this.setState({ [state]: this.props.averageUserSpending })
         }
     }
 
@@ -69,7 +89,7 @@ class BarChartQuestionnaire extends React.Component {
                                 horizontal
                                 style={{ margin: '1em 0em', textTransform: 'uppercase' }}
                             >
-                                Make your selection
+                                What would you like to compare
                             </Divider>
                         </Grid.Column>
                     </Grid.Row>
@@ -108,6 +128,9 @@ const mapStateToProps = (state) => ({
     children: state.userChildren,
     childrenData: state.childrenData,
     filterData: state.filterData,
+    userSpending: state.userSpending,
+    nationalAverage: state.nationalAverage,
+    averageUserSpending: state.averageUserSpending
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -120,9 +143,10 @@ const mapDispatchToProps = (dispatch) => ({
     updateUserChildren: (children) => { dispatch(updateUserChildren(children)) },
     updateChildrenData: (childrenData) => { dispatch(updateChildrenData(childrenData)) },
     updateUserChildrenData: (userChildrenData) => { dispatch(updateUserChildrenData(userChildrenData)) },
-    saveFilters: (filters) => dispatch(sendFiltersAction(filters))
+    saveFilters: (filters) => dispatch(sendFiltersAction(filters)),
+    updateNationalAverage: (average) => { dispatch(updateNationalAverage(average)) },
+    updateAverageUserSpending: (average) => { dispatch(updateAverageUserSpending(average)) },
 })
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarChartQuestionnaire)

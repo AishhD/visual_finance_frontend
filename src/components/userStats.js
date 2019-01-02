@@ -8,8 +8,9 @@ import updateAllCities from '../actions/updateAllCities'
 import updateNationalAverage from '../actions/updateNationalAverage'
 import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import 'c3/c3.css';
-import { Segment, Container } from 'semantic-ui-react'
+import { Segment, Container, Grid, Divider } from 'semantic-ui-react'
 import ComparisonLineGraph from './ComparisonLineGraph.js';
+import LinkButton from './link-button'
 
 
 class UserStats extends React.Component {
@@ -70,12 +71,27 @@ class UserStats extends React.Component {
             <Segment raised style={{ marginTop: '15em' }}>
                 <Container>
                     <div >
+
                         {this.props.nationalAverage && this.props.userSpending && this.props.averageUserSpending ?
                             <ComparisonLineGraph userData={this.props.userSpending} nationalAverageData={this.props.nationalAverage[0]} averageUserData={this.props.averageUserSpending} title={"Weekly Spending"} />
                             :
                             ""
                         }
-
+                        <Grid celled='internally' columns='equal' stackable >
+                            <Grid.Row centered>
+                                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                    <Divider
+                                        as='h3'
+                                        className='header'
+                                        horizontal
+                                        style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+                                    >
+                                        What would you like to compare
+                                    </Divider>
+                                    <LinkButton to="/AllQuestionnaire">Compare</LinkButton>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
                     </div >
                 </Container>
             </Segment >
