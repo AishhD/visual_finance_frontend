@@ -25,11 +25,13 @@ import updateAuthorised from "../actions/updateAuthorised";
 import * as adapter from "../Adapter.js";
 
 class Login extends React.Component {
+    state = {
+        showError: false
+    }
 
     signin = user => {
-
         localStorage.setItem('token', user.token)
-
+        this.props.history.push('/UserStats')
     }
 
     componentDidMount() {
@@ -51,12 +53,12 @@ class Login extends React.Component {
         }
 
         adapter.postUsers(newUser)
-            .then(resp => this.signin(resp))
-            .catch(error => this.props.history.push('/Login'))
-            .then(resp => localStorage.setItem("token", resp.token),
-                this.props.history.push('/UserStats'))
-    }
+            .then(resp => {
+                this.signin(resp)
+            })
+            .catch(error => this.setState({ showError: true }))
 
+    }
 
     handleSubmitlogin = (userInput) => {
 
@@ -70,8 +72,14 @@ class Login extends React.Component {
         }
 
         adapter.signInUsers(loginUser)
-            .then(resp => successful(resp))
-            .catch(error => this.props.updateErrors("Your username and/or password did not match our records"))
+            .then(resp => {
+                successful(resp)
+                this.setState({ showError: false })
+            })
+            .catch(error => {
+                this.setState({ showError: true })
+            })
+        // .catch(error => this.props.updateErrors("Your username and/or password did not match our records"))
 
         const successful = (resp) => {
             serverResponse(resp)
@@ -97,6 +105,18 @@ class Login extends React.Component {
             updateSpendingDataID(user.spending_datum.id)
         }
     }
+    componentWillUnmount() {
+        this.setState({ showError: false })
+    }
+
+    clickLogin = () => {
+        this.props.updateAuthorised('login')
+        this.setState({ showError: false })
+    }
+    clickSignUp = () => {
+        this.props.updateAuthorised('Sign up')
+        this.setState({ showError: false })
+    }
 
     render() {
         const { authorised } = this.props
@@ -104,14 +124,14 @@ class Login extends React.Component {
         return (
             <div>
                 <Menu pointing>
-                    <Menu.Item name='Sign up' active={authorised === 'Sign up'} onClick={() => this.props.updateAuthorised('Sign up')} />
-                    <Menu.Item name='login' active={authorised === 'login'} onClick={() => this.props.updateAuthorised('login')} />
+                    <Menu.Item name='Sign up' active={authorised === 'Sign up'} onClick={() => this.clickSignUp()} />
+                    <Menu.Item name='login' active={authorised === 'login'} onClick={() => this.clickLogin()} />
                 </Menu>
 
                 {this.props.authorised === 'Sign up' ?
                     <Segment>
                         <Container>
-                            <ValidatingSignUpQues onSubmit={this.handleSubmitSignUp} />
+                            <ValidatingSignUpQues showError={this.state.showError} onSubmit={this.handleSubmitSignUp} />
                         </Container>
                     </Segment> : ""}
 
@@ -119,7 +139,7 @@ class Login extends React.Component {
                 {this.props.authorised === 'login' ?
                     <Segment>
                         <Container>
-                            <ValidatingLoginQues onSubmit={this.handleSubmitlogin} />
+                            <ValidatingLoginQues showError={this.state.showError} onSubmit={this.handleSubmitlogin} />
                         </Container>
                     </Segment> : ""}
             </div>
@@ -157,3 +177,5 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
+

@@ -40,16 +40,18 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 //         <label>{label}</label>
 //         <div>
 //             <input {...input} placeholder={label} type={type} />
-
 //         </div>
 //     </div>
 // )
 
 const SyncValidationForm = (props) => {
-    const { handleSubmit, submitting } = props
+    const { handleSubmit, submitting, showError } = props
     return (
 
         <Form onSubmit={handleSubmit}>
+            {
+                (showError) && <p style={{ color: "red" }}>Wrong username OR password</p>
+            }
             <Field name="username" type="text" component={renderField} label="Username" />
             <Field name="password" type="password" component={renderField} label="Password" />
             <Button type="submit" disabled={submitting}>Submit</Button>
