@@ -34,7 +34,7 @@ class SpendingQuestionnaire extends React.Component {
         updateUserSpendingResturants(values.resturants)
         updateUserSpendingTransport(values.transport)
         this.postRequest(values)
-        this.props.history.push(`/SpendingQuestionnaire`)
+        this.props.history.push(`/AllQuestionnaire`)
 
     }
 
