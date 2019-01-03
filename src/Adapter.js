@@ -124,7 +124,7 @@ let url = 'https://newsapi.org/v2/everything?' +
     'q=save+money&' +
     // 'from=2018-06-28&' +
     'sortBy=popularity&' +
-    'apiKey=c327c374a1cf43dc8170130c6cf36f85';
+    '';
 
 let req = new Request(url);
 
