@@ -89,7 +89,7 @@ const WebpageHeading = ({ mobile }) => (
             }}
         /> */}
         <br />
-        <img src="http://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300" alt="UK map" />
+        <img src="https://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300" alt="UK map" />
     </Container>
 )
 
