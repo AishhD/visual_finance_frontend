@@ -46,7 +46,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import logout from "./Logout"
 
 
 import {
@@ -108,6 +107,11 @@ class DesktopContainer extends Component {
     hideFixedMenu = () => this.setState({ fixed: false })
     showFixedMenu = () => this.setState({ fixed: true })
 
+    logout = () => {
+        localStorage.removeItem("token");
+        window.location.replace('/')
+    }
+
     render() {
         const { children } = this.props
         const { fixed } = this.state
@@ -141,6 +145,16 @@ class DesktopContainer extends Component {
                                             name="home" active>
                                             Home
                                         </Menu.Item>
+                                        <Menu.Item as={Link}
+                                            to="/category"
+                                            name="category" active>
+                                            Category Comparsion
+                                        </Menu.Item>
+                                        <Menu.Item as={Link}
+                                            to="/SpendingQuestionnaire"
+                                            name="spending" active>
+                                            Compare Your Spending
+                                        </Menu.Item>
 
                                         <Menu.Item position='right' >
                                             <Button inverted={!fixed} as={Link}
@@ -156,7 +170,7 @@ class DesktopContainer extends Component {
                                         </Menu.Item>
                                     </div> :
                                     <Menu.Item position='right' >
-                                        <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} onClick={() => logout()}>
+                                        <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} onClick={() => this.logout()}>
                                             Logout
                                         </Button>
                                     </Menu.Item>

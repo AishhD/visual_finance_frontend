@@ -24,10 +24,10 @@ class UserStats extends React.Component {
     }
 
     componentDidMount() {
-        adapter.validate()
-            .catch(error => {
-                this.props.history.push(`/Login`)
-            })
+        // adapter.validate()
+        //     .catch(error => {
+        //         this.props.history.push(`/Login`)
+        //     })
         if (this.props.allAgeGroups === "" && this.props.allCities === "" && this.props.childrenData === "") {
             adapter.getAgeGroups()
                 .then(allAges => this.props.updateAllAgeGroups(allAges))
@@ -71,8 +71,6 @@ class UserStats extends React.Component {
             <Segment raised >
                 <Container>
                     <div >
-
-
                         <Grid celled='internally' columns='equal' stackable >
                             <Grid.Row centered>
                                 <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
@@ -103,9 +101,9 @@ class UserStats extends React.Component {
                                         horizontal
                                         style={{ margin: '1em 0em', textTransform: 'uppercase' }}
                                     >
-                                        What would you like to compare
+                                        Choose what to compare
                                     </Divider>
-                                    <LinkButton to="/AllQuestionnaire">Compare</LinkButton>
+                                    <LinkButton to="/AllQuestionnaire">Choose</LinkButton>
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
@@ -115,12 +113,6 @@ class UserStats extends React.Component {
         )
     }
 }
-
-
-
-
-
-
 
 const mapStateToProps = (state) => {
     return {
