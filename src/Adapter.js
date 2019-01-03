@@ -1,15 +1,15 @@
 
 
-const usersURL = "https://visualfinance/api/v1/users"
-const signInURL = "https://visualfinance/api/v1/users/login"
-const ageURL = "https://visualfinance/api/v1/age_options"
-const cityURL = "https://visualfinance/api/v1/city_options"
-const nationalAverageURL = "https://visualfinance/api/v1/national_averages"
-const childrenURL = "https://visualfinance/api/v1/children_options/1"
-const currentUser = "https://visualfinance/api/v1/users/validate"
-const averageURL = "https://visualfinance/api/v1/spending_data/average"
-const countryHouseholdSpendingURL = "https://visualfinance/api/v1/household_spendings"
-const spendingDataURL = "https://visualfinance/api/v1/spending_data"
+const usersURL = "https://visualfinance.herokuapp.com/api/v1/users"
+const signInURL = "https://visualfinance.herokuapp.com/api/v1/users/login"
+const ageURL = "https://visualfinance.herokuapp.com/api/v1/age_options"
+const cityURL = "https://visualfinance.herokuapp.com/api/v1/city_options"
+const nationalAverageURL = "https://visualfinance.herokuapp.com/api/v1/national_averages"
+const childrenURL = "https://visualfinance.herokuapp.com/api/v1/children_options/1"
+const currentUser = "https://visualfinance.herokuapp.com/api/v1/users/validate"
+const averageURL = "https://visualfinance.herokuapp.com/api/v1/spending_data/average"
+const countryHouseholdSpendingURL = "https://visualfinance.herokuapp.com/api/v1/household_spendings"
+const spendingDataURL = "https://visualfinance.herokuapp.com/api/v1/spending_data"
 
 const handleResponse = resp => {
     if (resp.ok)
