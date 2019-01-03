@@ -30,7 +30,7 @@ class Map extends Component {
                         {
                             id: getCode(countryObj.country),
                             value: Math.round(countryObj.value),
-                            "description": '<a href="/UK">Compare your spending</a><br /><br />'
+                            "description": '<a href="/SpendingQuestionnaire">Compare your spending</a><br /><br />'
                         }
                 ))
                 .filter(countryObj => countryObj.value !== 0)

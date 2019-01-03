@@ -97,7 +97,7 @@ class BarChartQuestionnaire extends React.Component {
             <Grid.Row>
                 <Grid.Column className='compare_section' style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                     <div className="buttons">
-                        <LinkButton to="/UserStats">Return</LinkButton>
+                        <LinkButton to="/SpendingQuestionnaire">Return</LinkButton>
                         <LinkButton to="/SignUp">Sign up</LinkButton>
                     </div>
                 </Grid.Column>
@@ -157,7 +157,7 @@ class BarChartQuestionnaire extends React.Component {
                             style={{ margin: '1em 0em', textTransform: 'uppercase' }}
                         >Return
                         </Divider>
-                        <LinkButton to="/UserStats">Return</LinkButton>
+                        <LinkButton to="/SpendingQuestionnaire">Return</LinkButton>
                     </Grid.Column>
                 </Grid.Row>}
 

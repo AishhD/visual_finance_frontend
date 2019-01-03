@@ -34,7 +34,7 @@ const HomepageLayout = () => (
                                 <Header as='h4' inverted>
                                     Image source:
                                  </Header>
-                                <a href="http://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300">gisresources</a>
+                                <a href="https://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300">gisresources</a>
                             </Grid.Column>
                         </Grid.Column>
                     </Grid.Row>

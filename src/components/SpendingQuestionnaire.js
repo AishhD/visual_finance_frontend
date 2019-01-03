@@ -18,7 +18,7 @@ import * as adapter from "../Adapter.js";
 class SpendingQuestionnaire extends React.Component {
 
     redirectUserStats = () => {
-        this.props.history.push('/UserStats')
+        this.props.history.push('/SpendingQuestionnaire')
     }
 
     handleSubmit = (values) => {
@@ -34,7 +34,7 @@ class SpendingQuestionnaire extends React.Component {
         updateUserSpendingResturants(values.resturants)
         updateUserSpendingTransport(values.transport)
         this.postRequest(values)
-        this.props.history.push(`/UserStats`)
+        this.props.history.push(`/SpendingQuestionnaire`)
 
     }
 
