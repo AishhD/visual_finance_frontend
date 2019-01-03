@@ -6,31 +6,22 @@ import updateUserAge from "../actions/updateUserAge";
 import updateUserChildren from "../actions/updateUserChildren";
 import updateUserLocation from '../actions/updateUserLocation';
 
-class Logout extends React.Component {
 
-    logout() {
-        const { updateUsername,
-            updateAuthorised,
-            updateUserLocation,
-            updateUserChildren,
-            updateUserAge } = this.props
-        localStorage.removeItem("token");
-        updateUserAge("")
-        updateUsername("")
-        updateUserChildren("")
-        updateUserLocation("")
-        updateAuthorised("")
-    }
 
-    render() {
-        return (
-            <div>
-
-            </div >
-        )
-    }
+const Logout = (props) => {
+    const { updateUsername,
+        updateAuthorised,
+        updateUserLocation,
+        updateUserChildren,
+        updateUserAge } = props
+    localStorage.removeItem("token");
+    updateUserAge("")
+    updateUsername("")
+    updateUserChildren("")
+    updateUserLocation("")
+    updateAuthorised("")
+    props.history.push('/UserStats')
 }
-
 
 const mapStateToProps = (state) => ({
     username: state.username,

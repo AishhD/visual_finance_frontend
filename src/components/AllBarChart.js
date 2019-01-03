@@ -71,9 +71,9 @@ class AllBarChart extends React.Component {
             unload: true
         };
 
-        const title = {
-            text: "Average Spending breakdown by category"
-        }
+        // const title = {
+        //     text: "Average Spending breakdown by category"
+        // }
 
         const legend = {
             position: 'inset'
@@ -94,7 +94,7 @@ class AllBarChart extends React.Component {
         return (
             <div >
                 <div id="chart">
-                    <C3Chart data={data} title={title} axis={axis} legend={legend} />
+                    <C3Chart data={data} axis={axis} legend={legend} />
                 </div>
             </div >
         )

@@ -72,22 +72,37 @@ class BarChartQuestionnaire extends React.Component {
         return <Grid columns='equal' stackable >
             <Grid.Row centered>
                 <Grid.Column centered style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    < AllBarChart firstData={firstSelection} secondData={secondSelection} thirdData={thirdSelection} />
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row centered>
-                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                     <Divider
                         as='h3'
                         className='header'
                         horizontal
                         style={{ margin: '1em 0em', textTransform: 'uppercase' }}
                     >
+                        Average Household Spending
                     </Divider>
-                    <LinkButton to="/UserStats">Return</LinkButton>
+                    < AllBarChart firstData={firstSelection} secondData={secondSelection} thirdData={thirdSelection} />
                 </Grid.Column>
             </Grid.Row>
-        </Grid>
+            <Grid.Row centered>
+                <Grid.Column className='compare_section' style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                    <Divider
+                        as='h3'
+                        className='header'
+                        horizontal
+                        style={{ margin: '1em 0em', textTransform: 'uppercase' }}
+                    >Return or sign up
+                    </Divider>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column className='compare_section' style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                    <div className="buttons">
+                        <LinkButton to="/UserStats">Return</LinkButton>
+                        <LinkButton to="/SignUp">Sign up</LinkButton>
+                    </div>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid >
     }
 
 
@@ -140,7 +155,7 @@ class BarChartQuestionnaire extends React.Component {
                             className='header'
                             horizontal
                             style={{ margin: '1em 0em', textTransform: 'uppercase' }}
-                        >
+                        >Return
                         </Divider>
                         <LinkButton to="/UserStats">Return</LinkButton>
                     </Grid.Column>

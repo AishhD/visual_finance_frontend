@@ -96,7 +96,7 @@ class UserStats extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row centered>
-                                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+                                <Grid.Column className='compare_section' style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                                     <Divider
                                         as='h3'
                                         className='header'

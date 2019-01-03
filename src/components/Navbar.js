@@ -46,7 +46,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
+import logout from "./Logout"
 
 
 import {
@@ -133,24 +133,35 @@ class DesktopContainer extends Component {
                             size='large'
                         >
                             <Container>
-                                <Menu.Item as={Link}
-                                    to="/"
-                                    name="home" active>
-                                    Home
-                                </Menu.Item>
+                                {(!localStorage.getItem('token')) ?
+                                    <div style={{ width: '100%', display: 'flex' }}>
 
-                                <Menu.Item position='right' >
-                                    <Button inverted={!fixed} as={Link}
-                                        to="/Login"
-                                        name="home">
-                                        Log in
-                  </Button>
-                                    <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={Link}
-                                        to="/SignUp"
-                                        name="home">
-                                        Sign Up
-                  </Button>
-                                </Menu.Item>
+                                        <Menu.Item as={Link}
+                                            to="/"
+                                            name="home" active>
+                                            Home
+                                        </Menu.Item>
+
+                                        <Menu.Item position='right' >
+                                            <Button inverted={!fixed} as={Link}
+                                                to="/Login"
+                                                name="home">
+                                                Log in
+                                        </Button>
+                                            <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={Link}
+                                                to="/SignUp"
+                                                name="home">
+                                                Sign Up
+                                        </Button>
+                                        </Menu.Item>
+                                    </div> :
+                                    <Menu.Item position='right' >
+                                        <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} onClick={() => logout()}>
+                                            Logout
+                                        </Button>
+                                    </Menu.Item>
+                                }
+
                             </Container>
                         </Menu>
                         <WebpageHeading />
