@@ -1,15 +1,15 @@
 
 
-const usersURL = "http://localhost:3000/api/v1/users"
-const signInURL = "http://localhost:3000/api/v1/users/login"
-const ageURL = "http://localhost:3000/api/v1/age_options"
-const cityURL = "http://localhost:3000/api/v1/city_options"
-const nationalAverageURL = "http://localhost:3000/api/v1/national_averages"
-const childrenURL = "http://localhost:3000/api/v1/children_options/1"
-const currentUser = "http://localhost:3000/api/v1/users/validate"
-const averageURL = "http://localhost:3000/api/v1/spending_data/average"
-const countryHouseholdSpendingURL = "http://localhost:3000/api/v1/household_spendings"
-const spendingDataURL = "http://localhost:3000/api/v1/spending_data"
+const usersURL = "http://visualfinance/api/v1/users"
+const signInURL = "http://visualfinance/api/v1/users/login"
+const ageURL = "http://visualfinance/api/v1/age_options"
+const cityURL = "http://visualfinance/api/v1/city_options"
+const nationalAverageURL = "http://visualfinance/api/v1/national_averages"
+const childrenURL = "http://visualfinance/api/v1/children_options/1"
+const currentUser = "http://visualfinance/api/v1/users/validate"
+const averageURL = "http://visualfinance/api/v1/spending_data/average"
+const countryHouseholdSpendingURL = "http://visualfinance/api/v1/household_spendings"
+const spendingDataURL = "http://visualfinance/api/v1/spending_data"
 
 const handleResponse = resp => {
     if (resp.ok)
