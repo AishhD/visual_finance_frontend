@@ -13,7 +13,7 @@ class NatationalStatsBarChart extends React.Component {
                         "Average spending in " + this.props.userLocationData["city_name"]
                         :
                         "Average spending in the " + this.props.userLocationData["city_name"]
-                    , this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                    , this.props.userLocationData["spending_category"]["food_non_alcoholic_drinks"],
                     this.props.userLocationData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                     this.props.userLocationData["spending_category"]["clothing_footwear"],
                     this.props.userLocationData["spending_category"]["household_bills"],
@@ -27,7 +27,7 @@ class NatationalStatsBarChart extends React.Component {
                     "Average spending for people " + this.props.userAgeData["age_group"] + " year olds"
                     :
                     "Average spending for " + this.props.userAgeData["age_group"] + " year olds",
-                this.props.userLocationData["spending_category"]["food_non_alcholic_drinks"],
+                this.props.userLocationData["spending_category"]["food_non_alcoholic_drinks"],
                 this.props.userAgeData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.userAgeData["spending_category"]["clothing_footwear"],
                 this.props.userAgeData["spending_category"]["household_bills"],
@@ -38,7 +38,7 @@ class NatationalStatsBarChart extends React.Component {
                 this.props.userAgeData["spending_category"]["other"]],
 
                 (this.props.children === "Yes") ? ["Average spending for people with children",
-                    this.props.userChildrenData["spending_category"]["food_non_alcholic_drinks"],
+                    this.props.userChildrenData["spending_category"]["food_non_alcoholic_drinks"],
                     this.props.userChildrenData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                     this.props.userChildrenData["spending_category"]["clothing_footwear"],
                     this.props.userChildrenData["spending_category"]["household_bills"],
@@ -63,7 +63,7 @@ class NatationalStatsBarChart extends React.Component {
         const axis = {
             x: {
                 type: 'category',
-                categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
+                categories: ['Food & non-alcoholic drinks', 'alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
             },
             y: {
                 max: 180,
