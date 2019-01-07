@@ -1,48 +1,3 @@
-// import React, { Component } from 'react'
-// import { Menu } from 'semantic-ui-react'
-// import { withRouter } from 'react-router-dom'
-
-// class Navbar extends Component {
-//     state = {}
-
-//     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-//     handleLoginClick = () => {
-//         this.props.history.push(`/Login`)
-//         // return <Redirect to='/Login' />
-//     }
-
-
-
-//     render() {
-//         const { activeItem } = this.state
-
-//         return (
-//             <Menu>
-//                 {/* <Menu.Menu position='left'>
-//                     <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
-//                         <img src='https://media.giphy.com/media/Wif2BJsS56nEk/source.gif' alt="" />
-//                     </Menu.Item>
-//                 </Menu.Menu> */}
-//                 <Menu.Menu position='right'>
-//                     <Menu.Item name='Compare UK spending' active={activeItem === 'Compare UK spending'} onClick={this.handleItemClick}>
-//                         Weekly UK spending
-//                     </Menu.Item>
-
-//                     <Menu.Item name='Login' active={activeItem === 'Login'} onClick={this.handleLoginClick}>
-//                         Login
-//                     </Menu.Item>
-//                 </Menu.Menu>
-//             </Menu>
-//         )
-//     }
-// }
-
-// export default withRouter(Navbar)
-
-// https://media.giphy.com/media/Wif2BJsS56nEk/source.gif
-// http://tampainternationalfilmfestival.com/assets/spinning-globe.gif
-
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -60,36 +15,16 @@ import {
     Visibility,
 } from 'semantic-ui-react'
 
-
-/* eslint-disable react/no-multi-comp */
-/* Heads up! WebpageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
 const WebpageHeading = ({ mobile }) => (
     <Container text>
         <Header
             as='h1'
             content='Visual Finance'
             inverted
-            style={{
-                fontSize: mobile ? '2em' : '4em',
-                fontWeight: 'normal',
-                marginBottom: 0,
-                marginTop: mobile ? '1.5em' : '3em',
-            }}
+            className={'webpage-header'}
         />
-        {/* <Header
-            as='h2'
-            content='Comparing household spending.'
-            inverted
-            style={{
-                fontSize: mobile ? '1.5em' : '1.7em',
-                fontWeight: 'normal',
-                marginTop: mobile ? '0.5em' : '1.5em',
-            }}
-        /> */}
         <br />
-        <img src="http://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300" alt="UK map" />
+        <img src="https://i2.wp.com/www.gisresources.com/wp-content/uploads/2017/11/UK_map1.png?resize=260%2C300" alt="UK map" />
     </Container>
 )
 
@@ -97,10 +32,6 @@ WebpageHeading.propTypes = {
     mobile: PropTypes.bool,
 }
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
 class DesktopContainer extends Component {
     state = {}
 
@@ -126,33 +57,32 @@ class DesktopContainer extends Component {
                     <Segment
                         inverted
                         textAlign='center'
-                        style={{ minHeight: 700, padding: '1em 0em' }}
+                        className={'nav-container'}
                         vertical
                     >
                         <Menu
+                            className={'nav-styling'}
                             fixed={fixed ? 'top' : null}
                             inverted={!fixed}
                             pointing={!fixed}
                             secondary={!fixed}
-                            size='large'
                         >
                             <Container>
                                 {(!localStorage.getItem('token')) ?
-                                    <div style={{ width: '100%', display: 'flex' }}>
-
+                                    <div className={'ui-container'} >
                                         <Menu.Item as={Link}
                                             to="/"
-                                            name="home" active>
+                                            name="home" className={'item'} active>
                                             Home
                                         </Menu.Item>
                                         <Menu.Item as={Link}
                                             to="/category"
-                                            name="category" active>
+                                            name="category" className={'item'} >
                                             Category Comparsion
                                         </Menu.Item>
                                         <Menu.Item as={Link}
                                             to="/SpendingQuestionnaire"
-                                            name="spending" active>
+                                            name="spending" className={'item'}>
                                             Compare Your Spending
                                         </Menu.Item>
 
@@ -162,7 +92,8 @@ class DesktopContainer extends Component {
                                                 name="home">
                                                 Log in
                                         </Button>
-                                            <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} as={Link}
+                                            <Button inverted={!fixed} primary={fixed}
+                                                className={"members-btn"} as={Link}
                                                 to="/SignUp"
                                                 name="home">
                                                 Sign Up
@@ -170,7 +101,7 @@ class DesktopContainer extends Component {
                                         </Menu.Item>
                                     </div> :
                                     <Menu.Item position='right' >
-                                        <Button inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }} onClick={() => this.logout()}>
+                                        <Button inverted={!fixed} primary={fixed} className={"members-btn"} onClick={() => this.logout()}>
                                             Logout
                                         </Button>
                                     </Menu.Item>
@@ -224,7 +155,7 @@ class MobileContainer extends Component {
                     <Segment
                         inverted
                         textAlign='center'
-                        style={{ minHeight: 350, padding: '1em 0em' }}
+                        className={"mobile-sidebar"}
                         vertical
                     >
                         <Container>
@@ -238,7 +169,7 @@ class MobileContainer extends Component {
                                         name="login">
                                         Log in
                   </Button>
-                                    <Button inverted style={{ marginLeft: '0.5em' }} as={Link}
+                                    <Button inverted className={'members-btn'} as={Link}
                                         to="/SignUp"
                                         name="signUp">
                                         Sign Up
@@ -276,3 +207,6 @@ const Navbar = () => (
     </ResponsiveContainer>
 )
 export default Navbar
+
+// https://media.giphy.com/media/Wif2BJsS56nEk/source.gif
+// http://tampainternationalfilmfestival.com/assets/spinning-globe.gif
