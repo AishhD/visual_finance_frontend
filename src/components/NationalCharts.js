@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import UserAgePieChart from './UserAgePieChart'
 import UserLocationPieChart from './UserLocationPieChart'
 import UserChildrenPieChart from './UserChildrenPieChart'
-import NationalStatsBarGraph from "./NationalStatsBarGraph"
 import { Divider, Grid } from 'semantic-ui-react'
 
 
@@ -51,9 +50,6 @@ class NationalCharts extends React.Component {
                             </Grid.Column>
                         </Grid.Row> */}
                     </Grid>
-
-
-
                 </div>
                 : ""
         )

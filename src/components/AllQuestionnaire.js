@@ -15,7 +15,6 @@ import updateUserChildrenData from '../actions/updateUserChildrenData'
 import updateNationalAverage from '../actions/updateNationalAverage'
 import updateAverageUserSpending from '../actions/updateAverageUserSpending'
 import AllBarChart from './AllBarChart'
-import Map from './Map'
 import LinkButton from './link-button'
 import * as adapter from "../Adapter.js";
 
