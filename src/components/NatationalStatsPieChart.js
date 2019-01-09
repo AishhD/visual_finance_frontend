@@ -19,11 +19,7 @@ export default class NatationalStatsPieChart extends React.Component {
         const data = {
             columns: [
                 ['Food & non-alcoholic drinks', this.props.userData["spending_category"]["food_non_alcoholic_drinks"]],
-<<<<<<< HEAD
-                ['alcoholic drinks, tobacco & narcotics', this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"]],
-=======
                 ['Alcoholic drinks, tobacco & narcotics', this.props.userData["spending_category"]["alcoholic_drinks_tobacco_narcotics"]],
->>>>>>> aisha
                 ['Clothing & Footwear', this.props.userData["spending_category"]["clothing_footwear"]],
                 ['Household and Bills', this.props.userData["spending_category"]["household_bills"]],
                 ['Recreation & Culture', this.props.userData["spending_category"]["recreation_culture"]],

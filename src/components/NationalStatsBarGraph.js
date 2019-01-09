@@ -63,11 +63,7 @@ class NatationalStatsBarChart extends React.Component {
         const axis = {
             x: {
                 type: 'category',
-<<<<<<< HEAD
-                categories: ['Food & non-alcoholic drinks', 'alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
-=======
                 categories: ['Food & non-alcoholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
->>>>>>> aisha
             },
             y: {
                 max: 180,
