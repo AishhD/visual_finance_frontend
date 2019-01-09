@@ -6,10 +6,7 @@ import {
     Header,
     Segment,
 } from 'semantic-ui-react'
-import Map from './Map.js'
-
-
-
+// import Map from './Map.js'
 
 const HomepageLayout = () => (
     <div>
@@ -17,7 +14,7 @@ const HomepageLayout = () => (
             <Grid container stackable verticalAlign='middle'>
                 <Grid.Row>
                     <Grid.Column>
-                        <Map />
+                        {/* <Map /> */}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
@@ -26,7 +23,7 @@ const HomepageLayout = () => (
             <Container text>
                 <Header as='h3' style={{ fontSize: '2em' }}>
                     Average household spending (UK)
-        </Header>
+                </Header>
                 <p style={{ fontSize: '1.33em' }}>
                     Comparision of the UK household spending by age, location and whether or not they have children.
                 </p>
