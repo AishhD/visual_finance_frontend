@@ -91,7 +91,7 @@ class Login extends React.Component {
             updateUserSpendingAlcohol(user.spending_datum["alcoholic_drinks_tobacco_narcotics"])
             updateUserSpendingClothing(user.spending_datum["clothing_footwear"])
             updateUserSpendingEducation(user.spending_datum["education"])
-            updateUserSpendingFood(user.spending_datum["food_non_alcholic_drinks"])
+            updateUserSpendingFood(user.spending_datum["food_non_alcoholic_drinks"])
             updateUserSpendingHousehold(user.spending_datum["household_bills"])
             updateUserSpendingOther(user.spending_datum["other"])
             updateUserSpendingRecreation(user.spending_datum["recreation_culture"])

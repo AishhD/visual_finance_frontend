@@ -1,7 +1,7 @@
 const initialState = {
     spending_category: {
         alcoholic_drinks_tobacco_narcotics: 0,
-        food_non_alcholic_drinks: 0,
+        food_non_alcoholic_drinks: 0,
         household_bills: 0,
         transport: 0,
         resturants_hotels: 0,
@@ -25,7 +25,7 @@ export const userSpending = (state = initialState, action) => {
             return {
                 ...state,
                 spending_category:
-                    { ...state.spending_category, food_non_alcholic_drinks: action.payload }
+                    { ...state.spending_category, food_non_alcoholic_drinks: action.payload }
             }
         case "UPDATE_USER_SPENDING_TRANSPORT":
             return {

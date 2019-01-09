@@ -44,7 +44,7 @@ class SpendingQuestionnaire extends React.Component {
         const { updateSpendingDataID } = this.props
         const object = {
             alcoholic_drinks_tobacco_narcotics: values.alcohol,
-            food_non_alcholic_drinks: values.food,
+            food_non_alcoholic_drinks: values.food,
             clothing_footwear: values.clothing,
             household_bills: values.household,
             recreation_culture: values.recreation,

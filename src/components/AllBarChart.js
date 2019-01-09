@@ -34,7 +34,7 @@ class AllBarChart extends React.Component {
             columns: [
                 [
                     this.title(this.props.firstData)
-                    , this.props.firstData["spending_category"]["food_non_alcholic_drinks"],
+                    , this.props.firstData["spending_category"]["food_non_alcoholic_drinks"],
                     this.props.firstData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                     this.props.firstData["spending_category"]["clothing_footwear"],
                     this.props.firstData["spending_category"]["household_bills"],
@@ -45,7 +45,7 @@ class AllBarChart extends React.Component {
                     this.props.firstData["spending_category"]["other"]],
 
                 [this.title(this.props.secondData),
-                this.props.secondData["spending_category"]["food_non_alcholic_drinks"],
+                this.props.secondData["spending_category"]["food_non_alcoholic_drinks"],
                 this.props.secondData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.secondData["spending_category"]["clothing_footwear"],
                 this.props.secondData["spending_category"]["household_bills"],
@@ -56,7 +56,7 @@ class AllBarChart extends React.Component {
                 this.props.secondData["spending_category"]["other"]],
 
                 [this.title(this.props.thirdData),
-                this.props.thirdData["spending_category"]["food_non_alcholic_drinks"],
+                this.props.thirdData["spending_category"]["food_non_alcoholic_drinks"],
                 this.props.thirdData["spending_category"]["alcoholic_drinks_tobacco_narcotics"],
                 this.props.thirdData["spending_category"]["clothing_footwear"],
                 this.props.thirdData["spending_category"]["household_bills"],
@@ -82,7 +82,7 @@ class AllBarChart extends React.Component {
         const axis = {
             x: {
                 type: 'category',
-                categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
+                categories: ['Food & non-alcoholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
             },
             y: {
                 max: 180,

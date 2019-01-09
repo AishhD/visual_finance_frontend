@@ -60,7 +60,7 @@ class UserStats extends React.Component {
         // const axis = {
         //     x: {
         //         type: 'category',
-        //         categories: ['Food & non-alcholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
+        //         categories: ['Food & non-alcoholic drinks', 'Alcoholic drinks, tobacco & narcotics', 'Clothing & Footwear', 'Household and Bills', 'Recreation & Culture', 'Education', 'Resturants & Hotels', 'Transport', 'Other']
         //     },
         // }
 

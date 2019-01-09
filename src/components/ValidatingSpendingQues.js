@@ -72,7 +72,7 @@ const SyncValidationForm = (props) => {
                 <Grid celled='internally' columns='equal' stackable>
                     <Grid.Row textAlign='center'>
                         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                            <Field name="food" type="number" component={renderField} label="Food & non-alcholic drinks" width={20} />
+                            <Field name="food" type="number" component={renderField} label="Food & non-alcoholic drinks" width={20} />
                             <Field name="household" type="number" component={renderField} label="Household and bills" />
                             <Field name="resturants" type="number" component={renderField} label="Resturants & Hotels" />
                             <Field name="recreation" type="number" component={renderField} label="Recreation & Culture" />

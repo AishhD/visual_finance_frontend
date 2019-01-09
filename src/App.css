@@ -79,3 +79,33 @@
 .compare_section .buttons button:nth-child(2) {
   margin-left: 1em;
 }
+
+.webpage-header {
+  font-size: 4em;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 3em,
+}
+
+.ui-container {
+  width: 100%;
+  display: flex;
+}
+
+.nav-container {
+  min-height: 700;
+  padding: 1em 0em
+}
+
+.nav-styling{
+  size: large;
+}
+
+.members-btn {
+  margin-left: 0.5em;
+}
+
+.mobile-sidebar{
+  min-height: 350;
+  padding: 1em 0em;
+}
